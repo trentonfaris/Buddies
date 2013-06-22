@@ -10,7 +10,6 @@ import me.Man_cub.Buddies.material.BuddiesMaterials;
 import me.Man_cub.Buddies.material.block.crate.Crate;
 import me.Man_cub.Buddies.material.block.crate.MegaCrate;
 import me.Man_cub.Buddies.material.block.pad.blue.BluePadCenter;
-import me.Man_cub.Buddies.util.thread.SpawnLoader;
 import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
 import me.Man_cub.Buddies.world.generator.BuddiesGenerators;
 import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
@@ -73,7 +72,6 @@ public class LobbyInputCommands {
 		
 		final int radius = BuddiesConfig.SPAWN_RADIUS.getInt();
 		//final int protectioRadius = BuddiesConfig.SPAWN_PROTECTION_RADIUS.getInt();
-		SpawnLoader loader = new SpawnLoader(1);
 		
 		WorldConfigurationNode worldConfig = BuddiesConfig.WORLDS.get(world);
 		boolean newWorld = world.getAge() <= 0;
@@ -88,7 +86,6 @@ public class LobbyInputCommands {
 			
 			//Load or generate spawn area
 			int effectiveRadius = newWorld ? (2 * radius) : radius;
-			loader.load(world, cx, cz, effectiveRadius, newWorld);
 			
 			if (worldConfig.LOADED_SPAWN.getBoolean()) {
 				@SuppressWarnings("unchecked")

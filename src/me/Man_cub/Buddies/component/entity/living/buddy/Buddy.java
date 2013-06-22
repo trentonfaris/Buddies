@@ -55,28 +55,28 @@ public class Buddy extends Living {
 	}
 
 	public boolean isSprinting() {
-		return getOwner().getDatatable().get(BuddiesData.IS_SPRINTING);
+		return getOwner().getData().get(BuddiesData.IS_SPRINTING);
 	}
 
 	public void setSprinting(boolean isSprinting) {
-		getOwner().getDatatable().put(BuddiesData.IS_SPRINTING, isSprinting);
+		getOwner().getData().put(BuddiesData.IS_SPRINTING, isSprinting);
 		sendMetaData();
 	}
 
 	public boolean isFalling() {
-		return getOwner().getDatatable().get(BuddiesData.IS_FALLING);
+		return getOwner().getData().get(BuddiesData.IS_FALLING);
 	}
 
 	public void setFalling(boolean isFalling) {
-		getOwner().getDatatable().put(BuddiesData.IS_FALLING, isFalling);
+		getOwner().getData().put(BuddiesData.IS_FALLING, isFalling);
 	}
 
 	public boolean isJumping() {
-		return getOwner().getDatatable().get(BuddiesData.IS_JUMPING);
+		return getOwner().getData().get(BuddiesData.IS_JUMPING);
 	}
 
 	public void setJumping(boolean isJumping) {
-		getOwner().getDatatable().put(BuddiesData.IS_JUMPING, isJumping);
+		getOwner().getData().put(BuddiesData.IS_JUMPING, isJumping);
 	}
 
 	public boolean isInWater() {
@@ -166,10 +166,10 @@ public class Buddy extends Living {
 
 	// Abilities
 	public void setFlying(boolean isFlying, boolean updateClient) {
-		Boolean previous = getOwner().getDatatable().put(BuddiesData.IS_FLYING,
+		Boolean previous = getOwner().getData().put(BuddiesData.IS_FLYING,
 				isFlying);
 		if (callAbilityChangeEvent().isCancelled()) {
-			getOwner().getDatatable().put(BuddiesData.IS_FLYING, previous);
+			getOwner().getData().put(BuddiesData.IS_FLYING, previous);
 			return;
 		}
 		updateAbilities(updateClient);
@@ -180,14 +180,14 @@ public class Buddy extends Living {
 	}
 
 	public boolean isFlying() {
-		return getOwner().getDatatable().get(BuddiesData.IS_FLYING);
+		return getOwner().getData().get(BuddiesData.IS_FLYING);
 	}
 
 	public void setFlyingSpeed(byte speed, boolean updateClient) {
-		byte previous = getOwner().getDatatable()
+		byte previous = getOwner().getData()
 				.put(BuddiesData.FLYING_SPEED, speed).byteValue();
 		if (callAbilityChangeEvent().isCancelled()) {
-			getOwner().getDatatable().put(BuddiesData.FLYING_SPEED, previous);
+			getOwner().getData().put(BuddiesData.FLYING_SPEED, previous);
 			return;
 		}
 		updateAbilities(updateClient);
@@ -198,14 +198,14 @@ public class Buddy extends Living {
 	}
 
 	public byte getFlyingSpeed() {
-		return getOwner().getDatatable().get(BuddiesData.FLYING_SPEED).byteValue();
+		return getOwner().getData().get(BuddiesData.FLYING_SPEED).byteValue();
 	}
 
 	public void setWalkingSpeed(byte speed, boolean updateClient) {
-		byte previous = getOwner().getDatatable()
+		byte previous = getOwner().getData()
 				.put(BuddiesData.WALKING_SPEED, speed).byteValue();
 		if (callAbilityChangeEvent().isCancelled()) {
-			getOwner().getDatatable().put(BuddiesData.WALKING_SPEED, previous);
+			getOwner().getData().put(BuddiesData.WALKING_SPEED, previous);
 			return;
 		}
 		updateAbilities(updateClient);
@@ -216,14 +216,14 @@ public class Buddy extends Living {
 	}
 
 	public byte getWalkingSpeed() {
-		return getOwner().getDatatable().get(BuddiesData.WALKING_SPEED).byteValue();
+		return getOwner().getData().get(BuddiesData.WALKING_SPEED).byteValue();
 	}
 
 	public void setCanFly(boolean canFly, boolean updateClient) {
-		Boolean previous = getOwner().getDatatable()
+		Boolean previous = getOwner().getData()
 				.put(BuddiesData.CAN_FLY, canFly);
 		if (callAbilityChangeEvent().isCancelled()) {
-			getOwner().getDatatable().put(BuddiesData.CAN_FLY, previous);
+			getOwner().getData().put(BuddiesData.CAN_FLY, previous);
 			return;
 		}
 		updateAbilities(updateClient);
@@ -234,7 +234,7 @@ public class Buddy extends Living {
 	}
 
 	public boolean canFly() {
-		return getOwner().getDatatable().get(BuddiesData.CAN_FLY);
+		return getOwner().getData().get(BuddiesData.CAN_FLY);
 	}
 
 	public BuddyAbilityChangeEvent callAbilityChangeEvent() {

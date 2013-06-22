@@ -11,13 +11,13 @@ import org.spout.api.inventory.ItemStack;
 public class DeathDrops extends BuddiesEntityComponent {
 	
 	public DeathDrops addDrop(ItemStack itemstack) {
-		Inventory dropInventory = getOwner().getDatatable().get(BuddiesData.DROP_INVENTORY);
+		Inventory dropInventory = getOwner().getData().get(BuddiesData.DROP_INVENTORY);
 		dropInventory.add(itemstack);
 		return this;
 	}
 	
 	public List<ItemStack> getDrops() {
-		return getOwner().getDatatable().get(BuddiesData.DROP_INVENTORY);
+		return getOwner().getData().get(BuddiesData.DROP_INVENTORY);
 	}
 
 }

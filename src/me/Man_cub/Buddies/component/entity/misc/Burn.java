@@ -69,7 +69,7 @@ public class Burn extends BuddiesEntityComponent {
 	 * @param fireTick The fire tick amount.
 	 */
 	private void setFireTick(float fireTick) {
-		getOwner().getDatatable().put(BuddiesData.FIRE_TICK, fireTick);
+		getOwner().getData().put(BuddiesData.FIRE_TICK, fireTick);
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class Burn extends BuddiesEntityComponent {
 	 * @return The firetick value.
 	 */
 	public float getFireTick() {
-		return getOwner().getDatatable().get(BuddiesData.FIRE_TICK);
+		return getOwner().getData().get(BuddiesData.FIRE_TICK);
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class Burn extends BuddiesEntityComponent {
 	 * @return True if the fire hurts and false if it doesn't
 	 */
 	public boolean isFireHurting() {
-		return getOwner().getDatatable().get(BuddiesData.FIRE_HURT);
+		return getOwner().getData().get(BuddiesData.FIRE_HURT);
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class Burn extends BuddiesEntityComponent {
 	 * @param fireHurt True if the fire should hurt else false.
 	 */
 	private void setFireHurting(boolean fireHurt) {
-		getOwner().getDatatable().put(BuddiesData.FIRE_HURT, fireHurt);
+		getOwner().getData().put(BuddiesData.FIRE_HURT, fireHurt);
 	}
 
 	/**

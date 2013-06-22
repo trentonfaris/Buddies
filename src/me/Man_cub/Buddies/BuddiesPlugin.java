@@ -16,7 +16,6 @@ import me.Man_cub.Buddies.data.configuration.WorldConfigurationNode;
 import me.Man_cub.Buddies.material.BuddiesMaterials;
 import me.Man_cub.Buddies.protocol.BuddiesProtocol;
 import me.Man_cub.Buddies.scoreboard.ScoreboardListener;
-import me.Man_cub.Buddies.util.thread.SpawnLoader;
 import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
 import me.Man_cub.Buddies.world.generator.BuddiesGenerators;
 import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
@@ -34,13 +33,13 @@ import org.spout.api.geo.discrete.Point;
 import org.spout.api.geo.discrete.Transform;
 import org.spout.api.math.Quaternion;
 import org.spout.api.math.Vector3;
-import org.spout.api.plugin.CommonPlugin;
+import org.spout.api.plugin.Plugin;
 import org.spout.api.plugin.PluginDescriptionFile;
 import org.spout.api.plugin.PluginLogger;
 import org.spout.api.protocol.Protocol;
 import org.spout.api.util.FlatIterator;
 
-public class BuddiesPlugin extends CommonPlugin {
+public class BuddiesPlugin extends Plugin {
 	private PluginDescriptionFile pdf;
 	private static BuddiesPlugin instance;
 	private BuddiesConfig config;
@@ -128,7 +127,6 @@ public class BuddiesPlugin extends CommonPlugin {
 				
 				final int radius = BuddiesConfig.SPAWN_RADIUS.getInt();
 				//final int protectioRadius = BuddiesConfig.SPAWN_PROTECTION_RADIUS.getInt();
-				SpawnLoader loader = new SpawnLoader(1);
 				
 				WorldConfigurationNode worldConfig = BuddiesConfig.WORLDS.get(world);
 				boolean newWorld = world.getAge() <= 0;
@@ -143,7 +141,6 @@ public class BuddiesPlugin extends CommonPlugin {
 					
 					//Load or generate spawn area
 					int effectiveRadius = newWorld ? (2 * radius) : radius;
-					loader.load(world, cx, cz, effectiveRadius, newWorld);
 					
 					if (worldConfig.LOADED_SPAWN.getBoolean()) {
 						@SuppressWarnings("unchecked")

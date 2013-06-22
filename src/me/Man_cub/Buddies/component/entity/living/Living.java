@@ -32,11 +32,11 @@ public class Living extends BuddiesEntityComponent {
 	}
 	
 	public boolean isOnGround() {
-		return getOwner().getDatatable().get(BuddiesData.IS_ON_GROUND);
+		return getOwner().getData().get(BuddiesData.IS_ON_GROUND);
 	}
 	
 	public void setOnGround(boolean onGround) {
-		getOwner().getDatatable().put(BuddiesData.IS_ON_GROUND, onGround);
+		getOwner().getData().put(BuddiesData.IS_ON_GROUND, onGround);
 	}
 	
 	public EntityBody getBody() {
@@ -80,20 +80,20 @@ public class Living extends BuddiesEntityComponent {
 	}
 	
 	public boolean isRiding() {
-		return getOwner().getDatatable().get(BuddiesData.IS_RIDING);
+		return getOwner().getData().get(BuddiesData.IS_RIDING);
 	}
 	
 	public void setRiding(boolean isRiding) {
-		getOwner().getDatatable().put(BuddiesData.IS_RIDING, isRiding);
+		getOwner().getData().put(BuddiesData.IS_RIDING, isRiding);
 		sendMetaData();
 	}
 	
 	public boolean isSneaking() {
-		return getOwner().getDatatable().get(BuddiesData.IS_SNEAKING);
+		return getOwner().getData().get(BuddiesData.IS_SNEAKING);
 	}
 	
 	public void setSneaking(boolean isSneaking) {
-		getOwner().getDatatable().put(BuddiesData.IS_SNEAKING, isSneaking);
+		getOwner().getData().put(BuddiesData.IS_SNEAKING, isSneaking);
 		sendMetaData();
 	}
 	

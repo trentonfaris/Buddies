@@ -33,23 +33,23 @@ public class RangedWeapon extends Weapon {
 	}
 	
 	public int getAmmo(Entity source) {
-		if (source.getDatatable().get(BuddiesData.AMMO) != null) {
-			return source.getDatatable().get(BuddiesData.AMMO);
+		if (source.getData().get(BuddiesData.AMMO) != null) {
+			return source.getData().get(BuddiesData.AMMO);
 		} else {
 			return 0;
 		}
 	}
 	
 	public void setAmmo(Entity source, int ammo) {
-		source.getDatatable().put(BuddiesData.AMMO, (int) ammo);
+		source.getData().put(BuddiesData.AMMO, (int) ammo);
 	}
 	
 	public void updateAmmo(Entity source) {
 		int ammo = getAmmo(source);
 		if (ammo < 0) {
-			source.getDatatable().put(BuddiesData.AMMO, 0);
+			source.getData().put(BuddiesData.AMMO, 0);
 		} else {
-			source.getDatatable().put(BuddiesData.AMMO, ammo);
+			source.getData().put(BuddiesData.AMMO, ammo);
 		}
 	}
 	

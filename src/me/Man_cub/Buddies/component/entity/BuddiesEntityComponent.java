@@ -10,7 +10,7 @@ public class BuddiesEntityComponent extends EntityComponent {
 	@Override
 	public void onAttached() {
 		//Tracks the number of times this component has been attached (i.e how many times it's been saved, then loaded. 1 = fresh entity)
-		getOwner().getDatatable().put(BuddiesData.ATTACHED_COUNT, getAttachedCount() + 1);
+		getOwner().getData().put(BuddiesData.ATTACHED_COUNT, getAttachedCount() + 1);
 		getOwner().setSavable(true);
 	}
 	
@@ -29,7 +29,7 @@ public class BuddiesEntityComponent extends EntityComponent {
 	 */
 	
 	public final int getAttachedCount() {
-		return getOwner().getDatatable().get(BuddiesData.ATTACHED_COUNT);
+		return getOwner().getData().get(BuddiesData.ATTACHED_COUNT);
 	}
 	
 }

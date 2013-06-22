@@ -63,7 +63,7 @@ public abstract class AbstractAttachable extends BuddiesBlockMaterial implements
 
 	@Override
 	public BlockFace getAttachedFace(Block block) {
-		return this.getAttachedFace(block.getData());
+		return this.getAttachedFace(block.getBlockData());
 	}
 
 	@Override
