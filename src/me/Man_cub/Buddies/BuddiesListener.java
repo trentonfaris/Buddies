@@ -28,6 +28,7 @@ public class BuddiesListener implements Listener {
 		this.plugin = plugin;
 	}
 	
+	// On client start.
 	@EventHandler
 	public void onClientEnable(EngineStartEvent event) {
 		if (plugin.getEngine().getPlatform() != Platform.CLIENT) {
