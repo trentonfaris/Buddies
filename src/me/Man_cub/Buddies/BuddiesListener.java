@@ -1,6 +1,5 @@
 package me.Man_cub.Buddies;
 
-import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
 import me.Man_cub.Buddies.component.entity.living.buddy.Buddy;
 import me.Man_cub.Buddies.component.entity.misc.Ammo;
 import me.Man_cub.Buddies.component.entity.misc.EntityBody;
@@ -11,8 +10,6 @@ import me.Man_cub.Buddies.component.entity.player.hud.CrosshairWidget;
 import me.Man_cub.Buddies.component.entity.player.hud.TimerWidget;
 import me.Man_cub.Buddies.component.world.misc.Sky;
 import me.Man_cub.Buddies.input.BuddiesInputExecutor;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.material.item.RangedWeapon;
 
 import org.spout.api.Client;
 import org.spout.api.component.entity.CameraComponent;
@@ -22,7 +19,6 @@ import org.spout.api.event.EventHandler;
 import org.spout.api.event.Listener;
 import org.spout.api.event.engine.EngineStartEvent;
 import org.spout.api.event.player.PlayerJoinEvent;
-import org.spout.api.inventory.ItemStack;
 import org.spout.api.Platform;
 
 public class BuddiesListener implements Listener {
