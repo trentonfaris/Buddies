@@ -53,15 +53,6 @@ public class BuddiesListener implements Listener {
 			player.detach(CameraComponent.class);
 			
 			player.add(PlayerBody.class);
-			
-			// Testing purposes only
-			BuddyInventory inv = player.add(BuddyInventory.class);
-			inv.add(new ItemStack(BuddiesMaterials.AIR, 1));
-			inv.add(new ItemStack(BuddiesMaterials.AIR, 1));
-			inv.add(new ItemStack(BuddiesMaterials.UZI, 1));
-			RangedWeapon weapon = ((RangedWeapon) inv.getInv().get(0).getMaterial());
-			weapon.setAmmo(player, 50);
-			
 			player.add(Health.class);
 			player.add(Ammo.class);
 			player.add(InteractComponent.class).setRange(5f);
