@@ -1,7 +1,0 @@
-GL30:
-    Vertex: file://Buddies/resources/shader/terrain/terrain.330.vert
-    Fragment: file://Buddies/resources/shader/terrain/terrain.330.frag
-GL20:
-    Vertex: file://Buddies/resources/shader/terrain/terrain.120.vert
-    Fragment: file://Buddies/resources/shader/terrain/terrain.120.frag
-    

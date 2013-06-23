@@ -1,8 +1,0 @@
-name: Buddies
-version: 0.0.1-SNAPSHOT
-description: A remake of the classic Team Buddies game.
-author: Man_cub
-
-main: me.Man_cub.Buddies.BuddiesPlugin
-load: startup
-platform: BOTH
