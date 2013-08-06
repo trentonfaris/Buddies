@@ -14,7 +14,6 @@ import me.Man_cub.Buddies.data.BuddiesData;
 import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
 import me.Man_cub.Buddies.event.entity.BuddyAbilityChangeEvent;
 import me.Man_cub.Buddies.event.player.network.PlayerAbilityUpdateEvent;
-import me.Man_cub.Buddies.protocol.entity.BuddyEntityProtocol;
 
 import org.spout.api.component.entity.TextModelComponent;
 import org.spout.api.data.Data;
@@ -37,8 +36,8 @@ public class Buddy extends Living {
 		Entity holder = getOwner();
 		holder.add(PickupItemComponent.class);
 		// holder.add(DiggingComponent.class);
-		holder.getNetwork().setEntityProtocol(
-				BuddiesPlugin.BUDDIES_PROTOCOL_ID, new BuddyEntityProtocol());
+		//holder.getNetwork().setEntityProtocol(
+				//BuddiesPlugin.BUDDIES_PROTOCOL_ID, new BuddyEntityProtocol());
 		// Add height offset if loading from disk
 		// if (holder instanceof Player) {
 		// ((Player) holder).teleport(holder.getTransform().getPosition().add(0,
@@ -91,11 +90,11 @@ public class Buddy extends Living {
 	}
 
 	public String getName() {
-		return getDatatable().get(Data.NAME);
+		return getData().get(Data.NAME);
 	}
 
 	public void setName(String name) {
-		getDatatable().put(Data.NAME, name);
+		getData().put(Data.NAME, name);
 		TextModelComponent textModel = getOwner().get(TextModelComponent.class);
 		if (textModel != null) {
 			textModel.setText(name);
@@ -118,7 +117,7 @@ public class Buddy extends Living {
 		if (body != null) {
 			dropFrom = body.getBodyTransform();
 		} else {
-			dropFrom = getOwner().getScene().getTransform();
+			dropFrom = getOwner().getPhysics().getTransform();
 		}
 		// Some constants
 		final double impulseForce = 0.3;
@@ -266,7 +265,7 @@ public class Buddy extends Living {
 	@Override
 	public void onTick(float dt) {
 		super.onTick(dt);
-		final Point position = getOwner().getScene().getPosition();
+		final Point position = getOwner().getPhysics().getPosition();
 		livePosition.set(position);
 		// TODO : Water -> setInWater(position.getBlock().getMaterial()
 		// instanceof Water);
@@ -278,7 +277,7 @@ public class Buddy extends Living {
 
 	public void setLivePosition(Point point) {
 		livePosition.set(point);
-		getOwner().getScene().setPosition(point);
+		getOwner().getPhysics().setPosition(point);
 	}
 
 }

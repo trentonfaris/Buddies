@@ -23,7 +23,7 @@ import org.spout.api.Client;
 import org.spout.api.command.CommandArguments;
 import org.spout.api.command.CommandSource;
 import org.spout.api.command.annotated.Binding;
-import org.spout.api.command.annotated.Command;
+import org.spout.api.command.annotated.CommandDescription;
 import org.spout.api.command.annotated.Filter;
 import org.spout.api.command.filter.PlayerFilter;
 import org.spout.api.component.entity.InteractComponent;
@@ -45,7 +45,7 @@ public class GameInputCommands {
 		client = (Client) plugin.getEngine();
 	}
 	
-	@Command(aliases = "attack", desc = "Shoots/swings currently held weapon", min = 1, max = 1)
+	@CommandDescription (aliases = "attack", desc = "Shoots/swings currently held weapon")
 	@Binding(mouse = Mouse.BUTTON_LEFT)
 	@Filter(PlayerFilter.class)
 	public void attack(CommandSource source, CommandArguments args) throws CommandException {
@@ -118,7 +118,7 @@ public class GameInputCommands {
 		}
 	}
 	
-	@Command(aliases = "crate", desc = "Picks up/places a crate at target location.", min = 1, max = 1)
+	@CommandDescription (aliases = "crate", desc = "Picks up/places a crate at target location.")
 	@Binding(mouse = Mouse.BUTTON_RIGHT)
 	@Filter(PlayerFilter.class)
 	public void crate(CommandSource source, CommandArguments args) throws CommandException {
@@ -165,7 +165,7 @@ public class GameInputCommands {
 	}
 	
 	// TODO : Finish this. Need to test
-	@Command(aliases = "breakCrate", desc = "Breaks a crate at target location.", min = 1, max = 1)
+	@CommandDescription (aliases = "breakCrate", desc = "Breaks a crate at target location.")
 	@Binding(Keyboard.KEY_Q)
 	@Filter(PlayerFilter.class)
 	public void breakCrate(CommandSource source, CommandArguments args) throws CommandException {

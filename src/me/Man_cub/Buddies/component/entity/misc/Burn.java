@@ -32,7 +32,7 @@ public class Burn extends BuddiesEntityComponent {
 			return;
 		}
 		
-		Point point = getOwner().getScene().getPosition();
+		Point point = getOwner().getPhysics().getPosition();
 		if (sky.hasWeather()) {
 			if (sky.getWeatherSimulator().isRainingAt((int) point.getX(), (int) point.getY(), (int) point.getZ(), false)) {
 				rainTimer += dt;

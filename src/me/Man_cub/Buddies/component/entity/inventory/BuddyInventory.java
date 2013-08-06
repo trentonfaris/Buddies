@@ -15,8 +15,8 @@ public class BuddyInventory extends EntityComponent {
 	BuddiesPlugin plugin = BuddiesPlugin.getInstance();
 
 	public EntityInventory getInv() {
-		if (getDatatable().get(BuddiesData.INVENTORY) != null) {
-			return getDatatable().get(BuddiesData.INVENTORY);
+		if (getData().get(BuddiesData.INVENTORY) != null) {
+			return getData().get(BuddiesData.INVENTORY);
 		} else {
 			return null;
 		}

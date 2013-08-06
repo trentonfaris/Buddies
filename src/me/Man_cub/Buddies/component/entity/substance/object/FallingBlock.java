@@ -2,7 +2,6 @@ package me.Man_cub.Buddies.component.entity.substance.object;
 
 import me.Man_cub.Buddies.material.BuddiesBlockMaterial;
 
-import org.spout.api.collision.CollisionStrategy;
 import org.spout.api.geo.World;
 import org.spout.api.geo.cuboid.Block;
 import org.spout.api.geo.discrete.Point;
@@ -31,7 +30,7 @@ public class FallingBlock extends Substance {
 	
 	@Override
 	public void onTick(float dt) {
-		Point pos = this.getOwner().getScene().getPosition();
+		Point pos = this.getOwner().getPhysics().getPosition();
 		World world = pos.getWorld();
 		int x = pos.getBlockX();
 		int y = pos.getBlockY();
@@ -55,7 +54,7 @@ public class FallingBlock extends Substance {
 		}
 		if (!this.getOwner().isRemoved()) {
 			fallSpeed += (FALL_INCREMENT * dt * 20);
-			this.getOwner().getScene().setPosition(pos.add(0, fallSpeed, 0F));
+			this.getOwner().getPhysics().setPosition(pos.add(0, fallSpeed, 0F));
 			fallSpeed *= FALL_MULTIPLIER;
 		}
 	}
@@ -73,9 +72,9 @@ public class FallingBlock extends Substance {
 		if (material == BlockMaterial.AIR) {
 			return false;
 		}
-		if (material.getVolume().getStrategy() != CollisionStrategy.SOLID) {
-			return false;
-		}
+		//if (material.getVolume().getStrategy() != CollisionStrategy.SOLID) {
+			//return false;
+		//}
 		if (material instanceof BuddiesBlockMaterial) {
 			BuddiesBlockMaterial vbm = (BuddiesBlockMaterial) material;
 			if (!vbm.isPlacementObstacle()) {

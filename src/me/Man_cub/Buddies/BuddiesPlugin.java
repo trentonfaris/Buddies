@@ -14,7 +14,6 @@ import me.Man_cub.Buddies.component.world.misc.Timer;
 import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
 import me.Man_cub.Buddies.data.configuration.WorldConfigurationNode;
 import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.protocol.BuddiesProtocol;
 import me.Man_cub.Buddies.scoreboard.ScoreboardListener;
 import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
 import me.Man_cub.Buddies.world.generator.BuddiesGenerators;

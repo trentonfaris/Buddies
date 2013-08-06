@@ -49,7 +49,7 @@ public class EntityBody extends BuddiesEntityComponent {
 	 */
 	public void setOrientation(Quaternion rotation) {
 		lastRotation = getOrientation();
-		getDatatable().put(BuddiesData.BODY_ROTATION, rotation);
+		getData().put(BuddiesData.BODY_ROTATION, rotation);
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class EntityBody extends BuddiesEntityComponent {
 	 * @return Head rotation
 	 */
 	public Quaternion getOrientation() {
-		return getDatatable().get(BuddiesData.BODY_ROTATION);
+		return getData().get(BuddiesData.BODY_ROTATION);
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class EntityBody extends BuddiesEntityComponent {
 	 * @param height
 	 */
 	public void setHeight(int height) {
-		getDatatable().put(BuddiesData.BODY_HEIGHT, height);
+		getData().put(BuddiesData.BODY_HEIGHT, height);
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class EntityBody extends BuddiesEntityComponent {
 	 * @return Head height
 	 */
 	public int getHeight() {
-		return getDatatable().get(BuddiesData.BODY_HEIGHT);
+		return getData().get(BuddiesData.BODY_HEIGHT);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class EntityBody extends BuddiesEntityComponent {
 	 * @return Head position
 	 */
 	public Point getPosition() {
-		return getOwner().getScene().getPosition().add(0.0f, this.getHeight(), 0.0f);
+		return getOwner().getPhysics().getPosition().add(0.0f, this.getHeight(), 0.0f);
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class EntityBody extends BuddiesEntityComponent {
 	 * @return Block iterator
 	 */
 	public BlockIterator getBlockView() {
-		return getBlockView(getDatatable().get(BuddiesData.INTERACT_REACH));
+		return getBlockView(getData().get(BuddiesData.INTERACT_REACH));
 	}
 
 	/**

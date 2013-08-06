@@ -61,7 +61,7 @@ public class EntityItemCollector extends BuddiesEntityComponent {
 				if (equip) {
 					getOwner().getNetwork().callProtocolEvent(new EntityCollectItemEvent(getOwner(), entity));
 					if (inv.getHeldItem() != null) {
-						Item.drop(getOwner().getScene().getPosition(), inv.getHeldItem(), Vector3.ZERO);
+						Item.drop(getOwner().getPhysics().getPosition(), inv.getHeldItem(), Vector3.ZERO);
 					}
 					inv.getInv().set(0, item.getItemStack(), true);
 					entity.remove();

@@ -28,7 +28,6 @@ import me.Man_cub.Buddies.event.entity.EntityStatusEvent;
 import me.Man_cub.Buddies.event.player.PlayerDeathEvent;
 import me.Man_cub.Buddies.event.player.network.PlayerHealthEvent;
 import me.Man_cub.Buddies.material.block.crate.Crate;
-import me.Man_cub.Buddies.protocol.message.entity.EntityStatusMessage;
 
 import org.spout.api.Client;
 import org.spout.api.component.widget.LabelComponent;
@@ -120,7 +119,7 @@ public class Health extends BuddiesEntityComponent {
 		if (inventory != null) {
 			Set<ItemStack> toDrop = new HashSet<ItemStack>();
 			toDrop.addAll(getOwner().get(BuddyInventory.class).getInv());
-			Point position = owner.getScene().getPosition();
+			Point position = owner.getPhysics().getPosition();
 			for (ItemStack stack : toDrop) {
 				if (stack != null && !(stack.getMaterial() instanceof Crate)) {
 					Item.dropNaturally(position, stack);
@@ -135,7 +134,7 @@ public class Health extends BuddiesEntityComponent {
 		DeathDrops dropComponent = owner.get(DeathDrops.class);
 		if (dropComponent != null) {
 			List<ItemStack> drops = dropComponent.getDrops();
-			Point entityPosition = owner.getScene().getPosition();
+			Point entityPosition = owner.getPhysics().getPosition();
 			for (ItemStack stack : drops) {
 				if (stack != null && !(stack.getMaterial() instanceof Crate)) {
 					Item.drop(entityPosition, stack, Vector3.ZERO);
@@ -165,7 +164,7 @@ public class Health extends BuddiesEntityComponent {
 	 * @return the maximum health
 	 */
 	public int getMaxHealth() {
-		return getDatatable().get(BuddiesData.MAX_HEALTH);
+		return getData().get(BuddiesData.MAX_HEALTH);
 	}
 
 	/**
@@ -173,7 +172,7 @@ public class Health extends BuddiesEntityComponent {
 	 * @param maxHealth to set to
 	 */
 	public void setMaxHealth(int maxHealth) {
-		getDatatable().put(BuddiesData.MAX_HEALTH, maxHealth);
+		getData().put(BuddiesData.MAX_HEALTH, maxHealth);
 	}
 
 	/**
@@ -183,7 +182,7 @@ public class Health extends BuddiesEntityComponent {
 	public void setSpawnHealth(int maxHealth) {
 		this.setMaxHealth(maxHealth);
 		//Do not call setHealth yet, network has not been initialized if loading from file
-		getDatatable().put(BuddiesData.HEALTH, maxHealth);
+		getData().put(BuddiesData.HEALTH, maxHealth);
 	}
 
 	/**
@@ -191,7 +190,7 @@ public class Health extends BuddiesEntityComponent {
 	 * @return the health value
 	 */
 	public int getHealth() {
-		return getDatatable().get(BuddiesData.HEALTH);
+		return getData().get(BuddiesData.HEALTH);
 	}
 	
 	/**
@@ -204,9 +203,9 @@ public class Health extends BuddiesEntityComponent {
 		plugin.getEngine().getEventManager().callEvent(event);
 		if (!event.isCancelled()) {
 			if (getHealth() + event.getChange() > getMaxHealth()) {
-				getDatatable().put(BuddiesData.HEALTH, getMaxHealth());
+				getData().put(BuddiesData.HEALTH, getMaxHealth());
 			} else {
-				getDatatable().put(BuddiesData.HEALTH, getHealth() + event.getChange());
+				getData().put(BuddiesData.HEALTH, getHealth() + event.getChange());
 			}
 		}
 
@@ -263,7 +262,7 @@ public class Health extends BuddiesEntityComponent {
 	 * @return
 	 */
 	public int getDeathTicks() {
-		return getDatatable().get(BuddiesData.DEATH_TICKS);
+		return getData().get(BuddiesData.DEATH_TICKS);
 	}
 
 	/**
@@ -273,7 +272,7 @@ public class Health extends BuddiesEntityComponent {
 		if (deathTicks > DEATH_TIME_TICKS) {
 			deathTicks = DEATH_TIME_TICKS;
 		}
-		getDatatable().put(BuddiesData.DEATH_TICKS, deathTicks);
+		getData().put(BuddiesData.DEATH_TICKS, deathTicks);
 	}
 
 	/**
@@ -318,17 +317,17 @@ public class Health extends BuddiesEntityComponent {
 
 		if (event.getSendMessage()) {
 			getOwner().getNetwork().callProtocolEvent(new EntityAnimationEvent(getOwner(), Animation.DAMAGE_ANIMATION));
-			getOwner().getNetwork().callProtocolEvent(new EntityStatusEvent(getOwner(), EntityStatusMessage.ENTITY_HURT));
+			//getOwner().getNetwork().callProtocolEvent(new EntityStatusEvent(getOwner(), EntityStatusMessage.ENTITY_HURT));
 			//getHurtEffect().playGlobal(getParent().getParent().getPosition());
 		}
 	}
 	
 	public boolean hasDeathAnimation() {
-		return getDatatable().get(BuddiesData.HAS_DEATH_ANIMATION);
+		return getData().get(BuddiesData.HAS_DEATH_ANIMATION);
 	}
 
 	public void setDeathAnimation(boolean hasDeathAnimation) {
-		getDatatable().put(BuddiesData.HAS_DEATH_ANIMATION, hasDeathAnimation);
+		getData().put(BuddiesData.HAS_DEATH_ANIMATION, hasDeathAnimation);
 	}
 
 	public boolean hasInfiniteHealth() {

@@ -5,14 +5,14 @@ import me.Man_cub.Buddies.data.BuddiesData;
 import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
 import me.Man_cub.Buddies.material.BuddiesMaterials;
 
-import org.spout.api.collision.BoundingBox;
-import org.spout.api.component.entity.SceneComponent;
+import org.spout.api.component.entity.PhysicsComponent;
 import org.spout.api.data.Data;
 import org.spout.api.entity.Entity;
 import org.spout.api.geo.LoadOption;
 import org.spout.api.geo.discrete.Point;
 import org.spout.api.inventory.ItemStack;
 import org.spout.api.math.Vector3;
+import org.spout.physics.collision.shape.BoxShape;
 
 public class Item extends Substance {
 	/**
@@ -25,9 +25,9 @@ public class Item extends Substance {
 	public void onAttached() {
 		super.onAttached();
 		//getOwner().getNetwork().setEntityProtocol(BuddiesPlugin.BUDDIES_PROTOCOL_ID, new ItemEntityProtocol());
-		SceneComponent scene = getOwner().getScene();
-		scene.activate(new BoundingBox(-0.05F, -0.05F, -0.05F, 0.05F, 0.05F, 0.05F), 1);
-		scene.setRestitution(0f);
+		PhysicsComponent physics = getOwner().getPhysics();
+		physics.activate(1f, new BoxShape(0.05F, 0.05F, 0.05F), false);
+		physics.setRestitution(0f);
 		getOwner().add(Health.class).setMaxHealth(100);
 	}
 	
@@ -37,11 +37,11 @@ public class Item extends Substance {
 	}
 	
 	public ItemStack getItemStack() {
-		return getDatatable().get(Data.HELD_ITEM);
+		return getData().get(Data.HELD_ITEM);
 	}
 	
 	public void setItemStack(ItemStack stack) {
-		getDatatable().put(Data.HELD_ITEM, stack);
+		getData().put(Data.HELD_ITEM, stack);
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class Item extends Substance {
 	 * @return uncollectable time in milliseconds
 	 */
 	public long getUncollectableTime() {
-		return getDatatable().get(BuddiesData.UNCOLLECTABLE_TICKS).longValue();
+		return getData().get(BuddiesData.UNCOLLECTABLE_TICKS).longValue();
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class Item extends Substance {
 	 * @param uncollectableTime in milliseconds
 	 */
 	public void setUncollectableTime(long uncollectableTime) {
-		getDatatable().put(BuddiesData.UNCOLLECTABLE_TICKS, Long.valueOf(uncollectableTime));
+		getData().put(BuddiesData.UNCOLLECTABLE_TICKS, Long.valueOf(uncollectableTime));
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class Item extends Substance {
 		Item item = entity.add(Item.class);
 		item.setUncollectableDelay(DROP_PICKUP_DELAY);
 		item.setItemStack(itemStack);
-		entity.getScene().impulse(velocity);
+		entity.getPhysics().impulse(velocity);
 		if (position.getChunk(LoadOption.NO_LOAD) != null) {
 			position.getWorld().spawnEntity(entity);
 		}
