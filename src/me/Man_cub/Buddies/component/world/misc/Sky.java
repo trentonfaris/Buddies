@@ -47,7 +47,7 @@ public class Sky extends Timer {
 	@Override
 	public void onTick(float dt) {
 		final long maxTime = getMaxTime();
-		float time = getDatatable().get(BuddiesData.SKY_TIME).floatValue();
+		float time = getData().get(BuddiesData.SKY_TIME).floatValue();
 		time += getRate() * (dt / 50F);
 		while (time >= maxTime) {
 			time -= maxTime;
@@ -57,7 +57,7 @@ public class Sky extends Timer {
 			updateTime((long)time);
 		}
 		
-		getDatatable().put(BuddiesData.SKY_TIME, time);
+		getData().put(BuddiesData.SKY_TIME, time);
 		
 		synchronized (this) {
 			if (this.weather != null) {
@@ -71,7 +71,7 @@ public class Sky extends Timer {
 	 * @param time
 	 */
 	public void setSkyTime(long time) {
-		getDatatable().put(BuddiesData.SKY_TIME, time);
+		getData().put(BuddiesData.SKY_TIME, time);
 		countdown.set(0);
 	}
 
@@ -80,7 +80,7 @@ public class Sky extends Timer {
 	 * @return time
 	 */
 	public long getSkyTime() {
-		return getDatatable().get(BuddiesData.SKY_TIME).longValue();
+		return getData().get(BuddiesData.SKY_TIME).longValue();
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class Sky extends Timer {
 	 * @return
 	 */
 	public long getMaxTime() {
-		return getDatatable().get(BuddiesData.MAX_TIME).longValue();
+		return getData().get(BuddiesData.MAX_TIME).longValue();
 	}
 
 	/**
@@ -98,16 +98,16 @@ public class Sky extends Timer {
 	 * @param maxTime
 	 */
 	public void setMaxTime(long maxTime) {
-		getDatatable().put(BuddiesData.MAX_TIME, maxTime);
+		getData().put(BuddiesData.MAX_TIME, maxTime);
 		countdown.set(0);
 	}
 	
 	public long getRate() {
-		return getDatatable().get(BuddiesData.TIME_RATE);
+		return getData().get(BuddiesData.TIME_RATE);
 	}
 	
 	public void setRate(long rate) {
-		getDatatable().put(BuddiesData.TIME_RATE, rate);
+		getData().put(BuddiesData.TIME_RATE, rate);
 		countdown.set(0);
 	}
 	

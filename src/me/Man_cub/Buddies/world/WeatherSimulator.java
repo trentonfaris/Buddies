@@ -36,15 +36,15 @@ public class WeatherSimulator extends BasicTickable {
 	}
 
 	public Weather getCurrent() {
-		return sky.getDatatable().get(BuddiesData.WORLD_WEATHER);
+		return sky.getData().get(BuddiesData.WORLD_WEATHER);
 	}
 
 	public Weather getForecast() {
-		return sky.getDatatable().get(BuddiesData.WORLD_FORECAST);
+		return sky.getData().get(BuddiesData.WORLD_FORECAST);
 	}
 
 	public void setForecast(Weather weather) {
-		sky.getDatatable().put(BuddiesData.WORLD_FORECAST, weather);
+		sky.getData().put(BuddiesData.WORLD_FORECAST, weather);
 	}
 
 	public void forceUpdate() {
@@ -112,8 +112,8 @@ public class WeatherSimulator extends BasicTickable {
 	 * @return the strength
 	 */
 	public float getRainStrength(float factor) {
-		final float prevRainStr = sky.getDatatable().get(BuddiesData.PREVIOUS_RAIN_STRENGTH);
-		return (prevRainStr + factor * (sky.getDatatable().get(BuddiesData.CURRENT_RAIN_STRENGTH) - prevRainStr));
+		final float prevRainStr = sky.getData().get(BuddiesData.PREVIOUS_RAIN_STRENGTH);
+		return (prevRainStr + factor * (sky.getData().get(BuddiesData.CURRENT_RAIN_STRENGTH) - prevRainStr));
 	}
 
 	/**
@@ -129,11 +129,11 @@ public class WeatherSimulator extends BasicTickable {
 	@Override
 	public void onTick(float dt) {
 		final Random random = GenericMath.getRandom();
-		float secondsUntilWeatherChange = sky.getDatatable().get(BuddiesData.WEATHER_CHANGE_TIME);
+		float secondsUntilWeatherChange = sky.getData().get(BuddiesData.WEATHER_CHANGE_TIME);
 		secondsUntilWeatherChange -= dt;
 		if (forceWeatherUpdate.compareAndSet(true, false) || secondsUntilWeatherChange <= 0) {
 			this.sky.updateWeather(getCurrent(), getForecast());
-			sky.getDatatable().put(BuddiesData.WORLD_WEATHER, getForecast());
+			sky.getData().put(BuddiesData.WORLD_WEATHER, getForecast());
 			final Weather current = getCurrent();
 			Weather forecast = current;
 			while (forecast == current) {
@@ -151,21 +151,21 @@ public class WeatherSimulator extends BasicTickable {
 				plugin.getEngine().getLogger().info("Weather changed to: " + current + ", next change in " + secondsUntilWeatherChange / 1000F + "s");
 			}
 		}
-		float currentRainStrength = sky.getDatatable().get(BuddiesData.CURRENT_RAIN_STRENGTH);
-		sky.getDatatable().put(BuddiesData.PREVIOUS_RAIN_STRENGTH, currentRainStrength);
+		float currentRainStrength = sky.getData().get(BuddiesData.CURRENT_RAIN_STRENGTH);
+		sky.getData().put(BuddiesData.PREVIOUS_RAIN_STRENGTH, currentRainStrength);
 		if (this.isRaining()) {
 			currentRainStrength = Math.min(1.0f, currentRainStrength + 0.01f);
 		} else {
 			currentRainStrength = Math.max(0.0f, currentRainStrength - 0.01f);
 		}
-		sky.getDatatable().put(BuddiesData.CURRENT_RAIN_STRENGTH, currentRainStrength);
+		sky.getData().put(BuddiesData.CURRENT_RAIN_STRENGTH, currentRainStrength);
 		if (hasLightning()) {
 			lightning.onTick(dt);
 		}
 		if (getCurrent().isRaining()) {
 			snowfall.onTick(dt);
 		}
-		sky.getDatatable().put(BuddiesData.WEATHER_CHANGE_TIME, secondsUntilWeatherChange);
+		sky.getData().put(BuddiesData.WEATHER_CHANGE_TIME, secondsUntilWeatherChange);
 	}
 
 	@Override

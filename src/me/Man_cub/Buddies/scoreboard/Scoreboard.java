@@ -7,8 +7,6 @@ import java.util.Set;
 import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
 import me.Man_cub.Buddies.event.scoreboard.ObjectiveActionEvent;
 import me.Man_cub.Buddies.event.scoreboard.TeamActionEvent;
-import me.Man_cub.Buddies.protocol.message.scoreboard.ScoreboardObjectiveMessage;
-import me.Man_cub.Buddies.protocol.message.scoreboard.ScoreboardTeamMessage;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.entity.Player;
@@ -28,7 +26,7 @@ public class Scoreboard extends BuddiesEntityComponent {
 	public Objective createObjective(String name) {
 		Objective obj = new Objective(this, name);
 		objectives.add(obj);
-		callProtocolEvent(new ObjectiveActionEvent(obj, ScoreboardObjectiveMessage.ACTION_CREATE));
+		//callProtocolEvent(new ObjectiveActionEvent(obj, ScoreboardObjectiveMessage.ACTION_CREATE));
 		return obj;
 	}
 
@@ -43,7 +41,7 @@ public class Scoreboard extends BuddiesEntityComponent {
 			throw new IllegalArgumentException("Specified objective name does not exist on this scoreboard.");
 		}
 		objectives.remove(obj);
-		callProtocolEvent(new ObjectiveActionEvent(obj, ScoreboardObjectiveMessage.ACTION_REMOVE));
+		//callProtocolEvent(new ObjectiveActionEvent(obj, ScoreboardObjectiveMessage.ACTION_REMOVE));
 	}
 
 	/**
@@ -79,7 +77,7 @@ public class Scoreboard extends BuddiesEntityComponent {
 	public Team createTeam(String name) {
 		Team team = new Team(this, name);
 		teams.add(team);
-		callProtocolEvent(new TeamActionEvent(team, ScoreboardTeamMessage.ACTION_CREATE));
+		//callProtocolEvent(new TeamActionEvent(team, ScoreboardTeamMessage.ACTION_CREATE));
 		return team;
 	}
 
@@ -94,7 +92,7 @@ public class Scoreboard extends BuddiesEntityComponent {
 			throw new IllegalArgumentException("Specified team does not exist on this scoreboard.");
 		}
 		teams.remove(team);
-		callProtocolEvent(new TeamActionEvent(team, ScoreboardTeamMessage.ACTION_REMOVE));
+		//callProtocolEvent(new TeamActionEvent(team, ScoreboardTeamMessage.ACTION_REMOVE));
 	}
 
 	/**

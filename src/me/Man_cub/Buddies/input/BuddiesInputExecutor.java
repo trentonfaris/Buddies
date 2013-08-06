@@ -2,7 +2,7 @@ package me.Man_cub.Buddies.input;
 
 import me.Man_cub.Buddies.component.entity.misc.EntityBody;
 
-import org.spout.api.component.entity.SceneComponent;
+import org.spout.api.component.entity.PhysicsComponent;
 import org.spout.api.entity.Player;
 import org.spout.api.entity.state.PlayerInputState;
 import org.spout.api.geo.discrete.Transform;
@@ -21,8 +21,8 @@ public class BuddiesInputExecutor implements InputExecutor {
 	@Override
 	public void execute(float dt, Transform playerTransform) {
 		PlayerInputState inputState = player.input();
-		SceneComponent sc = player.getScene();
-		Transform ts = sc.getTransform();
+		PhysicsComponent pc = player.getPhysics();
+		Transform ts = pc.getTransform();
 		
 		Vector3 offset = Vector3.ZERO;
 		if (inputState.getForward()) {
@@ -45,7 +45,7 @@ public class BuddiesInputExecutor implements InputExecutor {
 		}
 		player.get(EntityBody.class).setOrientation(QuaternionMath.rotation(inputState.pitch(), inputState.yaw(), ts.getRotation().getRoll()));
 		ts.translateAndSetRotation(offset, QuaternionMath.rotation(inputState.pitch(), inputState.yaw(), ts.getRotation().getRoll()));
-		sc.setTransform(ts);
+		pc.setTransform(ts);
 	}
 
 }

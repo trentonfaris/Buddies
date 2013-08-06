@@ -14,11 +14,11 @@ public class Timer extends BuddiesWorldComponent {
 	}
 	
 	public void setTime(int time) {
-		getDatatable().put(BuddiesData.WORLD_TIME, time);
+		getData().put(BuddiesData.WORLD_TIME, time);
 	}
 	
 	public int getTime() {
-		return getDatatable().get(BuddiesData.WORLD_TIME).intValue();
+		return getData().get(BuddiesData.WORLD_TIME).intValue();
 	}
 	
 }

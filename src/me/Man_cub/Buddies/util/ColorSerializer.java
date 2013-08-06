@@ -2,8 +2,8 @@ package me.Man_cub.Buddies.util;
 
 import java.awt.Color;
 
-import org.spout.api.util.config.serialization.GenericType;
-import org.spout.api.util.config.serialization.Serializer;
+import org.spout.cereal.config.serialization.GenericType;
+import org.spout.cereal.config.serialization.Serializer;
 
 public class ColorSerializer extends Serializer {
 	@Override

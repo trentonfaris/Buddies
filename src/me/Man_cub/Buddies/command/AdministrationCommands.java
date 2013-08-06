@@ -1,28 +1,18 @@
 package me.Man_cub.Buddies.command;
 
-import java.util.ArrayList;
-
 import gnu.trove.iterator.TLongIterator;
 import gnu.trove.list.linked.TLongLinkedList;
 
 import me.Man_cub.Buddies.BuddiesPlugin;
 import me.Man_cub.Buddies.ChatStyle;
 import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
-import me.Man_cub.Buddies.component.entity.living.buddy.Buddy;
 import me.Man_cub.Buddies.component.entity.misc.Health;
-import me.Man_cub.Buddies.component.entity.player.HUD;
 import me.Man_cub.Buddies.component.world.misc.Sky;
 import me.Man_cub.Buddies.data.Time;
 import me.Man_cub.Buddies.data.Weather;
 import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
 import me.Man_cub.Buddies.data.configuration.OpConfiguration;
 import me.Man_cub.Buddies.event.cause.HealthChangeCause;
-import me.Man_cub.Buddies.input.BuddiesInputExecutor;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomes;
-import me.Man_cub.Buddies.world.generator.maps.BattleHillGenerator;
-import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
 
 import org.spout.api.Client;
 import org.spout.api.Engine;
@@ -33,8 +23,6 @@ import org.spout.api.command.annotated.CommandDescription;
 import org.spout.api.command.annotated.Filter;
 import org.spout.api.command.annotated.Permissible;
 import org.spout.api.command.filter.PlayerFilter;
-import org.spout.api.component.entity.CameraComponent;
-import org.spout.api.component.entity.InteractComponent;
 import org.spout.api.entity.Player;
 import org.spout.api.exception.ArgumentParseException;
 import org.spout.api.exception.CommandException;
@@ -42,12 +30,9 @@ import org.spout.api.generator.biome.Biome;
 import org.spout.api.generator.biome.BiomeGenerator;
 import org.spout.api.geo.World;
 import org.spout.api.geo.discrete.Point;
-import org.spout.api.geo.discrete.Transform;
 import org.spout.api.inventory.Inventory;
 import org.spout.api.inventory.ItemStack;
 import org.spout.api.material.Material;
-import org.spout.api.math.Quaternion;
-import org.spout.api.math.Vector3;
 import org.spout.api.scheduler.TaskPriority;
 import org.spout.api.util.concurrent.AtomicFloat;
 
@@ -198,7 +183,7 @@ public class AdministrationCommands {
 		if (sky == null) {
 			throw new CommandException("The sky for " + world.getName() + " is not available.");
 		}
-		sky.setTime(relative ? (sky.getTime() + time) : time);
+		sky.setSkyTime(relative ? (sky.getTime() + time) : time);
 		if (getEngine() instanceof Client) {
 			source.sendMessage(plugin.getPrefix() + ChatStyle.GREEN + "You set " + ChatStyle.WHITE + world.getName() + ChatStyle.GREEN + " to time: " + ChatStyle.WHITE + sky.getTime());
 		} else {

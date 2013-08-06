@@ -3,13 +3,13 @@ package me.Man_cub.Buddies.data.configuration;
 import java.io.File;
 import java.util.logging.Level;
 
+import org.spout.cereal.config.ConfigurationException;
+import org.spout.cereal.config.ConfigurationHolder;
+import org.spout.cereal.config.ConfigurationHolderConfiguration;
+import org.spout.cereal.config.yaml.YamlConfiguration;
+
 import me.Man_cub.Buddies.BuddiesPlugin;
 import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomes;
-
-import org.spout.api.exception.ConfigurationException;
-import org.spout.api.util.config.ConfigurationHolder;
-import org.spout.api.util.config.ConfigurationHolderConfiguration;
-import org.spout.api.util.config.yaml.YamlConfiguration;
 
 public class BuddiesConfig extends ConfigurationHolderConfiguration {
 	//General

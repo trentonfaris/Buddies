@@ -52,11 +52,11 @@ public class Dropper extends BuddiesWorldComponent {
 	}
 	
 	public void setTotal(int newTotal) {
-		getDatatable().put(BuddiesData.CRATES, newTotal);
+		getData().put(BuddiesData.CRATES, newTotal);
 	}
 	
 	public int getTotal() {
-		return getDatatable().get(BuddiesData.CRATES);
+		return getData().get(BuddiesData.CRATES);
 	}
 	
 	public int getLength() {

@@ -36,8 +36,8 @@ public class LightningSimulator extends Component {
 	 * @return the strength
 	 */
 	public float getThunderStrength(float factor) {
-		float currentThunderStrength = weather.getSky().getDatatable().get(BuddiesData.CURRENT_LIGHTNING_STRENGTH);
-		float previousThunderStrength = weather.getSky().getDatatable().get(BuddiesData.PREVIOUS_LIGHTNING_STRENGTH);
+		float currentThunderStrength = weather.getSky().getData().get(BuddiesData.CURRENT_LIGHTNING_STRENGTH);
+		float previousThunderStrength = weather.getSky().getData().get(BuddiesData.PREVIOUS_LIGHTNING_STRENGTH);
 		return (previousThunderStrength + factor * (currentThunderStrength - previousThunderStrength));
 	}
 
@@ -48,14 +48,14 @@ public class LightningSimulator extends Component {
 
 	@Override
 	public void onTick(float dt) {
-		float currentThunderStrength = weather.getSky().getDatatable().get(BuddiesData.CURRENT_LIGHTNING_STRENGTH);
-		weather.getSky().getDatatable().put(BuddiesData.PREVIOUS_LIGHTNING_STRENGTH, currentThunderStrength);
+		float currentThunderStrength = weather.getSky().getData().get(BuddiesData.CURRENT_LIGHTNING_STRENGTH);
+		weather.getSky().getData().put(BuddiesData.PREVIOUS_LIGHTNING_STRENGTH, currentThunderStrength);
 		if (this.weather.isThundering()) {
 			currentThunderStrength = Math.min(1.0f, currentThunderStrength + 0.01f);
 		} else {
 			currentThunderStrength = Math.max(0.0f, currentThunderStrength - 0.01f);
 		}
-		weather.getSky().getDatatable().put(BuddiesData.CURRENT_LIGHTNING_STRENGTH, currentThunderStrength);
+		weather.getSky().getData().put(BuddiesData.CURRENT_LIGHTNING_STRENGTH, currentThunderStrength);
 		try {
 			updatePlayerTimers();
 		} catch (Exception e) {
@@ -94,7 +94,7 @@ public class LightningSimulator extends Component {
 
 	public void strikePlayers(List<Player> toStrike) {
 		for (Player player : toStrike) {
-			Point playerPos = player.getScene().getPosition();
+			Point playerPos = player.getPhysics().getPosition();
 			final int posX = GenericMath.floor(playerPos.getX());
 			final int posY = GenericMath.floor(playerPos.getY());
 			final int posZ = GenericMath.floor(playerPos.getZ());
@@ -150,11 +150,11 @@ public class LightningSimulator extends Component {
 	}
 
 	public void setIntensity(Intensity in) {
-		weather.getSky().getDatatable().put(BuddiesData.STORM_INTENSITY, in);
+		weather.getSky().getData().put(BuddiesData.STORM_INTENSITY, in);
 	}
 
 	public Intensity getIntensity() {
-		return weather.getSky().getDatatable().get(BuddiesData.STORM_INTENSITY);
+		return weather.getSky().getData().get(BuddiesData.STORM_INTENSITY);
 	}
 
 	public int getTicksBeforeNextLightning(Random rand) {

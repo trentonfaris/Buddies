@@ -44,7 +44,7 @@ public class Bazooka extends RangedWeapon {
 	
 	public void shoot(Entity entity) {
 		if (canUse(entity)) {
-			entity.getWorld().createAndSpawnEntity(entity.getScene().getPosition(), LoadOption.NO_LOAD, RocketProj.class);
+			entity.getWorld().createAndSpawnEntity(entity.getPhysics().getPosition(), LoadOption.NO_LOAD, RocketProj.class);
 			setAmmo(entity, getAmmo(entity) - 1);
 			updateAmmo(entity);
 		}

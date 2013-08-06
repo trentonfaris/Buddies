@@ -6,15 +6,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.spout.cereal.config.Configuration;
+import org.spout.cereal.config.ConfigurationException;
+import org.spout.cereal.config.annotated.AnnotatedObjectConfiguration;
+import org.spout.cereal.config.serialization.Serialization;
+
 import me.Man_cub.Buddies.util.ColorSerializer;
 import me.Man_cub.Buddies.world.generator.biome.biomes.ForestBiome;
 import me.Man_cub.Buddies.world.generator.biome.biomes.PlainsBiome;
 import me.Man_cub.Buddies.world.generator.biome.biomes.TundraBiome;
-
-import org.spout.api.exception.ConfigurationException;
-import org.spout.api.util.config.Configuration;
-import org.spout.api.util.config.annotated.AnnotatedObjectConfiguration;
-import org.spout.api.util.config.serialization.Serialization;
 
 public class BuddiesBiomes {
 	public static short id = 0;

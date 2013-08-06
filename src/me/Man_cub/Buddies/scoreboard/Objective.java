@@ -7,7 +7,6 @@ import java.util.Map;
 import me.Man_cub.Buddies.event.scoreboard.ObjectiveActionEvent;
 import me.Man_cub.Buddies.event.scoreboard.ObjectiveDisplayEvent;
 import me.Man_cub.Buddies.event.scoreboard.ScoreUpdateEvent;
-import me.Man_cub.Buddies.protocol.message.scoreboard.ScoreboardObjectiveMessage;
 
 import org.spout.api.util.Named;
 
@@ -76,7 +75,7 @@ public class Objective implements Named {
 	 */
 	public Objective setDisplayName(String displayName) {
 		this.displayName = displayName;
-		scoreboard.callProtocolEvent(new ObjectiveActionEvent(this, ScoreboardObjectiveMessage.ACTION_UPDATE));
+		//scoreboard.callProtocolEvent(new ObjectiveActionEvent(this, ScoreboardObjectiveMessage.ACTION_UPDATE));
 		return this;
 	}
 

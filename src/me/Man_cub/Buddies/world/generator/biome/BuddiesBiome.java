@@ -5,7 +5,7 @@ import java.awt.Color;
 import me.Man_cub.Buddies.data.Climate;
 
 import org.spout.api.generator.biome.Biome;
-import org.spout.api.util.config.annotated.Setting;
+import org.spout.cereal.config.annotated.Setting;
 
 public abstract class BuddiesBiome extends Biome {
 	private final int biomeId;

@@ -5,7 +5,6 @@ import java.util.Set;
 
 import me.Man_cub.Buddies.ChatStyle;
 import me.Man_cub.Buddies.event.scoreboard.TeamActionEvent;
-import me.Man_cub.Buddies.protocol.message.scoreboard.ScoreboardTeamMessage;
 
 import org.spout.api.util.Named;
 
@@ -115,7 +114,7 @@ public class Team implements Named {
 	 */
 	public Team addPlayerName(String name) {
 		playerNames.add(name);
-		scoreboard.callProtocolEvent(new TeamActionEvent(this, ScoreboardTeamMessage.ADD_PLAYERS, name));
+		//scoreboard.callProtocolEvent(new TeamActionEvent(this, ScoreboardTeamMessage.ADD_PLAYERS, name));
 		return this;
 	}
 
@@ -126,12 +125,12 @@ public class Team implements Named {
 	 */
 	public Team removePlayerName(String name) {
 		playerNames.remove(name);
-		scoreboard.callProtocolEvent(new TeamActionEvent(this, ScoreboardTeamMessage.REMOVE_PLAYERS, name));
+		//scoreboard.callProtocolEvent(new TeamActionEvent(this, ScoreboardTeamMessage.REMOVE_PLAYERS, name));
 		return this;
 	}
 
 	private void update() {
-		scoreboard.callProtocolEvent(new TeamActionEvent(this, ScoreboardTeamMessage.ACTION_UPDATE));
+		//scoreboard.callProtocolEvent(new TeamActionEvent(this, ScoreboardTeamMessage.ACTION_UPDATE));
 	}
 
 	@Override

@@ -44,7 +44,7 @@ public class Grenade extends RangedWeapon {
 	
 	public void shoot(Entity entity) {
 		if (canUse(entity)) {
-			entity.getWorld().createAndSpawnEntity(entity.getScene().getPosition(), LoadOption.NO_LOAD, GrenadeProj.class);
+			entity.getWorld().createAndSpawnEntity(entity.getPhysics().getPosition(), LoadOption.NO_LOAD, GrenadeProj.class);
 			setAmmo(entity, getAmmo(entity) - 1);
 			updateAmmo(entity);
 		}
