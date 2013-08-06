@@ -64,7 +64,7 @@ public class BuddiesBiomes {
 		final AnnotatedObjectConfiguration biomes =
 				new AnnotatedObjectConfiguration(config);
 		for (Entry<String, BuddiesBiome> entry : BY_NAME.entrySet()) {
-			biomes.addObject(entry.getValue(), entry.getKey());
+			biomes.add(entry.getValue(), entry.getKey());
 		}
 		try {
 			biomes.load();
@@ -77,7 +77,7 @@ public class BuddiesBiomes {
 		final AnnotatedObjectConfiguration biomes =
 				new AnnotatedObjectConfiguration(config);
 		for (Entry<String, BuddiesBiome> entry : BY_NAME.entrySet()) {
-			biomes.addObject(entry.getValue(), entry.getKey());
+			biomes.add(entry.getValue(), entry.getKey());
 		}
 		try {
 			biomes.save();

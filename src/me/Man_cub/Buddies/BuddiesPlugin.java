@@ -19,6 +19,7 @@ import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
 import me.Man_cub.Buddies.world.generator.BuddiesGenerators;
 import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
 
+import org.spout.api.Server;
 import org.spout.api.Spout;
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.component.entity.NetworkComponent;
@@ -57,7 +58,7 @@ public class BuddiesPlugin extends Plugin {
 		config.load();
 		((PluginLogger) getLogger()).setTag(ChatStyle.RESET + "[" + ChatStyle.AQUA + "Buddies" + ChatStyle.RESET + "] ");
 		getLogger().info("Loading " + pdf.getName() + "...");
-		Protocol.registerProtocol(new BuddiesProtocol());
+		//Protocol.registerProtocol(new Protocol());
 		BuddiesMaterials.initialize();
 		BuddiesLighting.initialize();
 		getLogger().info(pdf.getFullName() + " loaded.");
@@ -117,7 +118,7 @@ public class BuddiesPlugin extends Plugin {
 				if (generator == null) {
 					throw new IllegalArgumentException("Invalid generator name for world '" + worldNode.getWorldName() + "': " + generatorName);
 				}
-				World world = Spout.getEngine().loadWorld("battlehill", BuddiesGenerators.BATTLEHILL);
+				World world = ((Server) getEngine()).loadWorld("battlehill", BuddiesGenerators.BATTLEHILL);
 				
 				world.addLightingManager(BuddiesLighting.BLOCK_LIGHT);
 				world.addLightingManager(BuddiesLighting.SKY_LIGHT);

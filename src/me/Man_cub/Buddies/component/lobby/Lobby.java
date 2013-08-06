@@ -13,6 +13,7 @@ import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomes;
 import me.Man_cub.Buddies.world.generator.maps.BattleHillGenerator;
 import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
 
+import org.spout.api.Server;
 import org.spout.api.entity.Player;
 import org.spout.api.geo.World;
 import org.spout.api.geo.discrete.Point;
@@ -38,7 +39,7 @@ public class Lobby {
 	
 	public void createNewGame() {
 		if (!plugin.getEngine().getWorlds().isEmpty()) {
-			Collection<World> worlds = plugin.getEngine().getWorlds();
+			Collection<? extends World> worlds = plugin.getEngine().getWorlds();
 			for (int i = 0; i <= worlds.size() - 1; i++) {
 				for (World world : worlds) {
 					String worldName = world.getName();
@@ -56,7 +57,7 @@ public class Lobby {
 			name = "map0";
 		}
 		BattleHillGenerator generator = new BattleHillGenerator(BuddiesBiomes.PLAINS, 128);
-		World world = plugin.getEngine().loadWorld(name, generator);
+		World world = ((Server) plugin.getEngine()).loadWorld(name, generator);
 		world.addLightingManager(BuddiesLighting.BLOCK_LIGHT);
 		world.addLightingManager(BuddiesLighting.SKY_LIGHT);
 		
