@@ -7,7 +7,7 @@ import me.Man_cub.Buddies.data.BuddiesData;
 import me.Man_cub.Buddies.data.Weather;
 import me.Man_cub.Buddies.event.world.TimeUpdateEvent;
 import me.Man_cub.Buddies.event.world.WeatherChangeEvent;
-import me.Man_cub.Buddies.render.RenderEffects;
+import me.Man_cub.Buddies.render.BuddiesEffects;
 import me.Man_cub.Buddies.util.MathHelper;
 import me.Man_cub.Buddies.world.WeatherSimulator;
 
@@ -39,7 +39,7 @@ public class Sky extends Timer {
 			final SkydomeComponent skydome = getOwner().add(SkydomeComponent.class);
 			final Model model = Spout.getFileSystem().getResource("model://Buddies/resources/sky/skydome.spm");
 			skydome.setModel(model);
-			model.getRenderMaterial().addRenderEffect(RenderEffects.SKY);
+			model.getRenderMaterial().addRenderEffect(BuddiesEffects.SKY);
 		}
 		getOwner().setSkyLight(MAX_SKY_LIGHT);
 	}

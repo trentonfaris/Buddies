@@ -8,8 +8,9 @@ import me.Man_cub.Buddies.component.world.misc.Sky;
 import me.Man_cub.Buddies.data.BuddiesData;
 import me.Man_cub.Buddies.data.drops.type.block.BlockDrops;
 import me.Man_cub.Buddies.event.block.BlockActionEvent;
-import me.Man_cub.Buddies.render.RenderEffects;
+import me.Man_cub.Buddies.render.BuddiesEffects;
 
+import org.spout.api.component.block.BlockComponent;
 import org.spout.api.entity.Entity;
 import org.spout.api.entity.Player;
 import org.spout.api.geo.LoadOption;
@@ -18,24 +19,41 @@ import org.spout.api.geo.cuboid.Chunk;
 import org.spout.api.material.BlockMaterial;
 import org.spout.api.material.block.BlockFace;
 import org.spout.api.material.block.BlockFaces;
+import org.spout.api.Engine;
 import org.spout.api.Platform;
+import org.spout.physics.collision.shape.CollisionShape;
 
 public abstract class BuddiesBlockMaterial extends BlockMaterial implements BuddiesMaterial {
 	private final int buddiesId;
 	private int meleeDamage = 1;
 	//private SoundEffect stepSound = SoundEffects.STEP_STONE;
 	private final BlockDrops drops = new BlockDrops();
-	BuddiesPlugin plugin = BuddiesPlugin.getInstance();
 	
-	public BuddiesBlockMaterial(String name, int id, String model) {
-		super((short) 0, name, model);
+	public BuddiesBlockMaterial(String name, int id, String model, CollisionShape shape, Class<? extends BlockComponent>... components) {
+		super((short) 0, name, model, shape, components);
 		this.buddiesId = id;
-		if (plugin.getEngine().getPlatform() == Platform.CLIENT) {
-			if (!getModel().getRenderMaterial().getRenderEffects().contains(RenderEffects.SKY_TIME)) {
-				getModel().getRenderMaterial().addRenderEffect(RenderEffects.SKY_TIME);
-				getModel().getRenderMaterial().addBufferEffect(RenderEffects.LIGHTING);
+		if (getEngine().getPlatform() == Platform.CLIENT) {
+			if (!getModel().getRenderMaterial().getRenderEffects().contains(BuddiesEffects.SKY_TIME)) {
+				getModel().getRenderMaterial().addRenderEffect(BuddiesEffects.SKY_TIME);
+				getModel().getRenderMaterial().addBufferEffect(BuddiesEffects.LIGHTING);
 			}
 		}
+	}
+	
+	public BuddiesBlockMaterial(short dataMask, String name, int id, String model, CollisionShape shape, Class<? extends BlockComponent>... components) {
+		super(dataMask, name, model, shape, components);
+		this.buddiesId = id;
+		this.setTransparent();
+		if (getEngine().getPlatform() == Platform.CLIENT) {
+			if (!getModel().getRenderMaterial().getRenderEffects().contains(BuddiesEffects.SKY_TIME)) {
+				getModel().getRenderMaterial().addRenderEffect(BuddiesEffects.SKY_TIME);
+				getModel().getRenderMaterial().addBufferEffect(BuddiesEffects.LIGHTING);
+			}
+		}
+	}
+	
+	public final Engine getEngine() {
+		return BuddiesPlugin.getInstance().getEngine();
 	}
 	
 	@Override

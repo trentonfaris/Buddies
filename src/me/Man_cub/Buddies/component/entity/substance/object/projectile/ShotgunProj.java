@@ -4,8 +4,8 @@ import me.Man_cub.Buddies.component.entity.misc.Health;
 import me.Man_cub.Buddies.component.entity.substance.object.Substance;
 
 import org.spout.api.entity.Entity;
-import org.spout.api.geo.cuboid.Block;
-import org.spout.api.geo.discrete.Point;
+import org.spout.api.event.entity.EntityCollideEntityEvent;
+import org.spout.api.event.entity.EntityCollideEvent;
 
 public class ShotgunProj extends Substance implements Projectile {
 private Entity shooter;
@@ -27,16 +27,13 @@ private Entity shooter;
 	}
 	
 	@Override
-	public void onCollided(Point point, Entity entity) {
-		Health health = entity.get(Health.class);
-		if (health != null) {
-			health.damage(15);
+	public void onCollided(EntityCollideEvent event) {
+		if (event instanceof EntityCollideEntityEvent) {
+			Health health = ((EntityCollideEntityEvent) event).getCollided().get(Health.class);
+			if (health != null) {
+				health.damage(15);
+			}
 		}
-		getOwner().remove();
-	}
-
-	@Override
-	public void onCollided(Point point, Block block) {
 		getOwner().remove();
 	}
 }

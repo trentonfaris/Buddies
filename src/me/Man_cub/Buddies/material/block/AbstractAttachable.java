@@ -2,6 +2,7 @@ package me.Man_cub.Buddies.material.block;
 
 import me.Man_cub.Buddies.material.BuddiesBlockMaterial;
 
+import org.spout.api.component.block.BlockComponent;
 import org.spout.api.event.Cause;
 import org.spout.api.geo.cuboid.Block;
 import org.spout.api.material.BlockMaterial;
@@ -9,12 +10,17 @@ import org.spout.api.material.block.BlockFace;
 import org.spout.api.material.block.BlockFaces;
 import org.spout.api.math.Vector3;
 import org.spout.api.util.bytebit.ByteBitSet;
+import org.spout.physics.collision.shape.CollisionShape;
 
 public abstract class AbstractAttachable extends BuddiesBlockMaterial implements Attachable {
 	private ByteBitSet attachableFaces = new ByteBitSet(BlockFaces.NONE);
 
-	protected AbstractAttachable(String name, int id, String model) {
-		super(name, id, model);
+	protected AbstractAttachable(short dataMask, String name, int id, String model, CollisionShape shape, Class<? extends BlockComponent>... components) {
+		super(dataMask, name, id, model, shape, components);
+	}
+	
+	protected AbstractAttachable(String name, int id, String model, CollisionShape shape, Class<? extends BlockComponent>... components) {
+		super(name, id, model, shape, components);
 	}
 	
 	/**

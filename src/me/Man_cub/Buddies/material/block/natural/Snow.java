@@ -18,7 +18,7 @@ public class Snow extends GroundAttachable implements DynamicMaterial {
 	private static final byte MIN_MELT_LIGHT = 11;
 
 	public Snow(String name, int id) {
-		super(name, id, BuddiesMaterialModels.SNOW);
+		super(name, id, BuddiesMaterialModels.SNOW, null);
 		setTransparent();
 		setOpacity(1);
 	}

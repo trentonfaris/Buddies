@@ -28,6 +28,7 @@ import org.spout.api.command.annotated.Filter;
 import org.spout.api.command.filter.PlayerFilter;
 import org.spout.api.component.entity.InteractComponent;
 import org.spout.api.entity.Player;
+import org.spout.api.exception.ArgumentParseException;
 import org.spout.api.exception.CommandException;
 import org.spout.api.geo.cuboid.Block;
 import org.spout.api.geo.discrete.Point;
@@ -45,16 +46,21 @@ public class GameInputCommands {
 		client = (Client) plugin.getEngine();
 	}
 	
+	public static boolean isPressed(CommandArguments args) throws ArgumentParseException {
+		return args.success("pressed", args.currentArgument("pressed").equalsIgnoreCase("+"));
+	}
+	
 	@CommandDescription (aliases = "attack", desc = "Shoots/swings currently held weapon")
 	@Binding(mouse = Mouse.BUTTON_LEFT)
 	@Filter(PlayerFilter.class)
 	public void attack(CommandSource source, CommandArguments args) throws CommandException {
-		checkPlayer(source);
-		Player player = (Player) source;
-		if (!args.getString(0).equalsIgnoreCase("+")) {
+		if (!isPressed(args)) {
 			return;
 		}
-		BuddyInventory inv = ((Player) source).get(BuddyInventory.class);
+		args.assertCompletelyParsed();
+		
+		Player player = (Player) source;
+		BuddyInventory inv = player.get(BuddyInventory.class);
 		ItemStack item = inv.getHeldItem();
 		if (item.getMaterial() instanceof Crate || item.getMaterial() instanceof MegaCrate) {
 			return;
@@ -122,11 +128,12 @@ public class GameInputCommands {
 	@Binding(mouse = Mouse.BUTTON_RIGHT)
 	@Filter(PlayerFilter.class)
 	public void crate(CommandSource source, CommandArguments args) throws CommandException {
-		checkPlayer(source);
-		Player player = (Player) source;
-		if (!args.getString(0).equalsIgnoreCase("+")) {
+		if (!isPressed(args)) {
 			return;
 		}
+		args.assertCompletelyParsed();
+		
+		Player player = (Player) source;
 		final BuddyInventory inv = ((Player) source).get(BuddyInventory.class);
 		final ItemStack item = inv.getHeldItem();
 		InteractComponent interact = player.get(InteractComponent.class);
@@ -169,11 +176,12 @@ public class GameInputCommands {
 	@Binding(Keyboard.KEY_Q)
 	@Filter(PlayerFilter.class)
 	public void breakCrate(CommandSource source, CommandArguments args) throws CommandException {
-		checkPlayer(source);
-		Player player = (Player) source;
-		if (!args.getString(0).equalsIgnoreCase("+")) {
+		if (!isPressed(args)) {
 			return;
 		}
+		args.assertCompletelyParsed();
+		
+		Player player = (Player) source;
 		if (player.get(BuddyInventory.class).getHeldItem().getMaterial() == BuddiesMaterials.CRATE || player.get(BuddyInventory.class).getHeldItem().getMaterial() == BuddiesMaterials.MEGACRATE) {
 			BuddiesPlugin.getInstance().getEngine().getLogger().info("You can't break a crate while holding one.");
 		}

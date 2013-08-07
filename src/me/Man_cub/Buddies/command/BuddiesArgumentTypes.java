@@ -21,7 +21,7 @@ public class BuddiesArgumentTypes {
 			mat = MaterialRegistry.get(arg);
 		}
 		if (mat == null) {
-			throw args.failure(argName, "Unknown material: ", arg, false);
+			//throw args.failure(argName, "Unknown material: ", arg, false);
 		}
 		return args.success(argName, mat);
 	}

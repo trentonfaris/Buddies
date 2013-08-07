@@ -3,11 +3,17 @@ package me.Man_cub.Buddies.material.block;
 import org.spout.api.event.Cause;
 import org.spout.api.geo.cuboid.Block;
 import org.spout.api.material.block.BlockFace;
+import org.spout.physics.collision.shape.CollisionShape;
 
 public class GroundAttachable extends AbstractAttachable {
 	
-	public GroundAttachable(String name, int id, String model) {
-		super(name, id, model);
+	public GroundAttachable(short dataMask, String name, int id, String model, CollisionShape shape) {
+		super(dataMask, name, id, model, shape);
+		this.setAttachable(BlockFace.BOTTOM);
+	}
+	
+	public GroundAttachable(String name, int id, String model, CollisionShape shape) {
+		super(name, id, model, shape);
 		this.setAttachable(BlockFace.BOTTOM);
 	}
 
