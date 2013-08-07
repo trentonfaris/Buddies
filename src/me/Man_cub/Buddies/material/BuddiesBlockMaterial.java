@@ -170,7 +170,7 @@ public abstract class BuddiesBlockMaterial extends BlockMaterial implements Budd
 	 * @return True if rain is falling on the Block, false if not
 	 */
 	public static boolean isRaining(Block block) {
-		return block.getWorld().getData().get(BuddiesData.WEATHER).isRaining() && block.isAtSurface();
+		return block.getWorld().getData().get(BuddiesData.WORLD_WEATHER).isRaining() && block.isAtSurface();
 	}
 	
 	public static List<Chunk> getChunkColumn(Chunk middle) {

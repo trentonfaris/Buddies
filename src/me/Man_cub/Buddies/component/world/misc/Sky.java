@@ -47,7 +47,7 @@ public class Sky extends Timer {
 	@Override
 	public void onTick(float dt) {
 		final long maxTime = getMaxTime();
-		float time = getData().get(BuddiesData.SKY_TIME).floatValue();
+		float time = getData().get(BuddiesData.WORLD_TIME).floatValue();
 		time += getRate() * (dt / 50F);
 		while (time >= maxTime) {
 			time -= maxTime;
@@ -57,7 +57,7 @@ public class Sky extends Timer {
 			updateTime((long)time);
 		}
 		
-		getData().put(BuddiesData.SKY_TIME, time);
+		getData().put(BuddiesData.WORLD_TIME, time);
 		
 		synchronized (this) {
 			if (this.weather != null) {
@@ -71,7 +71,7 @@ public class Sky extends Timer {
 	 * @param time
 	 */
 	public void setSkyTime(long time) {
-		getData().put(BuddiesData.SKY_TIME, time);
+		getData().put(BuddiesData.WORLD_TIME, time);
 		countdown.set(0);
 	}
 
@@ -80,7 +80,7 @@ public class Sky extends Timer {
 	 * @return time
 	 */
 	public long getSkyTime() {
-		return getData().get(BuddiesData.SKY_TIME).longValue();
+		return getData().get(BuddiesData.WORLD_TIME).longValue();
 	}
 
 	/**
@@ -205,10 +205,10 @@ public class Sky extends Timer {
 	
 	public void updatePlayer(Player player) {
 		TimeUpdateEvent event = new TimeUpdateEvent(getOwner(), getSkyTime());
-		//player.getNetworkSynchronizer().callProtocolEvent(event);
+		player.getNetwork().callProtocolEvent(event);
 		if (Weather.CLEAR != getWeather()) {
 			WeatherChangeEvent weatherEvent = new WeatherChangeEvent(getOwner(), Weather.CLEAR, getWeather());
-			//player.getNetworkSynchronizer().callProtocolEvent(weatherEvent);
+			player.getNetwork().callProtocolEvent(weatherEvent);
 		}
 	}
 		

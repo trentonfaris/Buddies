@@ -3,7 +3,6 @@ package me.Man_cub.Buddies.component.entity.living.buddy;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
 import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
 import me.Man_cub.Buddies.component.entity.living.Living;
 import me.Man_cub.Buddies.component.entity.misc.EntityBody;
@@ -11,13 +10,14 @@ import me.Man_cub.Buddies.component.entity.misc.Health;
 import me.Man_cub.Buddies.component.entity.misc.PickupItemComponent;
 import me.Man_cub.Buddies.component.entity.substance.object.Item;
 import me.Man_cub.Buddies.data.BuddiesData;
+import me.Man_cub.Buddies.data.ViewDistance;
 import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
+import me.Man_cub.Buddies.data.configuration.WorldConfigurationNode;
 import me.Man_cub.Buddies.event.entity.BuddyAbilityChangeEvent;
 import me.Man_cub.Buddies.event.player.network.PlayerAbilityUpdateEvent;
 
 import org.spout.api.component.entity.TextModelComponent;
 import org.spout.api.data.Data;
-import org.spout.api.entity.Entity;
 import org.spout.api.entity.Player;
 import org.spout.api.geo.discrete.Point;
 import org.spout.api.geo.discrete.Transform;
@@ -27,32 +27,52 @@ import org.spout.api.math.Vector3;
 import org.spout.api.math.VectorMath;
 
 public class Buddy extends Living {
-	public static final int SPAWN_HEALTH = 100;
-	BuddiesPlugin plugin = BuddiesPlugin.getInstance();
 
 	@Override
 	public void onAttached() {
 		super.onAttached();
-		Entity holder = getOwner();
-		holder.add(PickupItemComponent.class);
-		// holder.add(DiggingComponent.class);
-		//holder.getNetwork().setEntityProtocol(
-				//BuddiesPlugin.BUDDIES_PROTOCOL_ID, new BuddyEntityProtocol());
-		// Add height offset if loading from disk
-		// if (holder instanceof Player) {
-		// ((Player) holder).teleport(holder.getTransform().getPosition().add(0,
-		// 1.85F, 0));
-		// }
+		getOwner().add(PickupItemComponent.class);
+		//getOwner().add(DiggingComponent.class); // TODO : Need something like attack speed/block breaking here (probably AS)
+		//setEntityProtocol(new BuddyEntityProtocol());
 		if (getAttachedCount() == 1) {
-			holder.add(Health.class).setSpawnHealth(SPAWN_HEALTH);
+			getOwner().add(Health.class).setSpawnHealth(100);
 		}
 		TextModelComponent textModel = getOwner().get(TextModelComponent.class);
 		if (textModel != null) {
 			textModel.setSize(0.5f);
 			textModel.setTranslation(new Vector3(0, 3f, 0));
 		}
+		//getOwner().getPhysics().activate(1, new BoxShape(1f, 2.3f, 1f), false, true);
 	}
-
+	
+	public ViewDistance getViewDistance() {
+		return getData().get(BuddiesData.VIEW_DISTANCE);
+	}
+	
+	public void setViewDistance(ViewDistance distance) {
+		getData().put(BuddiesData.VIEW_DISTANCE, distance);
+		WorldConfigurationNode config = BuddiesConfig.WORLDS.get(getOwner().getWorld().getName());
+		int viewDistance;
+		switch(distance) {
+		case FAR:
+			viewDistance = config.FAR_VIEW_DISTANCE.getInt();
+			break;
+		case NORMAL:
+			viewDistance = config.NORMAL_VIEW_DISTANCE.getInt();
+			break;
+		case SHORT:
+			viewDistance = config.SHORT_VIEW_DISTANCE.getInt();
+			break;
+		case TINY:
+			viewDistance = config.TINY_VIEW_DISTANCE.getInt();
+			break;
+		default:
+			viewDistance = config.NORMAL_VIEW_DISTANCE.getInt();
+			break;
+		}
+		//getOwner().getNetwork().setSyncDistance(viewDistance);
+	}
+	
 	public boolean isSprinting() {
 		return getOwner().getData().get(BuddiesData.IS_SPRINTING);
 	}
@@ -102,15 +122,14 @@ public class Buddy extends Living {
 	}
 
 	public boolean isOp() {
-		return getOwner() instanceof Player
-				&& BuddiesConfig.OPS.isOp(getName());
+		return getOwner() instanceof Player && BuddiesConfig.OPS.isOp(getName());
 	}
 
-	// TODO: Drop item stuff
 	/**
 	 * Drops the item specified into the direction the player looks, with slight randomness
 	 * @param item to drop
 	 */
+	// TODO: Drop item stuff
 	public void dropItem(ItemStack item) {
 		final Transform dropFrom;
 		EntityBody body = getBody();
@@ -140,14 +159,15 @@ public class Buddy extends Living {
 		//TODO: This needs an actual value and this value might change when gravity changes!
 		impulse = impulse.multiply(100);
 
-		// Finally drop using a 4 second pickup delay
+		// Finally drop using a 2 second pickup delay
 		Item spawnedItem = Item.drop(dropFrom.getPosition(), item, impulse);
-		spawnedItem.setUncollectableDelay(4000);
+		spawnedItem.setUncollectableDelay(2000);
 	}
 
 	/**
 	 * Drops the player's current item.
 	 */
+	// TODO : Change this to drop all items
 	public void dropItem() {
 		BuddyInventory inventory = getOwner().get(BuddyInventory.class);
 		if (inventory != null) {
@@ -165,8 +185,7 @@ public class Buddy extends Living {
 
 	// Abilities
 	public void setFlying(boolean isFlying, boolean updateClient) {
-		Boolean previous = getOwner().getData().put(BuddiesData.IS_FLYING,
-				isFlying);
+		Boolean previous = getOwner().getData().put(BuddiesData.IS_FLYING, isFlying);
 		if (callAbilityChangeEvent().isCancelled()) {
 			getOwner().getData().put(BuddiesData.IS_FLYING, previous);
 			return;
@@ -182,27 +201,27 @@ public class Buddy extends Living {
 		return getOwner().getData().get(BuddiesData.IS_FLYING);
 	}
 
-	public void setFlyingSpeed(byte speed, boolean updateClient) {
-		byte previous = getOwner().getData()
-				.put(BuddiesData.FLYING_SPEED, speed).byteValue();
+	public void setFlyingSpeed(float speed, boolean updateClient) {
+		Number value = getOwner().getData().put(BuddiesData.FLYING_SPEED, speed);
+
+		float previous = value == null ? BuddiesData.FLYING_SPEED.getDefaultValue().floatValue() : value.floatValue();
+
 		if (callAbilityChangeEvent().isCancelled()) {
 			getOwner().getData().put(BuddiesData.FLYING_SPEED, previous);
 			return;
 		}
-		updateAbilities(updateClient);
 	}
 
-	public void setFlyingSpeed(byte speed) {
+	public void setFlyingSpeed(float speed) {
 		setFlyingSpeed(speed, true);
 	}
 
-	public byte getFlyingSpeed() {
-		return getOwner().getData().get(BuddiesData.FLYING_SPEED).byteValue();
+	public float getFlyingSpeed() {
+		return getOwner().getData().get(BuddiesData.FLYING_SPEED).floatValue();
 	}
 
-	public void setWalkingSpeed(byte speed, boolean updateClient) {
-		byte previous = getOwner().getData()
-				.put(BuddiesData.WALKING_SPEED, speed).byteValue();
+	public void setWalkingSpeed(float speed, boolean updateClient) {
+		float previous = getOwner().getData().put(BuddiesData.WALKING_SPEED, speed).floatValue();
 		if (callAbilityChangeEvent().isCancelled()) {
 			getOwner().getData().put(BuddiesData.WALKING_SPEED, previous);
 			return;
@@ -210,17 +229,16 @@ public class Buddy extends Living {
 		updateAbilities(updateClient);
 	}
 
-	public void setWalkingSpeed(byte speed) {
+	public void setWalkingSpeed(float speed) {
 		setWalkingSpeed(speed, true);
 	}
 
-	public byte getWalkingSpeed() {
-		return getOwner().getData().get(BuddiesData.WALKING_SPEED).byteValue();
+	public float getWalkingSpeed() {
+		return getOwner().getData().get(BuddiesData.WALKING_SPEED).floatValue();
 	}
 
 	public void setCanFly(boolean canFly, boolean updateClient) {
-		Boolean previous = getOwner().getData()
-				.put(BuddiesData.CAN_FLY, canFly);
+		Boolean previous = getOwner().getData().put(BuddiesData.CAN_FLY, canFly);
 		if (callAbilityChangeEvent().isCancelled()) {
 			getOwner().getData().put(BuddiesData.CAN_FLY, previous);
 			return;
@@ -237,8 +255,7 @@ public class Buddy extends Living {
 	}
 
 	public BuddyAbilityChangeEvent callAbilityChangeEvent() {
-		return plugin.getEngine().getEventManager()
-				.callEvent(new BuddyAbilityChangeEvent(this));
+		return getOwner().getEngine().getEventManager().callEvent(new BuddyAbilityChangeEvent(this));
 	}
 
 	// This is here to eliminate repetitive code above
@@ -246,16 +263,14 @@ public class Buddy extends Living {
 		if (!updateClient || !(getOwner() instanceof Player)) {
 			return;
 		}
-		((Player) getOwner()).getNetworkSynchronizer().callProtocolEvent(
-				new PlayerAbilityUpdateEvent((Player) getOwner()));
+		((Player) getOwner()).getNetworkSynchronizer().callProtocolEvent(new PlayerAbilityUpdateEvent((Player) getOwner()));
 	}
 
 	public void updateAbilities() {
 		updateAbilities(true);
 	}
 
-	private final AtomicReference<Point> livePosition = new AtomicReference<Point>(
-			null);
+	private final AtomicReference<Point> livePosition = new AtomicReference<Point>(null);
 
 	@Override
 	public boolean canTick() {
@@ -267,8 +282,7 @@ public class Buddy extends Living {
 		super.onTick(dt);
 		final Point position = getOwner().getPhysics().getPosition();
 		livePosition.set(position);
-		// TODO : Water -> setInWater(position.getBlock().getMaterial()
-		// instanceof Water);
+		// TODO : Water -> setInWater(position.getBlock().getMaterial() instanceof Water);
 	}
 
 	public Point getLivePosition() {

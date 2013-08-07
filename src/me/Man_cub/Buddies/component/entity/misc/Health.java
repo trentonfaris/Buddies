@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.ChatStyle;
 import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
 import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
 import me.Man_cub.Buddies.component.entity.player.HUD;
@@ -24,7 +23,6 @@ import me.Man_cub.Buddies.event.entity.EntityAnimationEvent;
 import me.Man_cub.Buddies.event.entity.EntityDamageEvent;
 import me.Man_cub.Buddies.event.entity.EntityHealEvent;
 import me.Man_cub.Buddies.event.entity.EntityHealthChangeEvent;
-import me.Man_cub.Buddies.event.entity.EntityStatusEvent;
 import me.Man_cub.Buddies.event.player.PlayerDeathEvent;
 import me.Man_cub.Buddies.event.player.network.PlayerHealthEvent;
 import me.Man_cub.Buddies.material.block.crate.Crate;

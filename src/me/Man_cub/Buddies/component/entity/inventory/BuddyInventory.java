@@ -15,18 +15,14 @@ public class BuddyInventory extends EntityComponent {
 	BuddiesPlugin plugin = BuddiesPlugin.getInstance();
 
 	public EntityInventory getInv() {
-		if (getData().get(BuddiesData.INVENTORY) != null) {
-			return getData().get(BuddiesData.INVENTORY);
-		} else {
-			return null;
-		}
+		return getData().get(BuddiesData.INVENTORY);
 	}
 	
 	public ItemStack getHeldItem() {
 		return getInv().get(0);
 	}
 	
-	// TODO : Clean this up using set and remove.
+	// TODO : Clean this up
 	public boolean add(ItemStack item) {
 		EntityInventory inv = getInv();
 		ItemStack primary = getHeldItem();
@@ -69,6 +65,7 @@ public class BuddyInventory extends EntityComponent {
 		return true;
 	}
 	
+	// TODO : Clean this up
 	public void remove(int slot) {
 		EntityInventory inv = getInv();
 		if (slot == 0) {

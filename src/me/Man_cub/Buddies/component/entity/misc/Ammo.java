@@ -3,7 +3,6 @@ package me.Man_cub.Buddies.component.entity.misc;
 import java.awt.Color;
 
 import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.ChatStyle;
 import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
 import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
 import me.Man_cub.Buddies.component.entity.player.HUD;

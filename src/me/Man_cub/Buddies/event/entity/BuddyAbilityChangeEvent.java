@@ -8,8 +8,8 @@ import org.spout.api.event.entity.EntityEvent;
 
 public class BuddyAbilityChangeEvent extends EntityEvent implements Cancellable {
 	private static HandlerList handlers = new HandlerList();
-	private final byte flyingSpeed;
-	private final byte walkingSpeed;
+	private final float flyingSpeed;
+	private final float walkingSpeed;
 	private final boolean isFlying;
 	private final boolean canFly;
 
@@ -21,11 +21,11 @@ public class BuddyAbilityChangeEvent extends EntityEvent implements Cancellable 
 		canFly = buddy.canFly();
 	}
 
-	public byte getFlyingSpeed() {
+	public float getFlyingSpeed() {
 		return flyingSpeed;
 	}
 
-	public byte getWalkingSpeed() {
+	public float getWalkingSpeed() {
 		return walkingSpeed;
 	}
 

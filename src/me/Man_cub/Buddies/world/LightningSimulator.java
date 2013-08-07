@@ -150,11 +150,15 @@ public class LightningSimulator extends Component {
 	}
 
 	public void setIntensity(Intensity in) {
-		weather.getSky().getData().put(BuddiesData.STORM_INTENSITY, in);
+		weather.getSky().getData().put(BuddiesData.STORM_INTENSITY, in != null ? in.ordinal() : -1);
 	}
 
 	public Intensity getIntensity() {
-		return weather.getSky().getData().get(BuddiesData.STORM_INTENSITY);
+		int intensity = weather.getSky().getData().get(BuddiesData.STORM_INTENSITY);
+		if (intensity >= 0 && intensity < Intensity.values().length) {
+			return Intensity.values()[intensity];
+		}
+		return null;
 	}
 
 	public int getTicksBeforeNextLightning(Random rand) {

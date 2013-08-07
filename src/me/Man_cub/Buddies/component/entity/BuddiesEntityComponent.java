@@ -1,18 +1,43 @@
 package me.Man_cub.Buddies.component.entity;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
+import me.Man_cub.Buddies.component.BuddiesNetworkComponent;
 import me.Man_cub.Buddies.data.BuddiesData;
 
 import org.spout.api.component.entity.EntityComponent;
+import org.spout.api.entity.Player;
 import org.spout.api.util.Parameter;
 
 public class BuddiesEntityComponent extends EntityComponent {
 	
 	@Override
+	@SuppressWarnings("unchecked")
 	public void onAttached() {
-		//Tracks the number of times this component has been attached (i.e how many times it's been saved, then loaded. 1 = fresh entity)
-		getOwner().getData().put(BuddiesData.ATTACHED_COUNT, getAttachedCount() + 1);
+		HashMap<Class<? extends BuddiesEntityComponent>, Integer> map = getOwner().getData().get(BuddiesData.ATTACHED_COUNT);
+		Integer count = map.get(getClass());
+		if (count == null) {
+			count = 0;
+		}
+		count++;
+		map.put(getClass(), count);
+		getOwner().getData().put(BuddiesData.ATTACHED_COUNT, map);
 		getOwner().setSavable(true);
+		
+		//Players initialized in intializeSession
+		if (!(getOwner() instanceof Player)) {
+			getOwner().add(BuddiesEntityComponent.class);
+		}
 	}
+	
+	/*
+	protected void setEntityProtocol(BuddiesEntityProtocol p) {
+		if (!(getOwner().getNetwork() instanceof BuddiesNetworkComponent)) {
+			return;
+		}
+		((BuddiesNetworkComponent) getOwner().getNetwork()).setEntityProtocol(p);
+	}*/
 	
 	protected void setMetadata(Parameter<?>... p) {
 		//getOwner().getNetwork.callProtocolEvent(new EntityMetaChangeEvent(getOwner(), Arrays.asList(p)));
@@ -29,7 +54,7 @@ public class BuddiesEntityComponent extends EntityComponent {
 	 */
 	
 	public final int getAttachedCount() {
-		return getOwner().getData().get(BuddiesData.ATTACHED_COUNT);
+		return (Integer) getOwner().getData().get(BuddiesData.ATTACHED_COUNT).get(getClass());
 	}
 	
 }

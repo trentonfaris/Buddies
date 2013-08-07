@@ -9,8 +9,8 @@ import org.spout.api.protocol.event.ProtocolEvent;
 
 public class PlayerAbilityUpdateEvent extends PlayerEvent implements ProtocolEvent {
 	private static HandlerList handlers = new HandlerList();
-	private final byte flyingSpeed;
-	private final byte walkingSpeed;
+	private final float flyingSpeed;
+	private final float walkingSpeed;
 	private final boolean isFlying;
 	private final boolean canFly;
 
@@ -26,11 +26,11 @@ public class PlayerAbilityUpdateEvent extends PlayerEvent implements ProtocolEve
 		canFly = buddy.canFly();
 	}
 
-	public byte getFlyingSpeed() {
+	public float getFlyingSpeed() {
 		return flyingSpeed;
 	}
 
-	public byte getWalkingSpeed() {
+	public float getWalkingSpeed() {
 		return walkingSpeed;
 	}
 

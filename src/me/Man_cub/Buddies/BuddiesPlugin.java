@@ -5,6 +5,7 @@ import java.util.logging.Level;
 
 import me.Man_cub.Buddies.command.AdministrationCommands;
 import me.Man_cub.Buddies.command.AdministrationCommands.TPSMonitor;
+import me.Man_cub.Buddies.command.GameInputCommands;
 import me.Man_cub.Buddies.component.world.misc.Base;
 import me.Man_cub.Buddies.component.world.misc.Border;
 import me.Man_cub.Buddies.component.world.misc.Dropper;
@@ -20,12 +21,11 @@ import me.Man_cub.Buddies.world.generator.BuddiesGenerators;
 import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
 
 import org.spout.api.Server;
-import org.spout.api.Spout;
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;
 import org.spout.api.component.entity.NetworkComponent;
-import org.spout.api.component.entity.ObserverComponent;
 import org.spout.api.entity.Entity;
 import org.spout.api.event.EventManager;
+import org.spout.api.generator.WorldGenerator;
 import org.spout.api.geo.LoadOption;
 import org.spout.api.geo.World;
 import org.spout.api.geo.cuboid.Chunk;
@@ -34,44 +34,32 @@ import org.spout.api.geo.discrete.Transform;
 import org.spout.api.math.Quaternion;
 import org.spout.api.math.Vector3;
 import org.spout.api.plugin.Plugin;
-import org.spout.api.plugin.PluginDescriptionFile;
 import org.spout.api.plugin.PluginLogger;
-import org.spout.api.protocol.Protocol;
 import org.spout.api.util.FlatIterator;
 
 public class BuddiesPlugin extends Plugin {
-	private PluginDescriptionFile pdf;
 	private static BuddiesPlugin instance;
 	private BuddiesConfig config;
-	public static final int BUDDIES_PROTOCOL_ID = NetworkComponent.getProtocolId("me.Man_cub.Buddies.plugin.protocol");
-	//Client only
-	//TODO Remove, seriously not secure.
-	private String username = "";
-	private String sessionId = "";
-	public static ArrayList<World> worlds = new ArrayList<World>();
 	
-	@Override
-	public void onLoad() {
-		pdf = getDescription();
-		instance = this;
-		config = new BuddiesConfig(getDataFolder());
-		config.load();
-		((PluginLogger) getLogger()).setTag(ChatStyle.RESET + "[" + ChatStyle.AQUA + "Buddies" + ChatStyle.RESET + "] ");
-		getLogger().info("Loading " + pdf.getName() + "...");
-		//Protocol.registerProtocol(new Protocol());
-		BuddiesMaterials.initialize();
-		BuddiesLighting.initialize();
-		getLogger().info(pdf.getFullName() + " loaded.");
-	}
 	@Override
 	public void onDisable() {
 		instance = null;
-		getLogger().info(pdf.getFullName() + " disabled.");
-		
+		getLogger().info(getDescription().getFullName() + " disabled.");
 	}
 
 	@Override
 	public void onEnable() {
+		instance = this;
+		
+		//Config
+		config = new BuddiesConfig(getDataFolder());
+		config.load();
+		
+		//Logger
+		((PluginLogger) getLogger()).setTag(ChatStyle.RESET + "[" + ChatStyle.AQUA + "Buddies" + ChatStyle.RESET + "] ");
+		
+		BuddiesMaterials.initialize();
+		BuddiesLighting.initialize();
 				
 		//Commands
 		AnnotatedCommandExecutorFactory.create(new AdministrationCommands(this));
@@ -82,16 +70,15 @@ public class BuddiesPlugin extends Plugin {
 				
 		switch (getEngine().getPlatform()) {
 			case CLIENT:
-				//final Client client = (Client) getEngine();
-				//final InputManager input = client.getInputManager();
-				// TODO : Bind basic input commands here. See VanillaPlugin.java.
+				// TODO : Eventually set this up for lobbies AND worlds (not just worlds)
+				// TODO : Look into the necessity of binding commands to keys here.
+				
+				AnnotatedCommandExecutorFactory.create(new GameInputCommands(this));
 				
 				if (getEngine().debugMode()) {
-					setupLobby();
-				}
+					//setupLobby();
+				}	
 				
-				break;
-			case PROXY:
 				break;
 			case SERVER:
 				setupLobby();
@@ -107,12 +94,16 @@ public class BuddiesPlugin extends Plugin {
 			}
 		}
 		
-		getLogger().info("v" + pdf.getVersion() + " enabled. Protocol: " + pdf.getData("protocol"));
+		getLogger().info("v" + getDescription().getVersion() + " enabled.");
 	}
 	
+	// TODO : Eventually this will set up a lobby and not just skip to world generation.
 	private void setupLobby() {		
+		ArrayList<World> worlds = new ArrayList<World>();
+		
 		for (WorldConfigurationNode worldNode : BuddiesConfig.WORLDS.getAll()) {
 			if (worldNode.LOAD.getBoolean()) {
+				//Obtain generator and start generating world
 				String generatorName = worldNode.GENERATOR.getString();
 				BuddiesGenerator generator = BuddiesGenerators.byName(generatorName);
 				if (generator == null) {
@@ -123,63 +114,66 @@ public class BuddiesPlugin extends Plugin {
 				world.addLightingManager(BuddiesLighting.BLOCK_LIGHT);
 				world.addLightingManager(BuddiesLighting.SKY_LIGHT);
 				
-				BuddiesPlugin.getInstance().getWorlds().add(world);
+				worlds.add(world);
+			}
+		}
+		
+		// TODO : Not sure what I'm going to do about spawn radius stuff
+		final int radius = BuddiesConfig.SPAWN_RADIUS.getInt();
+		//final int protectioRadius = BuddiesConfig.SPAWN_PROTECTION_RADIUS.getInt();
+		
+		if (worlds.isEmpty()) {
+			return;
+		}
+		
+		// TODO : Protection service?
+		
+		for (World world : worlds) {
+			//Keep spawn loaded
+			WorldConfigurationNode worldConfig = BuddiesConfig.WORLDS.get(world);
+			final WorldGenerator generator = world.getGenerator();
+			boolean newWorld = world.getAge() <= 0;
+			
+			if (worldConfig.LOADED_SPAWN.getBoolean() || newWorld) {
+				final Point spawn;
 				
-				final int radius = BuddiesConfig.SPAWN_RADIUS.getInt();
-				//final int protectioRadius = BuddiesConfig.SPAWN_PROTECTION_RADIUS.getInt();
-				
-				WorldConfigurationNode worldConfig = BuddiesConfig.WORLDS.get(world);
-				boolean newWorld = world.getAge() <= 0;
-				if (worldConfig.LOADED_SPAWN.getBoolean() || newWorld) {
-					// Initialize the first chunks
-					Point point = world.getSpawnPoint().getPosition();
-					int cx = point.getBlockX() >> Chunk.BLOCKS.BITS;
-					int cz = point.getBlockZ() >> Chunk.BLOCKS.BITS;
-					
-					// TODO : More spawn protection
-					//((BuddiesProtectionService) getEngine().getServiceManager().getRegistration(ProtectionService.class).getProvider()).addProtection(new SpawnProtection(world.getName() + " Spawn Protection", world, point, protectionRadius));
-					
-					//Load or generate spawn area
-					int effectiveRadius = newWorld ? (2 * radius) : radius;
-					
-					if (worldConfig.LOADED_SPAWN.getBoolean()) {
-						@SuppressWarnings("unchecked")
-						Entity e = world.createAndSpawnEntity(point, LoadOption.LOAD_GEN, ObserverComponent.class);
-						e.setObserver(new FlatIterator(cx, 0, cz, 16, effectiveRadius));
-					}
-					
-					//Grab safe spawn if newly created world.
-					if (newWorld && world.getGenerator() instanceof BuddiesGenerator) {
-						Point spawn = ((BuddiesGenerator) world.getGenerator()).getSafeSpawn(world);
-						world.setSpawnPoint(new Transform(spawn, Quaternion.IDENTITY, Vector3.ONE));
-					}
-					
-					world.add(Hill.class);
-					world.add(Timer.class);
-					world.add(Sky.class);
-					world.add(Border.class);
-					world.add(Base.class);
-					world.add(Dropper.class);
+				//Grab safe spawn if newly created world and generator is BuddiesGenerator, else get old one.
+				if (newWorld && generator instanceof BuddiesGenerator) {
+					spawn = ((BuddiesGenerator) generator).getSafeSpawn(world);
+					world.setSpawnPoint(new Transform(spawn, Quaternion.IDENTITY, Vector3.ONE));
+				} else {
+					spawn = world.getSpawnPoint().getPosition();
 				}
+				
+				// TODO : More spawn protection
+				//((BuddiesProtectionService) getEngine().getServiceManager().getRegistration(ProtectionService.class).getProvider()).addProtection(new SpawnProtection(world.getName() + " Spawn Protection", world, point, protectionRadius));
+				
+				// IChunks coords of spawn
+				int cx = spawn.getBlockX() >> Chunk.BLOCKS.BITS;
+				int cz = spawn.getBlockZ() >> Chunk.BLOCKS.BITS;
+				
+				//Load or generate spawn area
+				int effectiveRadius = newWorld ? (2 * radius) : radius;
+				
+				//Add observer to spawn to keep loaded if desired
+				if (worldConfig.LOADED_SPAWN.getBoolean()) {
+					@SuppressWarnings("unchecked")
+					Entity e = world.createAndSpawnEntity(spawn, LoadOption.LOAD_GEN, NetworkComponent.class);
+					((Entity) e.get(NetworkComponent.class)).setObserver(new FlatIterator(cx, 0, cz, 16, effectiveRadius));
+				}
+						
+				world.add(Hill.class);
+				world.add(Timer.class);
+				world.add(Sky.class);
+				world.add(Border.class);
+				world.add(Base.class);
+				world.add(Dropper.class);
 			}
 		}
 	}
 	
 	public BuddiesConfig getConfig() {
 		return config;
-	}
-	
-	public void setClientAuthInfos(String username, String sessionId) {
-		this.username = username;
-		this.sessionId = sessionId;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public String getSessionId() {
-		return sessionId;
 	}
 	
 	public static BuddiesPlugin getInstance() {
@@ -197,10 +191,6 @@ public class BuddiesPlugin extends Plugin {
 	
 	public void setTPSMonitor(TPSMonitor monitor) {
 		this.monitor = monitor;
-	}
-	
-	public ArrayList<World> getWorlds() {
-		return worlds;
 	}
 	
 }
