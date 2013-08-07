@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 
 import me.Man_cub.Buddies.BuddiesPlugin;
 import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.event.player.network.PlayerListEvent;
+import me.Man_cub.Buddies.event.player.network.ListPingEvent;
 
 import org.spout.api.Server;
 import org.spout.api.entity.Player;
@@ -64,7 +64,7 @@ public class PlayerList extends BuddiesEntityComponent {
 		while (itr.hasNext()) {
 			String name = itr.next();
 			if (!temp.contains(name)) {
-				player.getNetworkSynchronizer().callProtocolEvent(new PlayerListEvent(name, 0L, false));
+				player.getNetwork().callProtocolEvent(new ListPingEvent(name, 0L, false));
 				itr.remove();
 			}
 		}

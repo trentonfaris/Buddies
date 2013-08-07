@@ -5,10 +5,10 @@ import me.Man_cub.Buddies.event.cause.HealthChangeCause;
 import org.spout.api.entity.Entity;
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.HandlerList;
-import org.spout.api.event.entity.EntityEvent;
+import org.spout.api.event.entity.AbstractEntityEvent;
 
-public class EntityHealthChangeEvent extends EntityEvent implements Cancellable {
-	private static HandlerList handlers = new HandlerList();
+public class EntityHealthChangeEvent extends AbstractEntityEvent implements Cancellable {
+	private static final HandlerList handlers = new HandlerList();
 	private int change;
 	private final HealthChangeCause cause;
 

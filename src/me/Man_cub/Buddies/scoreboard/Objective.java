@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import me.Man_cub.Buddies.event.scoreboard.ObjectiveActionEvent;
 import me.Man_cub.Buddies.event.scoreboard.ObjectiveDisplayEvent;
 import me.Man_cub.Buddies.event.scoreboard.ScoreUpdateEvent;
 

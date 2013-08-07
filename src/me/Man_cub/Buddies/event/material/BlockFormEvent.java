@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.block;
+package me.Man_cub.Buddies.event.material;
 
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.Cause;
@@ -26,7 +26,7 @@ public class BlockFormEvent extends BlockChangeEvent implements Cancellable {
 		FORMING,
 	}
 
-	private static HandlerList handlers = new HandlerList();
+	private static final HandlerList handlers = new HandlerList();
 	private final FormCause formCause;
 
 	public BlockFormEvent(Block block, BlockSnapshot newState, Cause<?> reason, FormCause formCause) {
@@ -36,6 +36,7 @@ public class BlockFormEvent extends BlockChangeEvent implements Cancellable {
 
 	/**
 	 * The reason why the block formed
+	 *
 	 * @return FormCause
 	 */
 	public FormCause getFormCause() {

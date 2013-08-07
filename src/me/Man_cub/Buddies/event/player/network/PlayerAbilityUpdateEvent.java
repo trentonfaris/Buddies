@@ -4,22 +4,23 @@ import me.Man_cub.Buddies.component.entity.living.buddy.Buddy;
 
 import org.spout.api.entity.Player;
 import org.spout.api.event.HandlerList;
+import org.spout.api.event.ProtocolEvent;
 import org.spout.api.event.player.PlayerEvent;
-import org.spout.api.protocol.event.ProtocolEvent;
 
-public class PlayerAbilityUpdateEvent extends PlayerEvent implements ProtocolEvent {
-	private static HandlerList handlers = new HandlerList();
+public class PlayerAbilityUpdateEvent extends ProtocolEvent implements PlayerEvent {
+	private static final HandlerList handlers = new HandlerList();
 	private final float flyingSpeed;
 	private final float walkingSpeed;
 	private final boolean isFlying;
 	private final boolean canFly;
+	private final Player player;
 
 	public PlayerAbilityUpdateEvent(Player player) {
-		super(player);
-		if (player.get(Buddy.class) == null) {
+		Buddy buddy = player.get(Buddy.class);
+		if (buddy == null) {
 			throw new IllegalStateException("Cannot call PlayerAbilityChangeEvent for players which don't have the Buddy component");
 		}
-		Buddy buddy = player.get(Buddy.class);
+		this.player = player;
 		flyingSpeed = buddy.getFlyingSpeed();
 		walkingSpeed = buddy.getWalkingSpeed();
 		isFlying = buddy.isFlying();
@@ -40,6 +41,11 @@ public class PlayerAbilityUpdateEvent extends PlayerEvent implements ProtocolEve
 
 	public boolean canFly() {
 		return canFly;
+	}
+
+	@Override
+	public Player getPlayer() {
+		return player;
 	}
 
 	@Override

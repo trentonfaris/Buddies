@@ -27,7 +27,7 @@ import org.spout.api.util.list.IntVector4ExpandableFIFO;
 import org.spout.api.util.set.TInt10TripleSet;
 
 public abstract class BuddiesLightingManager extends LightingManager<BuddiesCuboidLightBuffer> {
-	private final static BlockFace[] allFaces = BlockFaces.NESWBT.toArray();
+	private static final BlockFace[] allFaces = BlockFaces.NESWBT.toArray();
 
 	public BuddiesLightingManager(String name) {
 		super(name);
@@ -48,41 +48,49 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 	}
 
 	protected void resolve(ChunkCuboidLightBufferWrapper<BuddiesCuboidLightBuffer> light, ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, Iterable<IntVector3> coords, boolean init) {
+
 		// Spout.getLogger().info("Processing for " + getClass().getSimpleName());
-		
+
 		IntVector4ExpandableFIFO fifo = new IntVector4ExpandableFIFO(256);
-		
+
 		IntVector4ExpandableFIFO regen = new IntVector4ExpandableFIFO(256);
-		
+
 		if (!init) {
 			processLower(coords, fifo, regen, light, material, height);
+
 			fifo = null;
 		}
+
 		processHigher(coords, regen, light, material, height, init);
 	}
-		  
+
+	private final void log(String message, IntVector3 v) {
+		log(message, v.getX(), v.getY(), v.getZ());
+	}
+
 	private final void log(String message, IntVector3 v, int light) {
 		log(message, v.getX(), v.getY(), v.getZ(), light);
 	}
-		  
+
 	private final void log(String message, int x, int y, int z, int light) {
 		//Spout.getLogger().info(getClass().getSimpleName() + ": " + message + " at " + x + ", " + y + ", " + z + " light " + light);
 	}
-		  
+
 	private final void log(String message, int x, int y, int z) {
 		//Spout.getLogger().info(getClass().getSimpleName() + ": " + message + " at " + x + ", " + y + ", " + z);
 	}
-	
+
 	public void processHigher(Iterable<IntVector3> coords, IntVector4ExpandableFIFO fifo, ChunkCuboidLightBufferWrapper<BuddiesCuboidLightBuffer> light, ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, boolean init) {
 
 		Iterator<IntVector3> itr = coords.iterator();
+
 		while (itr.hasNext()) {
 			IntVector3 v = itr.next();
-			
+
 			int lightLevel = getLightLevel(light, v.getX(), v.getY(), v.getZ());
-			
+
 			log("(Higher) Root light level", v, lightLevel);
-			
+
 			if (lightLevel < 15) {
 				int newLight = this.computeLightLevel(light, material, height, v.getX(), v.getY(), v.getZ());
 				log("(Higher) Computed light level", v, newLight);
@@ -99,30 +107,30 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		int baseX = base.getFloorX();
 		int baseY = base.getFloorY();
 		int baseZ = base.getFloorZ();
-		
+
 		Vector3 top = material.getTop();
 		int topX = top.getFloorX();
 		int topY = top.getFloorY();
 		int topZ = top.getFloorZ();
-		
+
 		IntVector4 v;
 		while ((v = fifo.read()) != null) {
 			int center = getLightLevel(light, v.getX(), v.getY(), v.getZ());
-			
+
 			log("(Higher) checking center (W = " + v.getW() + ")", v, center);
-			
+
 			if (center <= 1 || v.getW() != center) {
 				continue;
 			}
 
 			BlockMaterial m = material.get(v.getX(), v.getY(), v.getZ());
-		
+
 			if (m == BlockMaterial.UNGENERATED) {
 				continue;
 			}
-					
-			final boolean boundary = v.getX() == baseX || v.getX() == (topX - 1) || v.getY() == baseY || v.getY() == (topY - 1) || v.getZ() == baseZ || v.getZ() == (topZ - 1);
-		
+
+			final boolean boundary = v.getX() == baseX || v.getX() == (topX - 1) || v.getY() == baseY || v.getY() == topY - 1 || v.getZ() == baseZ || v.getZ() == topZ - 1;
+
 			for (BlockFace face : allFaces) {
 				IntVector3 off = face.getIntOffset();
 				int nx = v.getX() + off.getX();
@@ -130,30 +138,33 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 				int nz = v.getZ() + off.getZ();
 				if (boundary && (nx < baseX || nx >= topX || ny <= baseY || ny >= topY || nz < baseZ || nz >= topZ)) {
 					continue;
-				}	
+				}
+
 				BlockMaterial other = material.get(nx, ny, nz);
-				
-				log("(Higher) checking neighbor: material = " + other, nx, ny, nz);
-				
+
+				log("(Higher) checking neighbor: material=" + other, nx, ny, nz);
+
 				if (other.isOpaque() || other.getOcclusion(other.getData()).get(face.getOpposite())) {
 					continue;
 				}
-				
+
 				int oldLevel = getLightLevel(light, nx, ny, nz);
-												
+
+				log("(Higher) old light", nx, ny, nz, oldLevel);
+
 				if (oldLevel == 15) {
 					continue;
 				}
-			
+
 				int opacity = other.getOpacity() + 1;
-			
+
 				int newLevel = center - opacity;
-				
+
 				log("(Higher) new level", nx, ny, nz, newLevel);
-						
+
 				if (newLevel > oldLevel) {
 					setLightLevel(light, nx, ny, nz, newLevel);
-					fifo.write(newLevel, nx, ny, nz);
+					fifo.write(newLevel, nx, ny, nz); // block is added each time its light increases
 					log("(Higher) Adding to fifo", nx, ny, nz, newLevel);
 				}
 			}
@@ -166,16 +177,20 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		while (itr.hasNext()) {
 			IntVector3 v = itr.next();
 			int lightLevel = getLightLevel(light, v.getX(), v.getY(), v.getZ());
+
 			log("(Lower) Root light level", v, lightLevel);
+
 			if (lightLevel == 0) {
 				continue;
 			}
 			int newLight = this.computeLightLevel(light, material, height, v.getX(), v.getY(), v.getZ());
+
 			log("(Lower) New light level", v, newLight);
+
 			if (newLight < lightLevel) {
 				setLightLevel(light, v.getX(), v.getY(), v.getZ(), 0);
 				fifo.write(lightLevel, v.getX(), v.getY(), v.getZ());
-			log("(Lower) Set (0) and added to FIFO for ", v, lightLevel);
+				log("(Lower) Set (0) and added to FIFO for ", v, lightLevel);
 			}
 		}
 
@@ -192,7 +207,7 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		IntVector4 v;
 		while ((v = fifo.read()) != null) {
 			int center = v.getW();
-			
+
 			log("(Lower) checking center (W = " + v.getW() + ")", v, center);
 
 			BlockMaterial m = material.get(v.getX(), v.getY(), v.getZ());
@@ -201,13 +216,15 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 				continue;
 			}
 
+			final boolean boundary = v.getX() == baseX || v.getX() == (topX - 1) || v.getY() == baseY || v.getY() == topY - 1 || v.getZ() == baseZ || v.getZ() == topZ - 1;
+
 			for (BlockFace face : allFaces) {
 
 				IntVector3 off = face.getIntOffset();
 				int nx = v.getX() + off.getX();
 				int ny = v.getY() + off.getY();
 				int nz = v.getZ() + off.getZ();
-				if (nx < baseX || nx >= topX || ny <= baseY || ny >= topY || nz < baseZ || nz >= topZ) {
+				if (boundary && (nx < baseX || nx >= topX || ny <= baseY || ny >= topY || nz < baseZ || nz >= topZ)) {
 					continue;
 				}
 				BlockMaterial other = material.get(nx, ny, nz);
@@ -215,18 +232,18 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 				if (other == BlockMaterial.UNGENERATED) {
 					continue;
 				}
-				
+
 				log("(Lower) checking neighbor: material=" + other, nx, ny, nz);
 
 				int oldLevel = getLightLevel(light, nx, ny, nz);
-				
+
 				log("(Lower) old light", nx, ny, nz, oldLevel);
 
 				if (oldLevel > 0) {
 					int opacity = other.getOpacity() + 1;
 
 					int oldSupportLevel = center - opacity;
-					
+
 					log("(Lower) supported light", nx, ny, nz, oldSupportLevel);
 
 					if (oldSupportLevel == oldLevel) {
@@ -250,7 +267,6 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		return count;
 	}
 
-	// TODO - needs surface height data
 	protected abstract int getEmittedLight(ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, int x, int y, int z);
 
 	protected int computeLightLevel(ChunkCuboidLightBufferWrapper<BuddiesCuboidLightBuffer> light, ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, int x, int y, int z) {
@@ -258,13 +274,13 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		short data = material.getData(x, y, z);
 
 		ByteBitSet occlusionSet = m.getOcclusion(data);
-		
+
 		int neighborLight = getEmittedLight(material, height, x, y, z);
 
 		if (m.isOpaque() || occlusionSet.get(BlockFaces.NESWBT)) {
 			return neighborLight;
 		}
-		
+
 		int opacity = m.getOpacity() + 1;
 
 		for (int i = 0; i < 6; i++) {
@@ -310,7 +326,7 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		if (buffer != null) {
 			level = buffer.get(x, y, z);
 		}
-		//Spout.getLogger().info("Getting " + x + ", " + y + ", " + z + " " + level); 
+		//Spout.getLogger().info("Getting " + x + ", " + y + ", " + z + " " + level);
 		return level;
 	}
 
@@ -372,11 +388,7 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 	}
 
 	/**
-	 * Resolves block changes that cause blocks to become brighter.  This method never causes the light level
-	 * for blocks to be reduced.
-	 * @param dirtySets
-	 * @param light
-	 * @param material
+	 * Resolves block changes that cause blocks to become brighter.  This method never causes the light level for blocks to be reduced.
 	 */
 	protected void resolveHigher(TInt10TripleSet[] dirtySets, ChunkCuboidLightBufferWrapper<BuddiesCuboidLightBuffer> light, ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height) {
 		ResolveHigherProcedure resolveProc = new ResolveHigherProcedure(this, light, material, height, dirtySets);
@@ -428,14 +440,6 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 
 	/**
 	 * Copies the emitted light values of each block in the given chunk into the given array for coords (1, 1, 1) to (16, 16, 16)
-	 * 
-	 * @param light
-	 * @param material
-	 * @param height
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @return
 	 */
 	public abstract void updateEmittingBlocks(int[][][] emittedLight, ChunkCuboidLightBufferWrapper<BuddiesCuboidLightBuffer> light, ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, int x, int y, int z);
 
@@ -449,8 +453,7 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		resolve(light, material, height, boundary, true);
 	}
 
-	private final static Comparator<Chunk> chunkSorter = new Comparator<Chunk>() {
-
+	private static final Comparator<Chunk> chunkSorter = new Comparator<Chunk>() {
 		@Override
 		public int compare(Chunk c1, Chunk c2) {
 			int genDiff = c1.getGenerationIndex() - c2.getGenerationIndex();
@@ -468,7 +471,6 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 			// Y sort falling
 			return c2.getY() - c1.getY();
 		}
-
 	};
 
 	protected Iterable<IntVector3> getBoundary(ImmutableCuboidBlockMaterialBuffer material, Chunk[] chunks) {
@@ -573,7 +575,6 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		int topBlockY = topY << Chunk.BLOCKS.BITS;
 		int topBlockZ = topZ << Chunk.BLOCKS.BITS;
 
-
 		if (fullCuboid) {
 			for (int x = baseBlockX; x < topBlockX; x++) {
 				for (int y = baseBlockY; y < topBlockY; y++) {
@@ -619,7 +620,7 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 				int wX = (baseX + x) << Chunk.BLOCKS.BITS;
 				for (int z = 0; z < sizeZ; z++) {
 					int wZ = (baseZ + z) << Chunk.BLOCKS.BITS;
-					for (int y = sizeY - 1; y >=0; y--) {
+					for (int y = sizeY - 1; y >= 0; y--) {
 						Chunk c = cuboid[x][y][z];
 
 						if (c == null) {
@@ -666,17 +667,13 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 									}
 								}
 							}
-
 						}
-
 					}
 				}
 			}
 		}
 		return count;
-
 	}
-
 
 	public abstract void bulkEmittingInitialize(ImmutableCuboidBlockMaterialBuffer buffer, int[][][] light, int[][] height);
 
@@ -694,6 +691,12 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		final int baseY = base.getFloorY();
 		final int baseZ = base.getFloorZ();
 
+		Vector3 top = buffer.getTop();
+
+		final int topX = top.getFloorX();
+		final int topY = top.getFloorY();
+		final int topZ = top.getFloorZ();
+
 		// TODO - this should be passed as a input parameter
 		//        It still needs to scan the new buffer, since it hasn't been added to the column
 
@@ -701,7 +704,7 @@ public abstract class BuddiesLightingManager extends LightingManager<BuddiesCubo
 		final int[][][] newLight = new int[sizeX + 2][sizeY + 2][sizeZ + 2];
 		final IntVector3FIFO fifo = new IntVector3FIFO((sizeX + 2) * (sizeY + 2) * (sizeZ + 2));
 
-		bulkEmittingInitialize(buffer, newLight, height); 
+		bulkEmittingInitialize(buffer, newLight, height);
 
 		// Mark the edges as dirty so they don't get added to the FIFO
 

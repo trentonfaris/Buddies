@@ -3,11 +3,11 @@ package me.Man_cub.Buddies.event.player;
 import org.spout.api.entity.Player;
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.HandlerList;
-import org.spout.api.event.player.PlayerEvent;
+import org.spout.api.event.player.AbstractPlayerEvent;
 
-public class PlayerToggleSneakingEvent extends PlayerEvent implements Cancellable {
-	private static HandlerList handlers = new HandlerList();
-	private boolean isSneaking;
+public class PlayerToggleSneakingEvent extends AbstractPlayerEvent implements Cancellable {
+	private static final HandlerList handlers = new HandlerList();
+	private final boolean isSneaking;
 
 	public PlayerToggleSneakingEvent(Player p, boolean isSneaking) {
 		super(p);
@@ -21,7 +21,6 @@ public class PlayerToggleSneakingEvent extends PlayerEvent implements Cancellabl
 
 	/**
 	 * Returns the new state of sneaking
-	 * @return
 	 */
 	public boolean isSneaking() {
 		return isSneaking;

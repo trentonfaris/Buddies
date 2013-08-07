@@ -4,10 +4,10 @@ import org.spout.api.entity.Entity;
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.Cause;
 import org.spout.api.event.HandlerList;
-import org.spout.api.event.entity.EntityEvent;
+import org.spout.api.event.entity.AbstractEntityEvent;
 
-public class ProjectileHitEvent extends EntityEvent implements Cancellable {
-	private static HandlerList handlers = new HandlerList();
+public class ProjectileHitEvent extends AbstractEntityEvent implements Cancellable {
+	private static final HandlerList handlers = new HandlerList();
 	private Cause<?> cause;
 
 	public ProjectileHitEvent(Entity e, Cause<?> cause) {

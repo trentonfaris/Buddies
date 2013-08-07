@@ -1,17 +1,23 @@
-package me.Man_cub.Buddies.event.entity;
+package me.Man_cub.Buddies.event.entity.network;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.HandlerList;
+import org.spout.api.event.ProtocolEvent;
 import org.spout.api.event.entity.EntityEvent;
-import org.spout.api.protocol.event.ProtocolEvent;
 
-public class EntityStatusEvent extends EntityEvent implements ProtocolEvent {
-	private static HandlerList handlers = new HandlerList();
-	private byte status;
+public class EntityStatusEvent extends ProtocolEvent implements EntityEvent {
+	private static final HandlerList handlers = new HandlerList();
+	private final byte status;
+	private final Entity entity;
 
 	public EntityStatusEvent(Entity e, byte status) {
-		super(e);
+		this.entity = e;
 		this.status = status;
+	}
+	
+	@Override
+	public Entity getEntity() {
+		return entity;
 	}
 
 	public byte getStatus() {

@@ -4,10 +4,10 @@ import me.Man_cub.Buddies.event.cause.DamageCause;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.HandlerList;
-import org.spout.api.event.entity.EntityEvent;
+import org.spout.api.event.entity.AbstractEntityEvent;
 
-public class EntityDeathEvent extends EntityEvent {
-	private static HandlerList handlers = new HandlerList();
+public class EntityDeathEvent extends AbstractEntityEvent {
+	private static final HandlerList handlers = new HandlerList();
 	private int dropExp;
 	private DamageCause<?> lastDamageCause;
 	private Object lastDamager;

@@ -39,10 +39,8 @@ import org.spout.api.material.block.BlockFace;
 
 public class GameInputCommands {
 	private final Client client;
-	private final BuddiesPlugin plugin;
 	
 	public GameInputCommands(BuddiesPlugin plugin) {
-		this.plugin = plugin;
 		client = (Client) plugin.getEngine();
 	}
 	
@@ -191,7 +189,6 @@ public class GameInputCommands {
 			// Make them be next to it.
 			if (target.getMaterial() instanceof Crate) {
 				if (player.getWorld().getBlockMaterial(target.getX(), target.getY() - 1, target.getZ()) instanceof BluePadCenter) {
-					Point point = checkPad(player, target.getX(), target.getY() - 1, target.getZ());
 					client.getScheduler().safeRun(BuddiesPlugin.getInstance(), new Runnable() {
 						@Override
 						public void run() {
@@ -212,7 +209,6 @@ public class GameInputCommands {
 				}
 			} else if (target.getMaterial() instanceof MegaCrate) {
 				if (player.getWorld().getBlockMaterial(target.getX(), target.getY() - 1, target.getZ()) instanceof BluePadCenter) {
-					Point point = checkPad(player, target.getX(), target.getY() - 1, target.getZ());
 					client.getScheduler().safeRun(BuddiesPlugin.getInstance(), new Runnable() {
 						@Override
 						public void run() {
@@ -236,12 +232,7 @@ public class GameInputCommands {
 		}
 	}
 	
-	private void checkPlayer(CommandSource source) throws CommandException {
-		if (!(source instanceof Player)) {
-			throw new CommandException("Only players may use this command.");
-		}
-	}
-	
+	/*
 	private Point checkPad(Player player, int x, int y, int z) {
 		// Get the color of the player's team. Then check against that. Just using Blue for now.
 		if (player.getWorld().getBlockMaterial(x - 1, y, z - 1) instanceof BluePadCenter) {
@@ -253,5 +244,5 @@ public class GameInputCommands {
 		} else {
 			return new Point(player.getWorld(), x + 1, y, z + 1);
 		}
-	}
+	}*/
 }

@@ -2,7 +2,7 @@ package me.Man_cub.Buddies.component.entity.player;
 
 import me.Man_cub.Buddies.ChatStyle;
 import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.event.player.network.PlayerPingEvent;
+import me.Man_cub.Buddies.event.player.network.PingEvent;
 
 import org.spout.api.entity.Player;
 import org.spout.api.math.GenericMath;
@@ -87,6 +87,6 @@ public class Ping extends BuddiesEntityComponent {
 		if (lastRequestCount >= pingTime.length) {
 			lastRequestCount = 0;
 		}
-		player.getNetworkSynchronizer().callProtocolEvent(new PlayerPingEvent(hash));
+		player.getNetwork().callProtocolEvent(new PingEvent(hash));
 	}
 }

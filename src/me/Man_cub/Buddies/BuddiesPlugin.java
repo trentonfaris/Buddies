@@ -159,7 +159,7 @@ public class BuddiesPlugin extends Plugin {
 				if (worldConfig.LOADED_SPAWN.getBoolean()) {
 					@SuppressWarnings("unchecked")
 					Entity e = world.createAndSpawnEntity(spawn, LoadOption.LOAD_GEN, NetworkComponent.class);
-					((Entity) e.get(NetworkComponent.class)).setObserver(new FlatIterator(cx, 0, cz, 16, effectiveRadius));
+					e.get(NetworkComponent.class).setObserver(new FlatIterator(cx, 0, cz, 16, effectiveRadius));
 				}
 						
 				world.add(Hill.class);

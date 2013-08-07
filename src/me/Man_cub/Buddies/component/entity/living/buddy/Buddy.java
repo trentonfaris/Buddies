@@ -25,6 +25,7 @@ import org.spout.api.inventory.ItemStack;
 import org.spout.api.math.GenericMath;
 import org.spout.api.math.Vector3;
 import org.spout.api.math.VectorMath;
+import org.spout.physics.collision.shape.BoxShape;
 
 public class Buddy extends Living {
 
@@ -42,7 +43,7 @@ public class Buddy extends Living {
 			textModel.setSize(0.5f);
 			textModel.setTranslation(new Vector3(0, 3f, 0));
 		}
-		//getOwner().getPhysics().activate(1, new BoxShape(1f, 2.3f, 1f), false, true);
+		getOwner().getPhysics().activate(1, new BoxShape(1f, 2.3f, 1f), false, true);
 	}
 	
 	public ViewDistance getViewDistance() {
@@ -70,7 +71,7 @@ public class Buddy extends Living {
 			viewDistance = config.NORMAL_VIEW_DISTANCE.getInt();
 			break;
 		}
-		//getOwner().getNetwork().setSyncDistance(viewDistance);
+		getOwner().getNetwork().setSyncDistance(viewDistance);
 	}
 	
 	public boolean isSprinting() {
@@ -129,7 +130,6 @@ public class Buddy extends Living {
 	 * Drops the item specified into the direction the player looks, with slight randomness
 	 * @param item to drop
 	 */
-	// TODO: Drop item stuff
 	public void dropItem(ItemStack item) {
 		final Transform dropFrom;
 		EntityBody body = getBody();
@@ -263,7 +263,7 @@ public class Buddy extends Living {
 		if (!updateClient || !(getOwner() instanceof Player)) {
 			return;
 		}
-		((Player) getOwner()).getNetworkSynchronizer().callProtocolEvent(new PlayerAbilityUpdateEvent((Player) getOwner()));
+		((Player) getOwner()).getNetwork().callProtocolEvent(new PlayerAbilityUpdateEvent((Player) getOwner()));
 	}
 
 	public void updateAbilities() {

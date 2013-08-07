@@ -7,7 +7,6 @@ import me.Man_cub.Buddies.component.entity.misc.EntityBody;
 import me.Man_cub.Buddies.component.entity.misc.Health;
 import me.Man_cub.Buddies.component.entity.misc.PlayerItemCollector;
 import me.Man_cub.Buddies.component.entity.player.HUD;
-import me.Man_cub.Buddies.component.entity.player.Ping;
 import me.Man_cub.Buddies.component.entity.player.PlayerBody;
 import me.Man_cub.Buddies.component.entity.player.PlayerList;
 import me.Man_cub.Buddies.component.entity.player.hud.CrosshairWidget;

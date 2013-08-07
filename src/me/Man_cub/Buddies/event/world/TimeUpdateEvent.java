@@ -1,21 +1,27 @@
 package me.Man_cub.Buddies.event.world;
 
 import org.spout.api.event.HandlerList;
+import org.spout.api.event.ProtocolEvent;
 import org.spout.api.event.world.WorldEvent;
 import org.spout.api.geo.World;
-import org.spout.api.protocol.event.ProtocolEvent;
 
-public class TimeUpdateEvent extends WorldEvent implements ProtocolEvent {
-	private static HandlerList handlers = new HandlerList();
+public class TimeUpdateEvent extends ProtocolEvent implements WorldEvent {
+	private static final HandlerList handlers = new HandlerList();
 	private final long newTime;
+	private final World world;
 
 	public TimeUpdateEvent(World world, long newTime) {
-		super(world);
+		this.world = world;
 		this.newTime = newTime;
 	}
 
 	public long getNewTime() {
 		return this.newTime;
+	}
+
+	@Override
+	public World getWorld() {
+		return world;
 	}
 
 	@Override

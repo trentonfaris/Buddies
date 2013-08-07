@@ -1,16 +1,15 @@
 package me.Man_cub.Buddies.event.player.network;
 
-import org.spout.api.event.Event;
 import org.spout.api.event.HandlerList;
-import org.spout.api.protocol.event.ProtocolEvent;
+import org.spout.api.event.ProtocolEvent;
 
-public class PlayerListEvent extends Event implements ProtocolEvent {
-	private static HandlerList handlers = new HandlerList();
-	private long ping;
-	private boolean online;
-	private String playerDisplayName;
+public class ListPingEvent extends ProtocolEvent {
+	private static final HandlerList handlers = new HandlerList();
+	private final long ping;
+	private final boolean online;
+	private final String playerDisplayName;
 
-	public PlayerListEvent(String playerDisplayName, long pingDelayMS, boolean online) {
+	public ListPingEvent(String playerDisplayName, long pingDelayMS, boolean online) {
 		this.ping = pingDelayMS;
 		this.online = online;
 		this.playerDisplayName = playerDisplayName;
@@ -18,6 +17,7 @@ public class PlayerListEvent extends Event implements ProtocolEvent {
 
 	/**
 	 * Gets the name of the player that this event relates to
+	 *
 	 * @return the player's name
 	 */
 	public String getPlayerDisplayName() {
@@ -26,6 +26,7 @@ public class PlayerListEvent extends Event implements ProtocolEvent {
 
 	/**
 	 * Gets the player's online status
+	 *
 	 * @return true if the player is online
 	 */
 	public boolean getOnline() {
@@ -34,6 +35,7 @@ public class PlayerListEvent extends Event implements ProtocolEvent {
 
 	/**
 	 * Gets the network delay between the server and the player
+	 *
 	 * @return true if the player is online
 	 */
 	public long getPingDelay() {
@@ -48,4 +50,5 @@ public class PlayerListEvent extends Event implements ProtocolEvent {
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}
+
 }

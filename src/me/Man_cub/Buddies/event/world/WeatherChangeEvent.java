@@ -4,22 +4,25 @@ import me.Man_cub.Buddies.data.Weather;
 
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.HandlerList;
+import org.spout.api.event.ProtocolEvent;
 import org.spout.api.event.world.WorldEvent;
 import org.spout.api.geo.World;
-import org.spout.api.protocol.event.ProtocolEvent;
 
-public class WeatherChangeEvent extends WorldEvent implements Cancellable, ProtocolEvent {
-	private static HandlerList handlers = new HandlerList();
-	private Weather current, weather;
+public class WeatherChangeEvent extends ProtocolEvent implements Cancellable, WorldEvent {
+	private static final HandlerList handlers = new HandlerList();
+	private final Weather current;
+	private Weather weather;
+	private final World world;
 
 	public WeatherChangeEvent(World world, Weather current, Weather weather) {
-		super(world);
+		this.world = world;
 		this.current = current;
 		this.weather = weather;
 	}
 
 	/**
 	 * Gets the weather at the time the event is called.
+	 *
 	 * @return the current weather.
 	 */
 	public Weather getCurrentWeather() {
@@ -28,6 +31,7 @@ public class WeatherChangeEvent extends WorldEvent implements Cancellable, Proto
 
 	/**
 	 * Gets the new weather set after the event.
+	 *
 	 * @return the new weather.
 	 */
 	public Weather getNewWeather() {
@@ -36,10 +40,14 @@ public class WeatherChangeEvent extends WorldEvent implements Cancellable, Proto
 
 	/**
 	 * Sets the outcome of the event.
-	 * @param weather
 	 */
 	public void setNewWeather(Weather weather) {
 		this.weather = weather;
+	}
+
+	@Override
+	public World getWorld() {
+		return world;
 	}
 
 	@Override

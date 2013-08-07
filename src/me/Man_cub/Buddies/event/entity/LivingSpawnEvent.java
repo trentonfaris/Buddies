@@ -8,7 +8,7 @@ import org.spout.api.event.entity.EntitySpawnEvent;
 import org.spout.api.geo.discrete.Point;
 
 public class LivingSpawnEvent extends EntitySpawnEvent {
-	private static HandlerList handlers = new HandlerList();
+	private static final HandlerList handlers = new HandlerList();
 	private final LivingSpawnCause cause;
 
 	public LivingSpawnEvent(Entity e, Point point) {

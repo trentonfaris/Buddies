@@ -11,22 +11,21 @@ import org.spout.api.util.cuboid.ImmutableHeightMapBuffer;
 import org.spout.api.util.cuboid.procedure.CuboidBlockMaterialProcedure;
 
 public class BuddiesSkylightLightingManager extends BuddiesBlocklightLightingManager {
-	
 	public BuddiesSkylightLightingManager(String name) {
 		super(name);
 	}
-	
+
 	@Override
 	public void resolveColumns(ChunkCuboidLightBufferWrapper<BuddiesCuboidLightBuffer> light, ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, int[] hx, int[] hz, int[] oldHy, int[] newHy, int changedColumns) {
-		Iterable<IntVector3> coords= new IntVector3CuboidArray(hx, oldHy, hz, newHy, changedColumns, true);
+		Iterable<IntVector3> coords = new IntVector3CuboidArray(hx, oldHy, hz, newHy, changedColumns, true);
 		super.resolve(light, material, height, coords, false);
 	}
-	
+
 	@Override
 	protected int getEmittedLight(ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, int x, int y, int z) {
 		return y > height.get(x, z) ? 15 : 0;
 	}
-	
+
 	@Override
 	public void updateEmittingBlocks(int[][][] emittedLight, ChunkCuboidLightBufferWrapper<BuddiesCuboidLightBuffer> light, ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, int x, int y, int z) {
 		int size = Chunk.BLOCKS.SIZE;
@@ -38,15 +37,15 @@ public class BuddiesSkylightLightingManager extends BuddiesBlocklightLightingMan
 				int h = Math.max(height.get(xx, zz) + 1, y);
 				h = Math.min(h, y + size);
 				for (int yy = y; yy < h; yy++) {
-					emittedLight[xIndex][yIndex][zIndex] = 0;
+					emittedLight[xIndex][yIndex++][zIndex] = 0;
 				}
 				for (int yy = h; yy < y + size; yy++) {
-					emittedLight[xIndex][yIndex][zIndex] = 15;
+					emittedLight[xIndex][yIndex++][zIndex] = 15;
 				}
 			}
 		}
 	}
-	
+
 	@Override
 	public void bulkEmittingInitialize(ImmutableCuboidBlockMaterialBuffer buffer, int[][][] light, int[][] genHeight) {
 
@@ -61,6 +60,8 @@ public class BuddiesSkylightLightingManager extends BuddiesBlocklightLightingMan
 		final int baseX = base.getFloorX();
 		final int baseY = base.getFloorY();
 		final int baseZ = base.getFloorZ();
+
+		final int topY = buffer.getTop().getFloorY();
 
 		final int[][] height = new int[sizeX][sizeZ];
 
@@ -77,7 +78,7 @@ public class BuddiesSkylightLightingManager extends BuddiesBlocklightLightingMan
 				z -= baseZ;
 
 				BlockMaterial m = BlockMaterial.get(id, data);
-				if (m.isSurface() && height[x][z] < y) {
+				if (height[x][z] < y && m.isSurface()) {
 					height[x][z] = y;
 				}
 				return true;
@@ -88,7 +89,7 @@ public class BuddiesSkylightLightingManager extends BuddiesBlocklightLightingMan
 			for (int z = 1; z <= sizeZ; z++) {
 				int h = height[x - 1][z - 1];
 				h -= baseY;
-				for (int y = Math.max(1, 2 + h); y <= sizeY ; y++) {
+				for (int y = Math.max(1, 2 + h); y <= sizeY; y++) {
 					light[x][y][z] = 15;
 				}
 			}

@@ -1,19 +1,19 @@
 package me.Man_cub.Buddies.event.player.network;
 
-import org.spout.api.event.Event;
 import org.spout.api.event.HandlerList;
-import org.spout.api.protocol.event.ProtocolEvent;
+import org.spout.api.event.ProtocolEvent;
 
-public class PlayerPingEvent extends Event implements ProtocolEvent {
-	private static HandlerList handlers = new HandlerList();
-	private int hash;
+public class PingEvent extends ProtocolEvent {
+	private static final HandlerList handlers = new HandlerList();
+	private final int hash;
 
-	public PlayerPingEvent(int hash) {
+	public PingEvent(int hash) {
 		this.hash = hash;
 	}
 
 	/**
 	 * Gets the Hash code for this ping message
+	 *
 	 * @return ping unique code
 	 */
 	public int getHash() {
@@ -28,4 +28,5 @@ public class PlayerPingEvent extends Event implements ProtocolEvent {
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}
+
 }

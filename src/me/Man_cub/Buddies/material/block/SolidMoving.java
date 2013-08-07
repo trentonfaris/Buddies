@@ -21,6 +21,7 @@ public class SolidMoving extends Solid {
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onUpdate(BlockMaterial oldMaterial, Block block) {
 		super.onUpdate(oldMaterial, block);

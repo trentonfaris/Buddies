@@ -4,10 +4,10 @@ import me.Man_cub.Buddies.component.entity.living.buddy.Buddy;
 
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.HandlerList;
-import org.spout.api.event.entity.EntityEvent;
+import org.spout.api.event.entity.AbstractEntityEvent;
 
-public class BuddyAbilityChangeEvent extends EntityEvent implements Cancellable {
-	private static HandlerList handlers = new HandlerList();
+public class BuddyAbilityChangeEvent extends AbstractEntityEvent implements Cancellable {
+	private static final HandlerList handlers = new HandlerList();
 	private final float flyingSpeed;
 	private final float walkingSpeed;
 	private final boolean isFlying;

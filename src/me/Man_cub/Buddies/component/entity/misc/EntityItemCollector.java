@@ -6,7 +6,7 @@ import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
 import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
 import me.Man_cub.Buddies.component.entity.substance.object.Item;
 import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
-import me.Man_cub.Buddies.event.entity.EntityCollectItemEvent;
+import me.Man_cub.Buddies.event.entity.network.EntityCollectItemEvent;
 import me.Man_cub.Buddies.material.BuddiesItemMaterial;
 import me.Man_cub.Buddies.material.item.Weapon;
 

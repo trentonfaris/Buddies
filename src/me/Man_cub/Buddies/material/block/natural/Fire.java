@@ -20,6 +20,7 @@ import org.spout.api.math.IntVector3;
 public class Fire extends BuddiesBlockMaterial implements DynamicMaterial {
 	private static final EffectRange SPREAD_RANGE = new CuboidEffectRange(-1, -1, -1, 1, 4, 1);
 	
+	@SuppressWarnings("unchecked")
 	public Fire(String name, int id) {
 		super(name, id, BuddiesMaterialModels.FIRE, null);
 		this.setTransparent();

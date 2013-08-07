@@ -7,7 +7,7 @@ import me.Man_cub.Buddies.BuddiesPlugin;
 import me.Man_cub.Buddies.component.world.misc.Sky;
 import me.Man_cub.Buddies.data.BuddiesData;
 import me.Man_cub.Buddies.data.drops.type.block.BlockDrops;
-import me.Man_cub.Buddies.event.block.BlockActionEvent;
+import me.Man_cub.Buddies.event.material.network.BlockActionEvent;
 import me.Man_cub.Buddies.render.BuddiesEffects;
 
 import org.spout.api.component.block.BlockComponent;
@@ -141,7 +141,7 @@ public abstract class BuddiesBlockMaterial extends BlockMaterial implements Budd
 	public static void playBlockAction(Block block, byte arg1, byte arg2) {
 		BlockActionEvent event = new BlockActionEvent(block, block.getMaterial(), arg1, arg2);
 		for (Player player : block.getChunk().getObservingPlayers()) {
-			player.getNetworkSynchronizer().callProtocolEvent(event);
+			player.getNetwork().callProtocolEvent(event);
 		}
 	}
 	

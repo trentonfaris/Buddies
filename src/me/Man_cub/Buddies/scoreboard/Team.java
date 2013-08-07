@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import me.Man_cub.Buddies.ChatStyle;
-import me.Man_cub.Buddies.event.scoreboard.TeamActionEvent;
 
 import org.spout.api.util.Named;
 

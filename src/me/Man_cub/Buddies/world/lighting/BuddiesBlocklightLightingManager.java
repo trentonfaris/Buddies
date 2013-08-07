@@ -12,7 +12,6 @@ import org.spout.api.util.cuboid.ImmutableHeightMapBuffer;
 import org.spout.api.util.cuboid.procedure.CuboidBlockMaterialProcedure;
 
 public class BuddiesBlocklightLightingManager extends BuddiesLightingManager {
-	
 	public BuddiesBlocklightLightingManager(String name) {
 		super(name);
 	}
@@ -28,14 +27,14 @@ public class BuddiesBlocklightLightingManager extends BuddiesLightingManager {
 		Iterable<IntVector3> coords = new IntVector3CuboidArray(bx, by, bz, tx, ty, tz, changedCuboids);
 		super.resolve(light, material, height, coords, false);
 	}
-	
+
 	@Override
 	protected int getEmittedLight(ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, int x, int y, int z) {
 		BlockMaterial m = material.get(x, y, z);
 		short data = material.getData(x, y, z);
 		return m.getLightLevel(data);
 	}
-	
+
 	@Override
 	public void updateEmittingBlocks(int[][][] emittedLight, ChunkCuboidLightBufferWrapper<BuddiesCuboidLightBuffer> light, ImmutableCuboidBlockMaterialBuffer material, ImmutableHeightMapBuffer height, int x, int y, int z) {
 		int size = Chunk.BLOCKS.SIZE;
@@ -52,23 +51,23 @@ public class BuddiesBlocklightLightingManager extends BuddiesLightingManager {
 			}
 		}
 	}
-	
+
 	@Override
 	public void bulkEmittingInitialize(ImmutableCuboidBlockMaterialBuffer buffer, final int[][][] light, int[][] height) {
 		Vector3 base = buffer.getBase();
-		
+
 		final int baseX = base.getFloorX();
-		//final int baseY = base.getFloorY();
+		final int baseY = base.getFloorY();
 		final int baseZ = base.getFloorZ();
-		
+
 		buffer.forEach(new CuboidBlockMaterialProcedure() {
 			@Override
 			public boolean execute(int x, int y, int z, short id, short data) {
 				x -= baseX;
-				y -= baseZ;
-				
+				z -= baseZ;
+
 				BlockMaterial m = BlockMaterial.get(id, data);
-				
+
 				int lightLevel = m.getLightLevel(m.getData());
 				if (lightLevel > 0) {
 					light[x + 1][y + 1][z + 1] = lightLevel;

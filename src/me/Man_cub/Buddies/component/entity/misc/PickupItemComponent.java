@@ -5,7 +5,7 @@ import java.util.List;
 import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
 import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
 import me.Man_cub.Buddies.component.entity.substance.object.Item;
-import me.Man_cub.Buddies.event.entity.EntityCollectItemEvent;
+import me.Man_cub.Buddies.event.entity.network.EntityCollectItemEvent;
 
 import org.spout.api.entity.Entity;
 

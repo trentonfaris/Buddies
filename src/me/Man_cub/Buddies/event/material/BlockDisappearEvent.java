@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.block;
+package me.Man_cub.Buddies.event.material;
 
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.Cause;
@@ -17,6 +17,10 @@ public class BlockDisappearEvent extends BlockChangeEvent implements Cancellable
 		 */
 		FADE,
 		/**
+		 * Block melted
+		 */
+		MELT,
+		/**
 		 * Block disappeared
 		 */
 		DISAPPEAR,
@@ -26,7 +30,7 @@ public class BlockDisappearEvent extends BlockChangeEvent implements Cancellable
 		DECAY,
 	}
 
-	private static HandlerList handlers = new HandlerList();
+	private static final HandlerList handlers = new HandlerList();
 	private final DisappearCause disappearCause;
 
 	public BlockDisappearEvent(Block block, BlockSnapshot newState, Cause<?> reason, DisappearCause disappearCause) {
@@ -36,6 +40,7 @@ public class BlockDisappearEvent extends BlockChangeEvent implements Cancellable
 
 	/**
 	 * The reason why the block has disappeared
+	 *
 	 * @return DisappearCause
 	 */
 	public DisappearCause getDisappearCause() {

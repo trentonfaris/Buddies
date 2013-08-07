@@ -23,6 +23,7 @@ public class Bullet extends BuddiesItemMaterial {
 		onInteract(entity, type, 10f);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void onInteract(Entity entity, Action type, float mass) {
 		super.onInteract(entity, type);
 		if (type == Action.LEFT_CLICK) {

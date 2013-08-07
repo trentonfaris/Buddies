@@ -14,6 +14,7 @@ public class Solid extends BuddiesBlockMaterial {
 		setOpaque();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Solid(short dataMask, String name, int id, String model) {
 		super(dataMask, name, id, model, new BoxShape(1, 1, 1));
 		setOpaque();

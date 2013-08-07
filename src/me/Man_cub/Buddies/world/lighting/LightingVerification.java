@@ -3,8 +3,7 @@ package me.Man_cub.Buddies.world.lighting;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-
+import org.spout.api.Spout;
 import org.spout.api.geo.LoadOption;
 import org.spout.api.geo.World;
 import org.spout.api.geo.cuboid.Chunk;
@@ -18,8 +17,7 @@ import org.spout.api.util.bytebit.ByteBitSet;
 import org.spout.api.util.cuboid.CuboidBlockMaterialBuffer;
 
 public class LightingVerification {
-
-	private final static BlockFace[] allFaces = BlockFaces.NESWBT.toArray();
+	private static final BlockFace[] allFaces = BlockFaces.NESWBT.toArray();
 
 	public static boolean checkAll(World w, boolean breakOnError) {
 		Collection<Region> regions = w.getRegions();
@@ -29,7 +27,12 @@ public class LightingVerification {
 		}
 		return checkChunks(chunks, breakOnError);
 	}
-	
+
+	public static boolean checkRegion(Region r, boolean breakOnError) {
+		Collection<Chunk> chunks = getChunks(r);
+		return checkChunks(chunks, breakOnError);
+	}
+
 	public static Collection<Chunk> getChunks(Region r) {
 		int size = Region.CHUNKS.SIZE;
 		ArrayList<Chunk> chunks = new ArrayList<Chunk>(size * size * size);
@@ -45,7 +48,7 @@ public class LightingVerification {
 		}
 		return chunks;
 	}
-	
+
 	public static boolean checkChunks(Collection<Chunk> chunks, boolean breakOnError) {
 		int size = chunks.size();
 		int count = 1;
@@ -61,12 +64,12 @@ public class LightingVerification {
 	public static boolean checkChunk(Chunk c, boolean breakOnError) {
 		return checkChunk(100, c, breakOnError);
 	}
-	
+
 	public static boolean checkChunk(int percent, Chunk c, boolean breakOnError) {
 		boolean failure = false;
-		BuddiesPlugin.getInstance().getEngine().getLogger().info(percent + "%) Testing skylight for chunk at " + c.getBase().toBlockString());
+		Spout.getLogger().info(percent + "%) Testing skylight for chunk at " + c.getBase().toBlockString());
 		failure |= checkChunk(c, BuddiesLighting.SKY_LIGHT);
-		BuddiesPlugin.getInstance().getEngine().getLogger().info(percent + "%) Testing blocklight for chunk at " + c.getBase().toBlockString());
+		Spout.getLogger().info(percent + "%) Testing blocklight for chunk at " + c.getBase().toBlockString());
 		failure |= checkChunk(c, BuddiesLighting.BLOCK_LIGHT);
 		return failure;
 	}
@@ -88,7 +91,7 @@ public class LightingVerification {
 							return 0;
 						}
 					}
-				}:
+				} :
 				new LightGenerator() {
 					@Override
 					public int getEmittedLight(int x, int y, int z) {
@@ -185,12 +188,12 @@ public class LightingVerification {
 		}
 		return true;
 	}
-	
+
 	private static void checkSurrounded(BlockMaterial[][][] materials) {
 		for (BlockFace face : allFaces) {
 			IntVector3 o = face.getIntOffset();
 			if (materials[1 + o.getX()][1 + o.getY()][1 + o.getZ()] == null) {
-				BuddiesPlugin.getInstance().getEngine().getLogger().info("Block is not surrounded");
+				Spout.getLogger().info("Block is not surrounded");
 				return;
 			}
 		}
@@ -214,13 +217,14 @@ public class LightingVerification {
 		if (neighbor == null) {
 			return 0;
 		}
-		ByteBitSet occlusion = neighbor.getOcclusion(neighbor.getData());
-		if (occlusion.get(face.getOpposite())) {
+		ByteBitSet occulusion = neighbor.getOcclusion(neighbor.getData());
+		if (occulusion.get(face.getOpposite())) {
 			return 0;
 		}
+
 		BlockMaterial center = materials[1][1][1];
-		occlusion = center.getOcclusion(center.getData());
-		if (occlusion.get(face)) {
+		occulusion = center.getOcclusion(center.getData());
+		if (occulusion.get(face)) {
 			return 0;
 		}
 		return lightLevels[ox][oy][oz] - 1 - center.getOpacity();
@@ -331,11 +335,11 @@ public class LightingVerification {
 		x += base.getFloorX();
 		y += base.getFloorY();
 		z += base.getFloorZ();
-		BuddiesPlugin.getInstance().getEngine().getLogger().info(message + " at " + x + ", " + y + ", " + z);
-		BuddiesPlugin.getInstance().getEngine().getLogger().info(getCuboid(localLight, localMaterials));
+		Spout.getLogger().info(message + " at " + x + ", " + y + ", " + z);
+		Spout.getLogger().info(getCuboid(localLight, localMaterials));
 	}
-	
-	private final static String[] layers = new String[] {"Bottom", "Middle", "Top"};
+
+	private static final String[] layers = new String[] {"Bottom", "Middle", "Top"};
 
 	private static String getCuboid(int[][][] light, BlockMaterial[][][] material) {
 		StringBuilder sb = new StringBuilder();

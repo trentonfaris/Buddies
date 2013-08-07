@@ -2,14 +2,20 @@ package me.Man_cub.Buddies.event.player.network;
 
 import org.spout.api.entity.Player;
 import org.spout.api.event.HandlerList;
+import org.spout.api.event.ProtocolEvent;
 import org.spout.api.event.player.PlayerEvent;
-import org.spout.api.protocol.event.ProtocolEvent;
 
-public class PlayerHealthEvent extends PlayerEvent implements ProtocolEvent {
-	private static HandlerList handlers = new HandlerList();
+public class PlayerHealthEvent extends ProtocolEvent implements PlayerEvent {
+	private static final HandlerList handlers = new HandlerList();
+	private final Player player;
 
 	public PlayerHealthEvent(Player p) {
-		super(p);
+		this.player = p;
+	}
+
+	@Override
+	public Player getPlayer() {
+		return player;
 	}
 
 	@Override

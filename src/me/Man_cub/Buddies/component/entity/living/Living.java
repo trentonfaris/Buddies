@@ -1,6 +1,5 @@
 package me.Man_cub.Buddies.component.entity.living;
 
-import me.Man_cub.Buddies.component.AbstractBuddiesNetworkComponent;
 import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
 import me.Man_cub.Buddies.component.entity.living.buddy.Buddy;
 import me.Man_cub.Buddies.component.entity.misc.EntityBody;
@@ -11,7 +10,6 @@ import me.Man_cub.Buddies.data.BuddiesData;
 import org.spout.api.ai.goap.GoapAIComponent;
 import org.spout.api.component.entity.NavigationComponent;
 import org.spout.api.entity.Entity;
-import org.spout.api.entity.Player;
 import org.spout.api.util.Parameter;
 
 public abstract class Living extends BuddiesEntityComponent {
@@ -30,9 +28,6 @@ public abstract class Living extends BuddiesEntityComponent {
 		//navigation.setDefaultExaminers(new BuddiesBlockExaminer());
 		ai = holder.add(GoapAIComponent.class);
 		holder.add(Burn.class);
-		if (!(holder instanceof Player)) {
-			holder.add(AbstractBuddiesNetworkComponent.class);
-		}
 	}
 	
 	public boolean isOnGround() {

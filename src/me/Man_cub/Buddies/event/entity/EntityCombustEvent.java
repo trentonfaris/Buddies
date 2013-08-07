@@ -3,13 +3,13 @@ package me.Man_cub.Buddies.event.entity;
 import org.spout.api.entity.Entity;
 import org.spout.api.event.Cause;
 import org.spout.api.event.HandlerList;
-import org.spout.api.event.entity.EntityEvent;
+import org.spout.api.event.entity.AbstractEntityEvent;
 
 import me.Man_cub.Buddies.event.cause.DamageCause.DamageType;
 import me.Man_cub.Buddies.event.cause.NullDamageCause;
 
-public class EntityCombustEvent extends EntityEvent {
-	private static HandlerList handlers = new HandlerList();
+public class EntityCombustEvent extends AbstractEntityEvent {
+	private static final HandlerList handlers = new HandlerList();
 	private final Cause<? extends Object> cause;
 	private int duration;
 

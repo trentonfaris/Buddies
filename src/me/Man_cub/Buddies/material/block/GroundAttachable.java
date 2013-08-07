@@ -7,11 +7,13 @@ import org.spout.physics.collision.shape.CollisionShape;
 
 public class GroundAttachable extends AbstractAttachable {
 	
+	@SuppressWarnings("unchecked")
 	public GroundAttachable(short dataMask, String name, int id, String model, CollisionShape shape) {
 		super(dataMask, name, id, model, shape);
 		this.setAttachable(BlockFace.BOTTOM);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public GroundAttachable(String name, int id, String model, CollisionShape shape) {
 		super(name, id, model, shape);
 		this.setAttachable(BlockFace.BOTTOM);

@@ -3,8 +3,8 @@ package me.Man_cub.Buddies.component.entity;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import me.Man_cub.Buddies.component.BuddiesNetworkComponent;
 import me.Man_cub.Buddies.data.BuddiesData;
+import me.Man_cub.Buddies.event.entity.network.EntityMetaChangeEvent;
 
 import org.spout.api.component.entity.EntityComponent;
 import org.spout.api.entity.Player;
@@ -31,16 +31,8 @@ public class BuddiesEntityComponent extends EntityComponent {
 		}
 	}
 	
-	/*
-	protected void setEntityProtocol(BuddiesEntityProtocol p) {
-		if (!(getOwner().getNetwork() instanceof BuddiesNetworkComponent)) {
-			return;
-		}
-		((BuddiesNetworkComponent) getOwner().getNetwork()).setEntityProtocol(p);
-	}*/
-	
 	protected void setMetadata(Parameter<?>... p) {
-		//getOwner().getNetwork.callProtocolEvent(new EntityMetaChangeEvent(getOwner(), Arrays.asList(p)));
+		getOwner().getNetwork().callProtocolEvent(new EntityMetaChangeEvent(getOwner(), Arrays.asList(p)));
 	}
 
 	/**

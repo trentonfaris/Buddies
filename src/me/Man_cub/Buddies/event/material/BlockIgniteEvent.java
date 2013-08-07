@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.block;
+package me.Man_cub.Buddies.event.material;
 
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.Cause;
@@ -13,6 +13,14 @@ public class BlockIgniteEvent extends BlockChangeEvent implements Cancellable {
 	 */
 	public static enum IgniteCause {
 		/**
+		 * Block ignition caused by Lava
+		 */
+		LAVA,
+		/**
+		 * Block ignition caused by using the Lightener
+		 */
+		FLINT_AND_STEEL,
+		/**
 		 * Block ignition caused by dynamic spread of fire
 		 */
 		SPREAD,
@@ -26,7 +34,7 @@ public class BlockIgniteEvent extends BlockChangeEvent implements Cancellable {
 		FIREBALL,
 	}
 
-	private static HandlerList handlers = new HandlerList();
+	private static final HandlerList handlers = new HandlerList();
 	private final IgniteCause igniteCause;
 
 	public BlockIgniteEvent(Block block, BlockSnapshot newState, Cause<?> reason, IgniteCause igniteCause) {
@@ -36,6 +44,7 @@ public class BlockIgniteEvent extends BlockChangeEvent implements Cancellable {
 
 	/**
 	 * The reason why the block was ignited
+	 *
 	 * @return IgniteCause
 	 */
 	public IgniteCause getIgniteCause() {

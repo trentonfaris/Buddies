@@ -1,16 +1,16 @@
-package me.Man_cub.Buddies.event.block;
+package me.Man_cub.Buddies.event.material.network;
 
-import org.spout.api.event.Event;
 import org.spout.api.event.HandlerList;
+import org.spout.api.event.ProtocolEvent;
 import org.spout.api.geo.cuboid.Block;
 import org.spout.api.material.BlockMaterial;
-import org.spout.api.protocol.event.ProtocolEvent;
 
-public class BlockActionEvent extends Event implements ProtocolEvent {
-	private static HandlerList handlers = new HandlerList();
-	private Block block;
-	private BlockMaterial material;
-	private byte data1, data2;
+public class BlockActionEvent extends ProtocolEvent {
+	private static final HandlerList handlers = new HandlerList();
+	private final Block block;
+	private final BlockMaterial material;
+	private final byte data1;
+	private final byte data2;
 
 	public BlockActionEvent(Block block, BlockMaterial material, byte data1, byte data2) {
 		this.block = block;

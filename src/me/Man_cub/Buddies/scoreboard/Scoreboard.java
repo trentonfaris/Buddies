@@ -5,12 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.event.scoreboard.ObjectiveActionEvent;
-import me.Man_cub.Buddies.event.scoreboard.TeamActionEvent;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.entity.Player;
-import org.spout.api.protocol.event.ProtocolEvent;
+import org.spout.api.event.ProtocolEvent;
 
 public class Scoreboard extends BuddiesEntityComponent {
 	private Player player;
@@ -151,7 +149,7 @@ public class Scoreboard extends BuddiesEntityComponent {
 	}
 
 	protected void callProtocolEvent(ProtocolEvent event) {
-		player.getNetworkSynchronizer().callProtocolEvent(event);
+		player.getNetwork().callProtocolEvent(event);
 	}
 
 	@Override

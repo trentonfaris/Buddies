@@ -16,7 +16,6 @@ import org.spout.api.Spout;
 import org.spout.api.component.world.SkydomeComponent;
 import org.spout.api.entity.Player;
 import org.spout.api.model.Model;
-import org.spout.api.protocol.NetworkSynchronizer;
 
 public class Sky extends Timer {
 	public static final byte MIN_SKY_LIGHT = 4;
@@ -177,10 +176,7 @@ public class Sky extends Timer {
 		}
 		if (oldWeather != newWeather) {
 			for (Player player : getOwner().getPlayers()) {
-				final NetworkSynchronizer networkSynchronizer = player.getNetworkSynchronizer();
-				if (networkSynchronizer != null) {
-					networkSynchronizer.callProtocolEvent(event);
-				}
+				player.getNetwork().callProtocolEvent(event, player);
 			}
 		}
 	}
@@ -196,10 +192,7 @@ public class Sky extends Timer {
 
 		TimeUpdateEvent event = new TimeUpdateEvent(getOwner(), time);
 		for (Player player : getOwner().getPlayers()) {
-			final NetworkSynchronizer networkSynchronizer = player.getNetworkSynchronizer();
-			if (networkSynchronizer != null) {
-				networkSynchronizer.callProtocolEvent(event);
-			}
+			player.getNetwork().callProtocolEvent(event);
 		}
 	}
 	

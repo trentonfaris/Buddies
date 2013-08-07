@@ -1,24 +1,35 @@
 package me.Man_cub.Buddies.event.scoreboard;
 
+import org.spout.api.event.HandlerList;
+import org.spout.api.event.ProtocolEvent;
+
 import me.Man_cub.Buddies.scoreboard.Objective;
 
-import org.spout.api.protocol.event.ProtocolEvent;
-
-public class ObjectiveActionEvent implements ProtocolEvent {
+public class ObjectiveActionEvent extends ProtocolEvent {
+	private static final HandlerList handlers = new HandlerList();
 	private final Objective obj;
 	private final byte action;
-	
+
 	public ObjectiveActionEvent(Objective obj, byte action) {
 		this.obj = obj;
 		this.action = action;
 	}
-	
+
 	public Objective getObjective() {
 		return obj;
 	}
-	
+
 	public byte getAction() {
 		return action;
+	}
+
+	@Override
+	public HandlerList getHandlers() {
+		return handlers;
+	}
+
+	public static HandlerList getHandlerList() {
+		return handlers;
 	}
 
 }

@@ -7,7 +7,7 @@ import org.spout.api.entity.Entity;
 import org.spout.api.event.HandlerList;
 
 public class EntityHealEvent extends EntityHealthChangeEvent {
-	private static HandlerList handlers = new HandlerList();
+	private static final HandlerList handlers = new HandlerList();
 	private final HealCause cause;
 
 	public EntityHealEvent(Entity e, int heal) {

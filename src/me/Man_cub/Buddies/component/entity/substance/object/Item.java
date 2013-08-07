@@ -26,7 +26,7 @@ public class Item extends Substance {
 		super.onAttached();
 		//getOwner().getNetwork().setEntityProtocol(BuddiesPlugin.BUDDIES_PROTOCOL_ID, new ItemEntityProtocol());
 		PhysicsComponent physics = getOwner().getPhysics();
-		physics.activate(1f, new BoxShape(0.05F, 0.05F, 0.05F), false);
+		physics.activate(1f, new BoxShape(0.05F, 0.05F, 0.05F), false, true);
 		physics.setRestitution(0f);
 		getOwner().add(Health.class).setMaxHealth(100);
 	}
