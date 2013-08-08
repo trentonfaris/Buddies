@@ -13,6 +13,8 @@ import me.Man_cub.Buddies.component.entity.player.hud.CrosshairWidget;
 import me.Man_cub.Buddies.component.entity.player.hud.TimerWidget;
 import me.Man_cub.Buddies.component.world.misc.Sky;
 import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
+import me.Man_cub.Buddies.event.entity.EntityDeathEvent;
+import me.Man_cub.Buddies.event.player.PlayerDeathEvent;
 import me.Man_cub.Buddies.input.BuddiesInputExecutor;
 
 import org.spout.api.Client;
@@ -102,5 +104,15 @@ public class BuddiesListener implements Listener {
 		player.add(Health.class);
 		player.add(Ammo.class);
 		player.add(InteractComponent.class).setRange(5f);
+	}
+	
+	@EventHandler
+	public void onDeath(EntityDeathEvent event) {
+		
+	}
+	
+	@EventHandler
+	public void onDeath(PlayerDeathEvent event) {
+		
 	}
 }

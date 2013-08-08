@@ -70,9 +70,6 @@ public class BuddiesPlugin extends Plugin {
 				
 		switch (getEngine().getPlatform()) {
 			case CLIENT:
-				// TODO : Eventually set this up for lobbies AND worlds (not just worlds)
-				// TODO : Look into the necessity of binding commands to keys here.
-				
 				AnnotatedCommandExecutorFactory.create(new GameInputCommands(this));
 				
 				if (getEngine().debugMode()) {
@@ -97,7 +94,6 @@ public class BuddiesPlugin extends Plugin {
 		getLogger().info("v" + getDescription().getVersion() + " enabled.");
 	}
 	
-	// TODO : Eventually this will set up a lobby and not just skip to world generation.
 	private void setupLobby() {		
 		ArrayList<World> worlds = new ArrayList<World>();
 		
@@ -118,16 +114,10 @@ public class BuddiesPlugin extends Plugin {
 			}
 		}
 		
-		// TODO : Not sure what I'm going to do about spawn radius stuff
-		final int radius = BuddiesConfig.SPAWN_RADIUS.getInt();
-		//final int protectioRadius = BuddiesConfig.SPAWN_PROTECTION_RADIUS.getInt();
-		
 		if (worlds.isEmpty()) {
 			return;
 		}
-		
-		// TODO : Protection service?
-		
+				
 		for (World world : worlds) {
 			//Keep spawn loaded
 			WorldConfigurationNode worldConfig = BuddiesConfig.WORLDS.get(world);
@@ -144,22 +134,16 @@ public class BuddiesPlugin extends Plugin {
 				} else {
 					spawn = world.getSpawnPoint().getPosition();
 				}
-				
-				// TODO : More spawn protection
-				//((BuddiesProtectionService) getEngine().getServiceManager().getRegistration(ProtectionService.class).getProvider()).addProtection(new SpawnProtection(world.getName() + " Spawn Protection", world, point, protectionRadius));
-				
+								
 				// IChunks coords of spawn
 				int cx = spawn.getBlockX() >> Chunk.BLOCKS.BITS;
 				int cz = spawn.getBlockZ() >> Chunk.BLOCKS.BITS;
-				
-				//Load or generate spawn area
-				int effectiveRadius = newWorld ? (2 * radius) : radius;
 				
 				//Add observer to spawn to keep loaded if desired
 				if (worldConfig.LOADED_SPAWN.getBoolean()) {
 					@SuppressWarnings("unchecked")
 					Entity e = world.createAndSpawnEntity(spawn, LoadOption.LOAD_GEN, NetworkComponent.class);
-					e.get(NetworkComponent.class).setObserver(new FlatIterator(cx, 0, cz, 16, effectiveRadius));
+					e.get(NetworkComponent.class).setObserver(new FlatIterator(cx, 0, cz, 16, 0));
 				}
 						
 				world.add(Hill.class);

@@ -24,7 +24,6 @@ public class Item extends Substance {
 	@Override
 	public void onAttached() {
 		super.onAttached();
-		//getOwner().getNetwork().setEntityProtocol(BuddiesPlugin.BUDDIES_PROTOCOL_ID, new ItemEntityProtocol());
 		PhysicsComponent physics = getOwner().getPhysics();
 		physics.activate(1f, new BoxShape(0.05F, 0.05F, 0.05F), false, true);
 		physics.setRestitution(0f);

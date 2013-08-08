@@ -8,7 +8,6 @@ import org.spout.api.event.entity.AbstractEntityEvent;
 
 public class EntityDeathEvent extends AbstractEntityEvent {
 	private static final HandlerList handlers = new HandlerList();
-	private int dropExp;
 	private DamageCause<?> lastDamageCause;
 	private Object lastDamager;
 
@@ -52,22 +51,6 @@ public class EntityDeathEvent extends AbstractEntityEvent {
 	 */
 	public void setLastDamager(Object lastDamager) {
 		this.lastDamager = lastDamager;
-	}
-
-	/**
-	 * Gets the amount of experience to drop.
-	 * @return The amount of experience to drop.
-	 */
-	public int getDropExp() {
-		return dropExp;
-	}
-
-	/**
-	 * Sets the amount of experience to drop.
-	 * @param dropExp The experience to set.
-	 */
-	public void setDropExp(int dropExp) {
-		this.dropExp = dropExp;
 	}
 
 	@Override
