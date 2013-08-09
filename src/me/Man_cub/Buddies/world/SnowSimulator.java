@@ -1,11 +1,11 @@
-package me.Man_cub.Buddies.world;
+package me.man_cub.buddies.world;
 
 import java.util.Random;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.material.BuddiesBlockMaterial;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.material.block.natural.Snow;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.material.BuddiesBlockMaterial;
+import me.man_cub.buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.material.block.natural.Snow;
 
 import org.spout.api.component.Component;
 import org.spout.api.entity.Player;

@@ -1,12 +1,12 @@
-package me.Man_cub.Buddies.component.world.misc;
+package me.man_cub.buddies.component.world.misc;
 
 import java.util.Random;
 
-import me.Man_cub.Buddies.component.world.BuddiesWorldComponent;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomeGenerator;
+import me.man_cub.buddies.component.world.BuddiesWorldComponent;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.world.generator.BuddiesGenerator;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomeGenerator;
 
 public class Dropper extends BuddiesWorldComponent {
 	public static int timeChangeCheck;

@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.material.item;
+package me.man_cub.buddies.material.item;
 
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.data.weapon.WeaponType;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.data.weapon.WeaponType;
 
 import org.spout.api.entity.Entity;
 

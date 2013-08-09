@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.material.block.pad.blue;
+package me.man_cub.buddies.material.block.pad.blue;
 
-import me.Man_cub.Buddies.data.resources.BuddiesMaterialModels;
-import me.Man_cub.Buddies.material.block.Solid;
+import me.man_cub.buddies.data.resources.BuddiesMaterialModels;
+import me.man_cub.buddies.material.block.Solid;
 
 public class BluePadVertex extends Solid {
 	

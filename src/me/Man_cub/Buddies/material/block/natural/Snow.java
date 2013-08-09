@@ -1,11 +1,11 @@
-package me.Man_cub.Buddies.material.block.natural;
+package me.man_cub.buddies.material.block.natural;
 
 import java.util.Random;
 
-import me.Man_cub.Buddies.data.resources.BuddiesMaterialModels;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.material.block.GroundAttachable;
-import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
+import me.man_cub.buddies.data.resources.BuddiesMaterialModels;
+import me.man_cub.buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.material.block.GroundAttachable;
+import me.man_cub.buddies.world.lighting.BuddiesLighting;
 
 import org.spout.api.geo.cuboid.Block;
 import org.spout.api.material.BlockMaterial;

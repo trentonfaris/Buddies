@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.material.item.weapon;
+package me.man_cub.buddies.material.item.weapon;
 
-import me.Man_cub.Buddies.component.entity.substance.object.projectile.PistolProj;
-import me.Man_cub.Buddies.data.resources.BuddiesMaterialModels;
-import me.Man_cub.Buddies.data.weapon.WeaponType;
-import me.Man_cub.Buddies.material.item.RangedWeapon;
+import me.man_cub.buddies.component.entity.substance.object.projectile.PistolProj;
+import me.man_cub.buddies.data.resources.BuddiesMaterialModels;
+import me.man_cub.buddies.data.weapon.WeaponType;
+import me.man_cub.buddies.material.item.RangedWeapon;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.player.Action;

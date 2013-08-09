@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.data.resources;
+package me.man_cub.buddies.data.resources;
 
 public class BuddiesMaterialModels {
 	//Natural

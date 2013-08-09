@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.component.entity.misc;
+package me.man_cub.buddies.component.entity.misc;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.data.BuddiesData;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.data.BuddiesData;
 
 import org.spout.api.geo.discrete.Point;
 import org.spout.api.geo.discrete.Transform;

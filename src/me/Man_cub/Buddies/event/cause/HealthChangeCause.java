@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.cause;
+package me.man_cub.buddies.event.cause;
 
 public enum HealthChangeCause {
 	

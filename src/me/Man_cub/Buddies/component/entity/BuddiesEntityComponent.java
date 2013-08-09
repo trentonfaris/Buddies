@@ -1,10 +1,10 @@
-package me.Man_cub.Buddies.component.entity;
+package me.man_cub.buddies.component.entity;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.event.entity.network.EntityMetaChangeEvent;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.event.entity.network.EntityMetaChangeEvent;
 
 import org.spout.api.component.entity.EntityComponent;
 import org.spout.api.entity.Player;

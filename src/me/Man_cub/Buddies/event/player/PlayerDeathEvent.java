@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.event.player;
+package me.man_cub.buddies.event.player;
 
-import me.Man_cub.Buddies.event.cause.DamageCause;
-import me.Man_cub.Buddies.event.entity.EntityDeathEvent;
+import me.man_cub.buddies.event.cause.DamageCause;
+import me.man_cub.buddies.event.entity.EntityDeathEvent;
 
 import org.spout.api.entity.Player;
 import org.spout.api.event.HandlerList;

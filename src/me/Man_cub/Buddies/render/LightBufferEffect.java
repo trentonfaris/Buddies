@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.render;
+package me.man_cub.buddies.render;
 
 import gnu.trove.list.array.TFloatArrayList;
 
-import me.Man_cub.Buddies.world.lighting.BuddiesCuboidLightBuffer;
-import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
+import me.man_cub.buddies.world.lighting.BuddiesCuboidLightBuffer;
+import me.man_cub.buddies.world.lighting.BuddiesLighting;
 
 import org.spout.api.geo.cuboid.Chunk;
 import org.spout.api.geo.cuboid.ChunkSnapshot;

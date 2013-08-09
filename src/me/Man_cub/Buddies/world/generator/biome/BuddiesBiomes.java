@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.world.generator.biome;
+package me.man_cub.buddies.world.generator.biome;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -11,10 +11,10 @@ import org.spout.cereal.config.ConfigurationException;
 import org.spout.cereal.config.annotated.AnnotatedObjectConfiguration;
 import org.spout.cereal.config.serialization.Serialization;
 
-import me.Man_cub.Buddies.util.ColorSerializer;
-import me.Man_cub.Buddies.world.generator.biome.biomes.ForestBiome;
-import me.Man_cub.Buddies.world.generator.biome.biomes.PlainsBiome;
-import me.Man_cub.Buddies.world.generator.biome.biomes.TundraBiome;
+import me.man_cub.buddies.util.ColorSerializer;
+import me.man_cub.buddies.world.generator.biome.biomes.ForestBiome;
+import me.man_cub.buddies.world.generator.biome.biomes.PlainsBiome;
+import me.man_cub.buddies.world.generator.biome.biomes.TundraBiome;
 
 public class BuddiesBiomes {
 	public static short id = 0;

@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.component.entity.player;
+package me.man_cub.buddies.component.entity.player;
 
-import me.Man_cub.Buddies.component.entity.misc.EntityBody;
+import me.man_cub.buddies.component.entity.misc.EntityBody;
 
 import org.spout.api.geo.discrete.Point;
 import org.spout.api.geo.discrete.Transform;

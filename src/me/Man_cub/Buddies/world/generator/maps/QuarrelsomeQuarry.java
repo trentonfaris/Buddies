@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.world.generator.maps;
+package me.man_cub.buddies.world.generator.maps;
 
 public class QuarrelsomeQuarry {
 

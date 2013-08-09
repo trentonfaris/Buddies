@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.world;
+package me.man_cub.buddies.event.world;
 
 import org.spout.api.event.HandlerList;
 import org.spout.api.event.ProtocolEvent;

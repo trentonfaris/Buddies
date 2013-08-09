@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.material.item;
+package me.man_cub.buddies.material.item;
 
 import java.util.Set;
 
-import me.Man_cub.Buddies.data.weapon.WeaponType;
-import me.Man_cub.Buddies.material.BuddiesItemMaterial;
+import me.man_cub.buddies.data.weapon.WeaponType;
+import me.man_cub.buddies.material.BuddiesItemMaterial;
 
 import org.spout.api.inventory.ItemStack;
 import org.spout.api.util.flag.Flag;

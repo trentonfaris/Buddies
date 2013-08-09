@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.component.world.misc;
+package me.man_cub.buddies.component.world.misc;
 
-import me.Man_cub.Buddies.component.world.BuddiesWorldComponent;
-import me.Man_cub.Buddies.data.BuddiesData;
+import me.man_cub.buddies.component.world.BuddiesWorldComponent;
+import me.man_cub.buddies.data.BuddiesData;
 
 public class Timer extends BuddiesWorldComponent {
 	private int time;

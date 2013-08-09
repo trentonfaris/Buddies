@@ -1,12 +1,12 @@
-package me.Man_cub.Buddies.component.entity.inventory;
+package me.man_cub.buddies.component.entity.inventory;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.inventory.EntityInventory;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.material.block.crate.Crate;
-import me.Man_cub.Buddies.material.block.crate.MegaCrate;
-import me.Man_cub.Buddies.material.item.Weapon;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.inventory.EntityInventory;
+import me.man_cub.buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.material.block.crate.Crate;
+import me.man_cub.buddies.material.block.crate.MegaCrate;
+import me.man_cub.buddies.material.item.Weapon;
 
 import org.spout.api.component.entity.EntityComponent;
 import org.spout.api.inventory.ItemStack;

@@ -1,11 +1,11 @@
-package me.Man_cub.Buddies.component.entity.living;
+package me.man_cub.buddies.component.entity.living;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.component.entity.living.buddy.Buddy;
-import me.Man_cub.Buddies.component.entity.misc.EntityBody;
-import me.Man_cub.Buddies.component.entity.misc.Burn;
-import me.Man_cub.Buddies.component.entity.misc.Health;
-import me.Man_cub.Buddies.data.BuddiesData;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.component.entity.living.buddy.Buddy;
+import me.man_cub.buddies.component.entity.misc.EntityBody;
+import me.man_cub.buddies.component.entity.misc.Burn;
+import me.man_cub.buddies.component.entity.misc.Health;
+import me.man_cub.buddies.data.BuddiesData;
 
 import org.spout.api.ai.goap.GoapAIComponent;
 import org.spout.api.component.entity.NavigationComponent;

@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.component.world.misc;
+package me.man_cub.buddies.component.world.misc;
 
-import me.Man_cub.Buddies.component.world.BuddiesWorldComponent;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomeGenerator;
+import me.man_cub.buddies.component.world.BuddiesWorldComponent;
+import me.man_cub.buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.world.generator.BuddiesGenerator;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomeGenerator;
 
 public class Border extends BuddiesWorldComponent {
 	public static int height = 100;

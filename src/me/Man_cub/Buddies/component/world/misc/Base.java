@@ -1,12 +1,12 @@
-package me.Man_cub.Buddies.component.world.misc;
+package me.man_cub.buddies.component.world.misc;
 
-import me.Man_cub.Buddies.component.world.BuddiesWorldComponent;
-import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomeGenerator;
-import me.Man_cub.Buddies.world.generator.objects.pad.BluePadObject;
-import me.Man_cub.Buddies.world.generator.objects.pad.GreenPadObject;
-import me.Man_cub.Buddies.world.generator.objects.pad.RedPadObject;
-import me.Man_cub.Buddies.world.generator.objects.pad.YellowPadObject;
+import me.man_cub.buddies.component.world.BuddiesWorldComponent;
+import me.man_cub.buddies.world.generator.BuddiesGenerator;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomeGenerator;
+import me.man_cub.buddies.world.generator.objects.pad.BluePadObject;
+import me.man_cub.buddies.world.generator.objects.pad.GreenPadObject;
+import me.man_cub.buddies.world.generator.objects.pad.RedPadObject;
+import me.man_cub.buddies.world.generator.objects.pad.YellowPadObject;
 
 public class Base extends BuddiesWorldComponent {
 

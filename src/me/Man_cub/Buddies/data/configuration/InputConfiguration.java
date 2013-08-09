@@ -1,11 +1,11 @@
-package me.Man_cub.Buddies.data.configuration;
+package me.man_cub.buddies.data.configuration;
 
 import java.io.File;
 
 import org.spout.cereal.config.ConfigurationHolderConfiguration;
 import org.spout.cereal.config.yaml.YamlConfiguration;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
+import me.man_cub.buddies.BuddiesPlugin;
 
 public class InputConfiguration extends ConfigurationHolderConfiguration {
 

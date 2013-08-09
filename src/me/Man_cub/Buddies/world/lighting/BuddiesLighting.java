@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.world.lighting;
+package me.man_cub.buddies.world.lighting;
 
 import org.spout.api.Spout;
 import org.spout.api.geo.cuboid.Block;

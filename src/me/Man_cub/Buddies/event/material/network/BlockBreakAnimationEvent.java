@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.material.network;
+package me.man_cub.buddies.event.material.network;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.HandlerList;

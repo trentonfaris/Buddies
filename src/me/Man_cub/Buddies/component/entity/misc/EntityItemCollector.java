@@ -1,14 +1,14 @@
-package me.Man_cub.Buddies.component.entity.misc;
+package me.man_cub.buddies.component.entity.misc;
 
 import java.util.List;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
-import me.Man_cub.Buddies.component.entity.substance.object.Item;
-import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
-import me.Man_cub.Buddies.event.entity.network.EntityCollectItemEvent;
-import me.Man_cub.Buddies.material.BuddiesItemMaterial;
-import me.Man_cub.Buddies.material.item.Weapon;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.component.entity.inventory.BuddyInventory;
+import me.man_cub.buddies.component.entity.substance.object.Item;
+import me.man_cub.buddies.data.configuration.BuddiesConfig;
+import me.man_cub.buddies.event.entity.network.EntityCollectItemEvent;
+import me.man_cub.buddies.material.BuddiesItemMaterial;
+import me.man_cub.buddies.material.item.Weapon;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.math.Vector3;

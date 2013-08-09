@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.component.entity.substance.object;
+package me.man_cub.buddies.component.entity.substance.object;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
 
 public class Substance extends BuddiesEntityComponent {
 

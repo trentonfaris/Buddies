@@ -1,18 +1,18 @@
-package me.Man_cub.Buddies.command;
+package me.man_cub.buddies.command;
 
 import gnu.trove.iterator.TLongIterator;
 import gnu.trove.list.linked.TLongLinkedList;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.ChatStyle;
-import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
-import me.Man_cub.Buddies.component.entity.misc.Health;
-import me.Man_cub.Buddies.component.world.misc.Sky;
-import me.Man_cub.Buddies.data.Time;
-import me.Man_cub.Buddies.data.Weather;
-import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
-import me.Man_cub.Buddies.data.configuration.OpConfiguration;
-import me.Man_cub.Buddies.event.cause.HealthChangeCause;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.ChatStyle;
+import me.man_cub.buddies.component.entity.inventory.BuddyInventory;
+import me.man_cub.buddies.component.entity.misc.Health;
+import me.man_cub.buddies.component.world.misc.Sky;
+import me.man_cub.buddies.data.Time;
+import me.man_cub.buddies.data.Weather;
+import me.man_cub.buddies.data.configuration.BuddiesConfig;
+import me.man_cub.buddies.data.configuration.OpConfiguration;
+import me.man_cub.buddies.event.cause.HealthChangeCause;
 
 import org.spout.api.Client;
 import org.spout.api.Engine;

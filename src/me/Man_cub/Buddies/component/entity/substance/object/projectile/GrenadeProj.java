@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.component.entity.substance.object.projectile;
+package me.man_cub.buddies.component.entity.substance.object.projectile;
 
-import me.Man_cub.Buddies.component.entity.substance.object.Substance;
+import me.man_cub.buddies.component.entity.substance.object.Substance;
 
 import org.spout.api.entity.Entity;
 

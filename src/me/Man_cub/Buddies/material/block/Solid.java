@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.material.block;
+package me.man_cub.buddies.material.block;
 
-import me.Man_cub.Buddies.material.BuddiesBlockMaterial;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.material.BuddiesBlockMaterial;
+import me.man_cub.buddies.material.BuddiesMaterials;
 
 import org.spout.api.material.BlockMaterial;
 import org.spout.api.material.block.BlockFace;

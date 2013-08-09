@@ -1,10 +1,10 @@
-package me.Man_cub.Buddies.scoreboard;
+package me.man_cub.buddies.scoreboard;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.entity.Player;

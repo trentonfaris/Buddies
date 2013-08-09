@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.data;
+package me.man_cub.buddies.data;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
+import me.man_cub.buddies.BuddiesPlugin;
 
 import org.spout.api.Platform;
 import org.spout.api.render.Font;

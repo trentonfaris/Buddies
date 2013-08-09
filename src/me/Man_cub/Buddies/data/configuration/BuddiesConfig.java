@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.data.configuration;
+package me.man_cub.buddies.data.configuration;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -8,8 +8,8 @@ import org.spout.cereal.config.ConfigurationHolder;
 import org.spout.cereal.config.ConfigurationHolderConfiguration;
 import org.spout.cereal.config.yaml.YamlConfiguration;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomes;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomes;
 
 public class BuddiesConfig extends ConfigurationHolderConfiguration {
 	//General

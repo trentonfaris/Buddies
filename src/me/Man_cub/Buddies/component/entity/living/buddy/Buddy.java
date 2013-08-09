@@ -1,20 +1,20 @@
-package me.Man_cub.Buddies.component.entity.living.buddy;
+package me.man_cub.buddies.component.entity.living.buddy;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
-import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
-import me.Man_cub.Buddies.component.entity.living.Living;
-import me.Man_cub.Buddies.component.entity.misc.EntityBody;
-import me.Man_cub.Buddies.component.entity.misc.Health;
-import me.Man_cub.Buddies.component.entity.misc.PickupItemComponent;
-import me.Man_cub.Buddies.component.entity.substance.object.Item;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.data.ViewDistance;
-import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
-import me.Man_cub.Buddies.data.configuration.WorldConfigurationNode;
-import me.Man_cub.Buddies.event.entity.BuddyAbilityChangeEvent;
-import me.Man_cub.Buddies.event.player.network.PlayerAbilityUpdateEvent;
+import me.man_cub.buddies.component.entity.inventory.BuddyInventory;
+import me.man_cub.buddies.component.entity.living.Living;
+import me.man_cub.buddies.component.entity.misc.EntityBody;
+import me.man_cub.buddies.component.entity.misc.Health;
+import me.man_cub.buddies.component.entity.misc.PickupItemComponent;
+import me.man_cub.buddies.component.entity.substance.object.Item;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.data.ViewDistance;
+import me.man_cub.buddies.data.configuration.BuddiesConfig;
+import me.man_cub.buddies.data.configuration.WorldConfigurationNode;
+import me.man_cub.buddies.event.entity.BuddyAbilityChangeEvent;
+import me.man_cub.buddies.event.player.network.PlayerAbilityUpdateEvent;
 
 import org.spout.api.component.entity.TextModelComponent;
 import org.spout.api.data.Data;

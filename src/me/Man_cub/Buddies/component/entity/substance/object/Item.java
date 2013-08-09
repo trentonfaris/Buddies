@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.component.entity.substance.object;
+package me.man_cub.buddies.component.entity.substance.object;
 
-import me.Man_cub.Buddies.component.entity.misc.Health;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.component.entity.misc.Health;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.data.configuration.BuddiesConfig;
+import me.man_cub.buddies.material.BuddiesMaterials;
 
 import org.spout.api.component.entity.PhysicsComponent;
 import org.spout.api.data.Data;

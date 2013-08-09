@@ -1,8 +1,8 @@
-package me.Man_cub.Buddies.material.item.weapon;
+package me.man_cub.buddies.material.item.weapon;
 
-import me.Man_cub.Buddies.data.resources.BuddiesMaterialModels;
-import me.Man_cub.Buddies.data.weapon.WeaponType;
-import me.Man_cub.Buddies.material.item.Weapon;
+import me.man_cub.buddies.data.resources.BuddiesMaterialModels;
+import me.man_cub.buddies.data.weapon.WeaponType;
+import me.man_cub.buddies.material.item.Weapon;
 
 public class Tazer extends Weapon {
 	

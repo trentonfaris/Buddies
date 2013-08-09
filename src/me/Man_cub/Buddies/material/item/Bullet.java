@@ -1,8 +1,8 @@
-package me.Man_cub.Buddies.material.item;
+package me.man_cub.buddies.material.item;
 
-import me.Man_cub.Buddies.component.entity.substance.object.Substance;
-import me.Man_cub.Buddies.component.entity.substance.object.projectile.Projectile;
-import me.Man_cub.Buddies.material.BuddiesItemMaterial;
+import me.man_cub.buddies.component.entity.substance.object.Substance;
+import me.man_cub.buddies.component.entity.substance.object.projectile.Projectile;
+import me.man_cub.buddies.material.BuddiesItemMaterial;
 
 import org.spout.api.component.entity.PhysicsComponent;
 import org.spout.api.entity.Entity;

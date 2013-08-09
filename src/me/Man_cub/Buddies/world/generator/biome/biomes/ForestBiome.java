@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.world.generator.biome.biomes;
+package me.man_cub.buddies.world.generator.biome.biomes;
 
 import java.awt.Color;
 
-import me.Man_cub.Buddies.data.Climate;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiome;
+import me.man_cub.buddies.data.Climate;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiome;
 
 public class ForestBiome extends BuddiesBiome {
 	

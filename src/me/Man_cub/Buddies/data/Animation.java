@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.data;
+package me.man_cub.buddies.data;
 
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;

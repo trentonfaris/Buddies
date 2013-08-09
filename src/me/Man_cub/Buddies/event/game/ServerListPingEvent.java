@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.game;
+package me.man_cub.buddies.event.game;
 
 import java.net.InetAddress;
 

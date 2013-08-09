@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.data.weapon;
+package me.man_cub.buddies.data.weapon;
 
-import me.Man_cub.Buddies.data.drops.flag.WeaponTypeFlags;
+import me.man_cub.buddies.data.drops.flag.WeaponTypeFlags;
 
 import org.spout.api.util.flag.Flag;
 

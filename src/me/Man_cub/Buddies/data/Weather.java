@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.data;
+package me.man_cub.buddies.data;
 
 public enum Weather {
 	CLEAR(false, 240000, 240000),

@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.world.generator;
+package me.man_cub.buddies.world.generator;
 
 import org.spout.api.generator.WorldGenerator;
 import org.spout.api.geo.World;

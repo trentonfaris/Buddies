@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies;
+package me.man_cub.buddies;
 
 import java.awt.Color;
 

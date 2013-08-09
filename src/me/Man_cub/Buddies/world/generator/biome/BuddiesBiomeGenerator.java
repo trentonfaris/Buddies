@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.world.generator.biome;
+package me.man_cub.buddies.world.generator.biome;
 
 import java.util.Arrays;
 
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
+import me.man_cub.buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.world.generator.BuddiesGenerator;
 
 import org.spout.api.generator.biome.BiomeGenerator;
 import org.spout.api.generator.biome.BiomeManager;

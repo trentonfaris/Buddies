@@ -1,14 +1,14 @@
-package me.Man_cub.Buddies.material;
+package me.man_cub.buddies.material;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.component.world.misc.Sky;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.data.drops.type.block.BlockDrops;
-import me.Man_cub.Buddies.event.material.network.BlockActionEvent;
-import me.Man_cub.Buddies.render.BuddiesEffects;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.component.world.misc.Sky;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.data.drops.type.block.BlockDrops;
+import me.man_cub.buddies.event.material.network.BlockActionEvent;
+import me.man_cub.buddies.render.BuddiesEffects;
 
 import org.spout.api.component.block.BlockComponent;
 import org.spout.api.entity.Entity;

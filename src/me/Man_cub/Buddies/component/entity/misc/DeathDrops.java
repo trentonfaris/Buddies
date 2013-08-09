@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.component.entity.misc;
+package me.man_cub.buddies.component.entity.misc;
 
 import java.util.List;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.data.BuddiesData;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.data.BuddiesData;
 
 import org.spout.api.inventory.Inventory;
 import org.spout.api.inventory.ItemStack;

@@ -1,13 +1,13 @@
-package me.Man_cub.Buddies.component.entity.player.hud;
+package me.man_cub.buddies.component.entity.player.hud;
 
 import java.awt.Color;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.ChatStyle;
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.component.entity.player.HUD;
-import me.Man_cub.Buddies.component.world.misc.Timer;
-import me.Man_cub.Buddies.data.BuddiesResources;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.ChatStyle;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.component.entity.player.HUD;
+import me.man_cub.buddies.component.world.misc.Timer;
+import me.man_cub.buddies.data.BuddiesResources;
 
 import org.spout.api.Client;
 import org.spout.api.component.widget.LabelComponent;

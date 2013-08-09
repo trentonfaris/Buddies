@@ -1,15 +1,15 @@
-package me.Man_cub.Buddies.component.world.misc;
+package me.man_cub.buddies.component.world.misc;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.data.Weather;
-import me.Man_cub.Buddies.event.world.TimeUpdateEvent;
-import me.Man_cub.Buddies.event.world.WeatherChangeEvent;
-import me.Man_cub.Buddies.render.BuddiesEffects;
-import me.Man_cub.Buddies.util.MathHelper;
-import me.Man_cub.Buddies.world.WeatherSimulator;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.data.Weather;
+import me.man_cub.buddies.event.world.TimeUpdateEvent;
+import me.man_cub.buddies.event.world.WeatherChangeEvent;
+import me.man_cub.buddies.render.BuddiesEffects;
+import me.man_cub.buddies.util.MathHelper;
+import me.man_cub.buddies.world.WeatherSimulator;
 
 import org.spout.api.Client;
 import org.spout.api.Spout;

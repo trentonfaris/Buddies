@@ -1,11 +1,11 @@
-package me.Man_cub.Buddies.scoreboard;
+package me.man_cub.buddies.scoreboard;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import me.Man_cub.Buddies.event.scoreboard.ObjectiveDisplayEvent;
-import me.Man_cub.Buddies.event.scoreboard.ScoreUpdateEvent;
+import me.man_cub.buddies.event.scoreboard.ObjectiveDisplayEvent;
+import me.man_cub.buddies.event.scoreboard.ScoreUpdateEvent;
 
 import org.spout.api.util.Named;
 

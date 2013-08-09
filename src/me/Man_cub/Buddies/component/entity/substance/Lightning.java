@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.component.entity.substance;
+package me.man_cub.buddies.component.entity.substance;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
 
 public class Lightning extends BuddiesEntityComponent {
 	private int timeLeft = 20;

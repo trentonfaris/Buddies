@@ -1,13 +1,13 @@
-package me.Man_cub.Buddies.world;
+package me.man_cub.buddies.world;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import me.Man_cub.Buddies.component.entity.substance.Lightning;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.data.Weather;
+import me.man_cub.buddies.component.entity.substance.Lightning;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.data.Weather;
 
 import org.spout.api.component.Component;
 import org.spout.api.entity.Player;

@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.player;
+package me.man_cub.buddies.event.player;
 
 import org.spout.api.entity.Player;
 import org.spout.api.event.Cancellable;

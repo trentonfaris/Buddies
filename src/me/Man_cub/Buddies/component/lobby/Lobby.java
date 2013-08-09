@@ -1,17 +1,17 @@
-package me.Man_cub.Buddies.component.lobby;
+package me.man_cub.buddies.component.lobby;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.component.world.misc.Sky;
-import me.Man_cub.Buddies.component.world.misc.Timer;
-import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomes;
-import me.Man_cub.Buddies.world.generator.maps.BattleHillGenerator;
-import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.component.world.misc.Sky;
+import me.man_cub.buddies.component.world.misc.Timer;
+import me.man_cub.buddies.world.generator.BuddiesGenerator;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomes;
+import me.man_cub.buddies.world.generator.maps.BattleHillGenerator;
+import me.man_cub.buddies.world.lighting.BuddiesLighting;
 
 import org.spout.api.Server;
 import org.spout.api.entity.Player;

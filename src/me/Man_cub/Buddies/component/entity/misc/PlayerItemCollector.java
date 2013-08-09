@@ -1,8 +1,8 @@
-package me.Man_cub.Buddies.component.entity.misc;
+package me.man_cub.buddies.component.entity.misc;
 
-import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
-import me.Man_cub.Buddies.component.entity.substance.object.Item;
-import me.Man_cub.Buddies.event.entity.network.EntityCollectItemEvent;
+import me.man_cub.buddies.component.entity.inventory.BuddyInventory;
+import me.man_cub.buddies.component.entity.substance.object.Item;
+import me.man_cub.buddies.event.entity.network.EntityCollectItemEvent;
 
 import org.spout.api.entity.Entity;
 

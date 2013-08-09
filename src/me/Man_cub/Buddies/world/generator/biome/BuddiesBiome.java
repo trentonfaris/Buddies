@@ -1,8 +1,8 @@
-package me.Man_cub.Buddies.world.generator.biome;
+package me.man_cub.buddies.world.generator.biome;
 
 import java.awt.Color;
 
-import me.Man_cub.Buddies.data.Climate;
+import me.man_cub.buddies.data.Climate;
 
 import org.spout.api.generator.biome.Biome;
 import org.spout.cereal.config.annotated.Setting;

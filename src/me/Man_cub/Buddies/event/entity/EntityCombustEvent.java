@@ -1,12 +1,12 @@
-package me.Man_cub.Buddies.event.entity;
+package me.man_cub.buddies.event.entity;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.Cause;
 import org.spout.api.event.HandlerList;
 import org.spout.api.event.entity.AbstractEntityEvent;
 
-import me.Man_cub.Buddies.event.cause.DamageCause.DamageType;
-import me.Man_cub.Buddies.event.cause.NullDamageCause;
+import me.man_cub.buddies.event.cause.DamageCause.DamageType;
+import me.man_cub.buddies.event.cause.NullDamageCause;
 
 public class EntityCombustEvent extends AbstractEntityEvent {
 	private static final HandlerList handlers = new HandlerList();

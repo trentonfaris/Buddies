@@ -1,10 +1,10 @@
-package me.Man_cub.Buddies.data;
+package me.man_cub.buddies.data;
 
 import java.util.HashMap;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.inventory.DropInventory;
-import me.Man_cub.Buddies.inventory.EntityInventory;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.inventory.DropInventory;
+import me.man_cub.buddies.inventory.EntityInventory;
 
 import org.spout.api.map.DefaultedKey;
 import org.spout.api.map.DefaultedKeyFactory;

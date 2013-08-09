@@ -1,8 +1,8 @@
-package me.Man_cub.Buddies.scoreboard;
+package me.man_cub.buddies.scoreboard;
 
-import me.Man_cub.Buddies.component.entity.misc.Health;
-import me.Man_cub.Buddies.event.entity.EntityDeathEvent;
-import me.Man_cub.Buddies.event.entity.EntityHealthChangeEvent;
+import me.man_cub.buddies.component.entity.misc.Health;
+import me.man_cub.buddies.event.entity.EntityDeathEvent;
+import me.man_cub.buddies.event.entity.EntityHealthChangeEvent;
 
 import org.spout.api.Engine;
 import org.spout.api.Server;

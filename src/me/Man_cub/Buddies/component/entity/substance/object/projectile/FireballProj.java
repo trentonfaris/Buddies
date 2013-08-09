@@ -1,11 +1,11 @@
-package me.Man_cub.Buddies.component.entity.substance.object.projectile;
+package me.man_cub.buddies.component.entity.substance.object.projectile;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.entity.EntityCollideEntityEvent;
 import org.spout.api.event.entity.EntityCollideEvent;
 
-import me.Man_cub.Buddies.component.entity.misc.Health;
-import me.Man_cub.Buddies.component.entity.substance.object.Substance;
+import me.man_cub.buddies.component.entity.misc.Health;
+import me.man_cub.buddies.component.entity.substance.object.Substance;
 
 public class FireballProj extends Substance implements Projectile {
 	private Entity shooter;

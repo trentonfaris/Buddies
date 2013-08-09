@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.world.lighting;
+package me.man_cub.buddies.world.lighting;
 
 import org.spout.api.lighting.Modifiable;
 import org.spout.api.util.cuboid.AlignedCuboidNibbleLightBuffer;

@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.event.entity.network;
+package me.man_cub.buddies.event.entity.network;
 
-import me.Man_cub.Buddies.data.Animation;
+import me.man_cub.buddies.data.Animation;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.HandlerList;

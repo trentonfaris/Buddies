@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.scoreboard;
+package me.man_cub.buddies.event.scoreboard;
 
 import org.spout.api.event.HandlerList;
 import org.spout.api.event.ProtocolEvent;

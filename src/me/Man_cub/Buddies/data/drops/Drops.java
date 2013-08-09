@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.data.drops;
+package me.man_cub.buddies.data.drops;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import me.Man_cub.Buddies.data.drops.type.FixedDrop;
-import me.Man_cub.Buddies.data.drops.type.RandomDrop;
-import me.Man_cub.Buddies.data.drops.type.RandomRangeDrop;
+import me.man_cub.buddies.data.drops.type.FixedDrop;
+import me.man_cub.buddies.data.drops.type.RandomDrop;
+import me.man_cub.buddies.data.drops.type.RandomRangeDrop;
 
 import org.spout.api.inventory.ItemStack;
 import org.spout.api.material.Material;

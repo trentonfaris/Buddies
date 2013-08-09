@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.material.block;
+package me.man_cub.buddies.material.block;
 
-import me.Man_cub.Buddies.material.BuddiesBlockMaterial;
+import me.man_cub.buddies.material.BuddiesBlockMaterial;
 
 import org.spout.api.component.block.BlockComponent;
 import org.spout.api.event.Cause;

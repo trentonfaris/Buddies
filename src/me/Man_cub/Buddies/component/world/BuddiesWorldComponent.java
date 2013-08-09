@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.component.world;
+package me.man_cub.buddies.component.world;
 
 import org.spout.api.component.world.WorldComponent;
 

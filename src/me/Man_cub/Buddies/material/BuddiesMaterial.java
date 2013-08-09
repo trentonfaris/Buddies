@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.material;
+package me.man_cub.buddies.material;
 
 public interface BuddiesMaterial {
 		

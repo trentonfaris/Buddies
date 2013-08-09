@@ -1,13 +1,13 @@
-package me.Man_cub.Buddies.world;
+package me.man_cub.buddies.world;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.component.world.misc.Sky;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.data.Weather;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiome;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.component.world.misc.Sky;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.data.Weather;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiome;
 
 import org.spout.api.generator.biome.Biome;
 import org.spout.api.geo.World;

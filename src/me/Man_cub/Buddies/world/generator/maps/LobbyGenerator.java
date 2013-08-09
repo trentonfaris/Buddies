@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.world.generator.maps;
+package me.man_cub.buddies.world.generator.maps;
 
-import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
+import me.man_cub.buddies.world.generator.BuddiesGenerator;
 
 import org.spout.api.generator.EmptyWorldGenerator;
 import org.spout.api.geo.World;

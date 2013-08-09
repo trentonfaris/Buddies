@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.event.scoreboard;
+package me.man_cub.buddies.event.scoreboard;
 
 import org.spout.api.event.HandlerList;
 import org.spout.api.event.ProtocolEvent;
 
-import me.Man_cub.Buddies.scoreboard.Team;
+import me.man_cub.buddies.scoreboard.Team;
 
 public class TeamActionEvent extends ProtocolEvent {
 	private static final HandlerList handlers = new HandlerList();

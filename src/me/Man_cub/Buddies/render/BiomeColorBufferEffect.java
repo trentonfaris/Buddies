@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.render;
+package me.man_cub.buddies.render;
 
 import gnu.trove.list.TFloatList;
 import gnu.trove.list.array.TFloatArrayList;
@@ -6,8 +6,8 @@ import gnu.trove.list.array.TFloatArrayList;
 import java.awt.Color;
 import java.util.Map;
 
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiome;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomes;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiome;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomes;
 
 import org.spout.api.geo.World;
 import org.spout.api.geo.cuboid.ChunkSnapshotModel;

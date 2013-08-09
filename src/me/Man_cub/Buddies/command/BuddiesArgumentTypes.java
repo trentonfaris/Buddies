@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.command;
+package me.man_cub.buddies.command;
 
-import me.Man_cub.Buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.material.BuddiesMaterials;
 
 import org.spout.api.command.CommandArguments;
 import org.spout.api.exception.ArgumentParseException;

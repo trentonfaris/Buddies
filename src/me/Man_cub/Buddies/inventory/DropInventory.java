@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.inventory;
+package me.man_cub.buddies.inventory;
 
 import org.spout.api.inventory.Inventory;
 

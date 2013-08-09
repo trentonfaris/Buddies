@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.event.world;
+package me.man_cub.buddies.event.world;
 
-import me.Man_cub.Buddies.data.Weather;
+import me.man_cub.buddies.data.Weather;
 
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.HandlerList;

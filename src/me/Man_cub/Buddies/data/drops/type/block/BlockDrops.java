@@ -1,8 +1,8 @@
-package me.Man_cub.Buddies.data.drops.type.block;
+package me.man_cub.buddies.data.drops.type.block;
 
-import me.Man_cub.Buddies.data.drops.Drops;
-import me.Man_cub.Buddies.data.drops.flag.DropFlags;
-import me.Man_cub.Buddies.data.drops.flag.PlayerFlags;
+import me.man_cub.buddies.data.drops.Drops;
+import me.man_cub.buddies.data.drops.flag.DropFlags;
+import me.man_cub.buddies.data.drops.flag.PlayerFlags;
 
 public class BlockDrops extends Drops {
 	/**

@@ -1,10 +1,10 @@
-package me.Man_cub.Buddies.data.drops.type;
+package me.man_cub.buddies.data.drops.type;
 
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import me.Man_cub.Buddies.data.drops.Drop;
+import me.man_cub.buddies.data.drops.Drop;
 
 import org.spout.api.inventory.ItemStack;
 import org.spout.api.material.Material;

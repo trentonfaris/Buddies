@@ -1,11 +1,11 @@
-package me.Man_cub.Buddies.world.generator.maps;
+package me.man_cub.buddies.world.generator.maps;
 
 import java.util.Random;
 
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiome;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomeGenerator;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomes;
+import me.man_cub.buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiome;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomeGenerator;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomes;
 
 import org.spout.api.generator.biome.BiomeManager;
 import org.spout.api.geo.World;

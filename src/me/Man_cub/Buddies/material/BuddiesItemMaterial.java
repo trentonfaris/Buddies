@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.material;
+package me.man_cub.buddies.material;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.render.BuddiesEffects;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.render.BuddiesEffects;
 
 import org.spout.api.Platform;
 import org.spout.api.material.Material;

@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.data.drops.flag;
+package me.man_cub.buddies.data.drops.flag;
 
 import org.spout.api.inventory.ItemStack;
 import org.spout.api.util.flag.FlagData;

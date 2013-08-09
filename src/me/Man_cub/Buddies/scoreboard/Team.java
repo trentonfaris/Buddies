@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.scoreboard;
+package me.man_cub.buddies.scoreboard;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import me.Man_cub.Buddies.ChatStyle;
+import me.man_cub.buddies.ChatStyle;
 
 import org.spout.api.util.Named;
 

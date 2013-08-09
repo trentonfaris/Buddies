@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.material.block.pad.red;
+package me.man_cub.buddies.material.block.pad.red;
 
-import me.Man_cub.Buddies.data.resources.BuddiesMaterialModels;
-import me.Man_cub.Buddies.material.block.Solid;
+import me.man_cub.buddies.data.resources.BuddiesMaterialModels;
+import me.man_cub.buddies.material.block.Solid;
 
 public class RedPadEdge extends Solid {
 	

@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.material.block;
+package me.man_cub.buddies.material.block;
 
 import org.spout.api.event.Cause;
 import org.spout.api.geo.cuboid.Block;

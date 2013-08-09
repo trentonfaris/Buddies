@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.world.generator.objects.pad;
+package me.man_cub.buddies.world.generator.objects.pad;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import me.Man_cub.Buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.material.BuddiesMaterials;
 
 import org.spout.api.generator.WorldGeneratorObject;
 import org.spout.api.geo.World;

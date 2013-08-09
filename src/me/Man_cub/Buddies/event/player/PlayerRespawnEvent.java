@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.event.player;
+package me.man_cub.buddies.event.player;
 
-import me.Man_cub.Buddies.component.entity.living.buddy.Buddy;
+import me.man_cub.buddies.component.entity.living.buddy.Buddy;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.entity.Player;

@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.entity.network;
+package me.man_cub.buddies.event.entity.network;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
-package me.Man_cub.Buddies.world.generator;
+package me.man_cub.buddies.world.generator;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiomes;
-import me.Man_cub.Buddies.world.generator.maps.BattleHillGenerator;
-import me.Man_cub.Buddies.world.generator.maps.LobbyGenerator;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiomes;
+import me.man_cub.buddies.world.generator.maps.BattleHillGenerator;
+import me.man_cub.buddies.world.generator.maps.LobbyGenerator;
 
 public class BuddiesGenerators {
 	public static final LobbyGenerator LOBBY = new LobbyGenerator();

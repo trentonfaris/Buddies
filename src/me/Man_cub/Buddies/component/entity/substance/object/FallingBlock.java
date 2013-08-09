@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.component.entity.substance.object;
+package me.man_cub.buddies.component.entity.substance.object;
 
-import me.Man_cub.Buddies.material.BuddiesBlockMaterial;
+import me.man_cub.buddies.material.BuddiesBlockMaterial;
 
 import org.spout.api.geo.World;
 import org.spout.api.geo.cuboid.Block;

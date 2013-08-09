@@ -1,12 +1,12 @@
-package me.Man_cub.Buddies.component.entity.player;
+package me.man_cub.buddies.component.entity.player;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.event.player.network.ListPingEvent;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.event.player.network.ListPingEvent;
 
 import org.spout.api.Server;
 import org.spout.api.entity.Player;

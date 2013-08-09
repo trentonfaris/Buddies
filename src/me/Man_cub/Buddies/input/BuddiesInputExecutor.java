@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.input;
+package me.man_cub.buddies.input;
 
-import me.Man_cub.Buddies.component.entity.misc.EntityBody;
+import me.man_cub.buddies.component.entity.misc.EntityBody;
 
 import org.spout.api.component.entity.PhysicsComponent;
 import org.spout.api.entity.Player;

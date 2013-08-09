@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.component.entity.substance.object.projectile;
+package me.man_cub.buddies.component.entity.substance.object.projectile;
 
 import org.spout.api.entity.Entity;
 

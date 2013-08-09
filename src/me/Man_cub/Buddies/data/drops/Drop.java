@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.data.drops;
+package me.man_cub.buddies.data.drops;
 
 import java.util.ArrayList;
 import java.util.List;

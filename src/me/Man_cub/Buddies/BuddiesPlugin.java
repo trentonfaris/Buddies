@@ -1,24 +1,24 @@
-package me.Man_cub.Buddies;
+package me.man_cub.buddies;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
-import me.Man_cub.Buddies.command.AdministrationCommands;
-import me.Man_cub.Buddies.command.AdministrationCommands.TPSMonitor;
-import me.Man_cub.Buddies.command.GameInputCommands;
-import me.Man_cub.Buddies.component.world.misc.Base;
-import me.Man_cub.Buddies.component.world.misc.Border;
-import me.Man_cub.Buddies.component.world.misc.Dropper;
-import me.Man_cub.Buddies.component.world.misc.Hill;
-import me.Man_cub.Buddies.component.world.misc.Sky;
-import me.Man_cub.Buddies.component.world.misc.Timer;
-import me.Man_cub.Buddies.data.configuration.BuddiesConfig;
-import me.Man_cub.Buddies.data.configuration.WorldConfigurationNode;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
-import me.Man_cub.Buddies.scoreboard.ScoreboardListener;
-import me.Man_cub.Buddies.world.generator.BuddiesGenerator;
-import me.Man_cub.Buddies.world.generator.BuddiesGenerators;
-import me.Man_cub.Buddies.world.lighting.BuddiesLighting;
+import me.man_cub.buddies.command.AdministrationCommands;
+import me.man_cub.buddies.command.AdministrationCommands.TPSMonitor;
+import me.man_cub.buddies.command.GameInputCommands;
+import me.man_cub.buddies.component.world.misc.Base;
+import me.man_cub.buddies.component.world.misc.Border;
+import me.man_cub.buddies.component.world.misc.Dropper;
+import me.man_cub.buddies.component.world.misc.Hill;
+import me.man_cub.buddies.component.world.misc.Sky;
+import me.man_cub.buddies.component.world.misc.Timer;
+import me.man_cub.buddies.data.configuration.BuddiesConfig;
+import me.man_cub.buddies.data.configuration.WorldConfigurationNode;
+import me.man_cub.buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.scoreboard.ScoreboardListener;
+import me.man_cub.buddies.world.generator.BuddiesGenerator;
+import me.man_cub.buddies.world.generator.BuddiesGenerators;
+import me.man_cub.buddies.world.lighting.BuddiesLighting;
 
 import org.spout.api.Server;
 import org.spout.api.command.annotated.AnnotatedCommandExecutorFactory;

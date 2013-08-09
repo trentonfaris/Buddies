@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.util;
+package me.man_cub.buddies.util;
 
 import java.util.Random;
 

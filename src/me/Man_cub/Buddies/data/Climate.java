@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.data;
+package me.man_cub.buddies.data;
 
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiome;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiome;
 
 import org.spout.api.generator.biome.Biome;
 import org.spout.api.geo.cuboid.Block;

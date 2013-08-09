@@ -1,11 +1,11 @@
-package me.Man_cub.Buddies.component.entity.misc;
+package me.man_cub.buddies.component.entity.misc;
 
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.component.entity.living.Living;
-import me.Man_cub.Buddies.component.world.misc.Sky;
-import me.Man_cub.Buddies.data.BuddiesData;
-import me.Man_cub.Buddies.event.cause.DamageCause.DamageType;
-import me.Man_cub.Buddies.event.cause.NullDamageCause;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.component.entity.living.Living;
+import me.man_cub.buddies.component.world.misc.Sky;
+import me.man_cub.buddies.data.BuddiesData;
+import me.man_cub.buddies.event.cause.DamageCause.DamageType;
+import me.man_cub.buddies.event.cause.NullDamageCause;
 
 import org.spout.api.geo.discrete.Point;
 

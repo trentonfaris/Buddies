@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.render;
+package me.man_cub.buddies.render;
 
 import org.spout.api.render.effect.RenderEffect;
 

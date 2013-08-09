@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.scoreboard;
+package me.man_cub.buddies.scoreboard;
 
 public enum ObjectiveSlot {
 	LIST,

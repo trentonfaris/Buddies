@@ -1,6 +1,6 @@
-package me.Man_cub.Buddies.event.entity;
+package me.man_cub.buddies.event.entity;
 
-import me.Man_cub.Buddies.component.entity.living.buddy.Buddy;
+import me.man_cub.buddies.component.entity.living.buddy.Buddy;
 
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.HandlerList;

@@ -1,9 +1,9 @@
-package me.Man_cub.Buddies.event.entity;
+package me.man_cub.buddies.event.entity;
 
-import me.Man_cub.Buddies.event.cause.DamageCause;
-import me.Man_cub.Buddies.event.cause.DamageCause.DamageType;
-import me.Man_cub.Buddies.event.cause.HealthChangeCause;
-import me.Man_cub.Buddies.event.cause.NullDamageCause;
+import me.man_cub.buddies.event.cause.DamageCause;
+import me.man_cub.buddies.event.cause.DamageCause.DamageType;
+import me.man_cub.buddies.event.cause.HealthChangeCause;
+import me.man_cub.buddies.event.cause.NullDamageCause;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.Cause;

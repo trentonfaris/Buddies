@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.data.configuration;
+package me.man_cub.buddies.data.configuration;
 
 import java.util.Map;
 

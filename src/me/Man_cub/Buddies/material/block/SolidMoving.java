@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.material.block;
+package me.man_cub.buddies.material.block;
 
-import me.Man_cub.Buddies.component.entity.substance.object.FallingBlock;
-import me.Man_cub.Buddies.material.BuddiesMaterials;
+import me.man_cub.buddies.component.entity.substance.object.FallingBlock;
+import me.man_cub.buddies.material.BuddiesMaterials;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.geo.LoadOption;

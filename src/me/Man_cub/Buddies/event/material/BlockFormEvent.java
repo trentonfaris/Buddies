@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.material;
+package me.man_cub.buddies.event.material;
 
 import org.spout.api.event.Cancellable;
 import org.spout.api.event.Cause;

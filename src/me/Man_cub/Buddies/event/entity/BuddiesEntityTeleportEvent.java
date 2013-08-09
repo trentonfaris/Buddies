@@ -1,4 +1,4 @@
-package me.Man_cub.Buddies.event.entity;
+package me.man_cub.buddies.event.entity;
 
 import org.spout.api.entity.Entity;
 import org.spout.api.event.HandlerList;

@@ -1,7 +1,7 @@
-package me.Man_cub.Buddies.component.entity.player;
+package me.man_cub.buddies.component.entity.player;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
 
 import org.spout.api.Client;
 import org.spout.api.entity.Player;

@@ -1,8 +1,8 @@
-package me.Man_cub.Buddies.component.entity.player;
+package me.man_cub.buddies.component.entity.player;
 
-import me.Man_cub.Buddies.ChatStyle;
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.event.player.network.PingEvent;
+import me.man_cub.buddies.ChatStyle;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.event.player.network.PingEvent;
 
 import org.spout.api.entity.Player;
 import org.spout.api.math.GenericMath;

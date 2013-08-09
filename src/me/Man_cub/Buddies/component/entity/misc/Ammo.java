@@ -1,15 +1,15 @@
-package me.Man_cub.Buddies.component.entity.misc;
+package me.man_cub.buddies.component.entity.misc;
 
 import java.awt.Color;
 
-import me.Man_cub.Buddies.BuddiesPlugin;
-import me.Man_cub.Buddies.component.entity.BuddiesEntityComponent;
-import me.Man_cub.Buddies.component.entity.inventory.BuddyInventory;
-import me.Man_cub.Buddies.component.entity.player.HUD;
-import me.Man_cub.Buddies.data.BuddiesResources;
-import me.Man_cub.Buddies.material.block.crate.Crate;
-import me.Man_cub.Buddies.material.block.crate.MegaCrate;
-import me.Man_cub.Buddies.material.item.RangedWeapon;
+import me.man_cub.buddies.BuddiesPlugin;
+import me.man_cub.buddies.component.entity.BuddiesEntityComponent;
+import me.man_cub.buddies.component.entity.inventory.BuddyInventory;
+import me.man_cub.buddies.component.entity.player.HUD;
+import me.man_cub.buddies.data.BuddiesResources;
+import me.man_cub.buddies.material.block.crate.Crate;
+import me.man_cub.buddies.material.block.crate.MegaCrate;
+import me.man_cub.buddies.material.item.RangedWeapon;
 
 import org.spout.api.Client;
 import org.spout.api.component.widget.LabelComponent;

@@ -1,8 +1,8 @@
-package me.Man_cub.Buddies.render;
+package me.man_cub.buddies.render;
 
 import java.awt.Color;
 
-import me.Man_cub.Buddies.world.generator.biome.BuddiesBiome;
+import me.man_cub.buddies.world.generator.biome.BuddiesBiome;
 
 public class BiomeGrassColorBufferEffect extends BiomeColorBufferEffect {
 	@Override
