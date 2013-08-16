@@ -17,7 +17,7 @@ public class LightBufferEffect implements BufferEffect {
 	@Override
 	public void post(ChunkSnapshotModel chunkModel, BufferContainer container) {
 		TFloatArrayList vertexBuffer = (TFloatArrayList) container.getBuffers().get(0);
-	
+
 		/*
 		 * Use a shader light (2) and skylight (4)
 		 * 
@@ -54,14 +54,9 @@ public class LightBufferEffect implements BufferEffect {
 			generateLightOnVertices(chunkModel, x, y, z, lightBuffer, skylightBuffer);
 		}
 	}
-	
+
 	/**
 	 * Compute the light for one vertex
-	 * @param chunkModel
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @param lightBuffer
 	 */
 	private void generateLightOnVertices(ChunkSnapshotModel chunkModel, float x, float y, float z, TFloatArrayList lightBuffer, TFloatArrayList skylightBuffer) {
 		int xi = (int) x;
@@ -82,10 +77,14 @@ public class LightBufferEffect implements BufferEffect {
 					ChunkSnapshot chunk = null;
 					BuddiesCuboidLightBuffer blockLight = null;
 					BuddiesCuboidLightBuffer skyLight = null;
+
 					for (int zz = zs; zz <= zi; zz++) {
 						int zChunk = zz >> Chunk.BLOCKS.BITS;
 						if (zChunk != zOld || chunk == null) {
 							chunk = chunkModel.getChunkFromBlock(xx, yy, zz);
+							if (chunk == null) {
+								continue;
+							}
 							blockLight = (BuddiesCuboidLightBuffer) chunk.getLightBuffer(BuddiesLighting.BLOCK_LIGHT.getId());
 							skyLight = (BuddiesCuboidLightBuffer) chunk.getLightBuffer(BuddiesLighting.SKY_LIGHT.getId());
 							zOld = zChunk;
